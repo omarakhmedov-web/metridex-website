@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Metridex — On-chain Risk Metrics for DeFi & Telegram</title>
+  <meta name="description" content="Metridex: QuickScan for tokens and projects — on-chain checks, liquidity, honeypot, roles, domain WHOIS/SSL/Wayback, PDF reports, 7-day monitoring, white-label for Telegram channels.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <meta property="og:title" content="Metridex — On-chain Risk Metrics for DeFi & Telegram">
+  <meta property="og:description" content="QuickScan, On-chain checks, WHOIS/SSL/Wayback, PDF reports, 7-day monitoring, white-label.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.metridex.com/">
+  <meta property="og:image" content="https://www.metridex.com/assets/og-cover.png">
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <header class="container">
+    <nav class="nav">
+      <div class="brand">
+        <img src="./assets/logo.svg" alt="Metridex logo" class="logo">
+        <span class="brand-name">Metridex</span>
+      </div>
+      <div class="nav-actions">
+        <a class="btn ghost" href="https://t.me/MetridexBot" target="_blank" rel="noopener">Open Bot</a>
+        <a class="btn solid" href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <h1>On-chain risk metrics for <span class="accent">DeFi</span> & Telegram</h1>
+      <p class="lead">QuickScan in seconds. Deep checks on demand. White-label reports your audience can trust.</p>
+      <div class="cta">
+        <a class="btn solid xl" href="https://t.me/MetridexBot" target="_blank" rel="noopener">Try @MetridexBot</a>
+        <a class="btn ghost xl" href="#features">See features</a>
+      </div>
+      <ul class="badges">
+        <li>Δ 5m / 1h / 6h / 24h</li>
+        <li>Why / Why++ signals</li>
+        <li>PDF report in 1 click</li>
+        <li>7-day post-monitoring</li>
+      </ul>
+    </section>
+
+    <section id="features" class="features container">
+      <h2>What’s inside</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>QuickScan (MVP)</h3>
+          <p>Price context via DexScreener proxy, liquidity, FDV/MC, and red-flags in one compact view.</p>
+        </div>
+        <div class="card">
+          <h3>On-chain checks</h3>
+          <p>Contract code, proxy/implementation, roles & permissions, mint/pause/blacklist, honeypot hints.</p>
+        </div>
+        <div class="card">
+          <h3>Domain intelligence</h3>
+          <p>WHOIS/RDAP, SSL, Wayback — verify web footprint and age to spot fake fronts.</p>
+        </div>
+        <div class="card">
+          <h3>White-label reporting</h3>
+          <p>Export clean PDF with links (Etherscan, DexScreener, RDAP/Wayback). Your brand on top.</p>
+        </div>
+        <div class="card">
+          <h3>Channel-grade tooling</h3>
+          <p>Designed for 100k+ Telegram channels, launchpads, and analysts. Pilot via escrow, no prepay.</p>
+        </div>
+        <div class="card">
+          <h3>API & automations</h3>
+          <p>Batch verification (Windows kit), alerts, 7-day monitoring. Built to scale.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta2 container">
+      <div class="cta2-inner">
+        <h2>Need a 3‑min demo?</h2>
+        <p>We’ll send a private demo and a sample PDF report.</p>
+        <a class="btn solid" href="mailto:contact@metridex.com?subject=Metridex%20Demo%20Request">Request demo</a>
+      </div>
+    </section>
+
+    <section id="contact" class="contact container">
+      <h2>Contact</h2>
+      <ul class="contact-list">
+        <li><strong>Email:</strong> <a href="mailto:contact@metridex.com">contact@metridex.com</a></li>
+        <li><strong>Telegram:</strong> <a href="https://t.me/MetridexBot" target="_blank" rel="noopener">@MetridexBot</a></li>
+      </ul>
+      <p class="small">© <span id="year"></span> Metridex. All rights reserved.</p>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <p class="small">Security disclaimers: Metridex provides analytical signals; it is not financial advice.</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
