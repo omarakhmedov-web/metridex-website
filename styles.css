@@ -1,0 +1,45 @@
+/* Minimal, clean, premium-like */
+:root{
+  --bg:#0b0f1a; --card:#121829; --muted:#a3b1c6; --text:#eef3ff; --accent:#7cc4ff; --brand:#8bb6ff;
+  --ring: rgba(124,196,255,.35);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.5}
+.container{max-width:1100px;margin:0 auto;padding:20px}
+.nav{display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:28px;height:28px}
+.brand-name{font-weight:700;letter-spacing:.2px}
+.nav-actions{display:flex;gap:10px}
+.btn{display:inline-block;padding:10px 16px;border-radius:14px;border:1px solid transparent;text-decoration:none;font-weight:600;transition:.2s}
+.btn.solid{background:linear-gradient(180deg,#4aa8ff,#7cc4ff);color:#0c1220;box-shadow:0 6px 18px var(--ring)}
+.btn.ghost{border-color:#23314d;color:var(--text);background:transparent}
+.btn:hover{transform:translateY(-1px)}
+.btn.xl{padding:14px 22px;border-radius:16px}
+.hero{padding:72px 20px 28px}
+.hero h1{font-size:40px;line-height:1.1;margin:0 0 10px}
+.accent{color:var(--accent)}
+.lead{color:var(--muted);max-width:720px}
+.cta{display:flex;gap:12px;margin:18px 0 8px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;color:#b8c7e0;padding:0;margin:18px 0 0;list-style:none}
+.badges li{border:1px solid #23314d;border-radius:999px;padding:6px 10px;font-size:13px}
+.features{padding:24px 20px 8px}
+.features h2{margin:0 0 16px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{background:linear-gradient(180deg,#121829,#101625);border:1px solid #1a2237;border-radius:18px;padding:16px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.card h3{margin:0 0 8px}
+.cta2{padding:28px 20px}
+.cta2-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;background:linear-gradient(180deg,#0e1424,#0b1221);border:1px solid #1b2845;border-radius:18px;padding:18px 20px}
+.contact{padding:18px 20px}
+.contact-list{list-style:none;padding:0;margin:0 0 10px}
+.contact-list li{margin:6px 0}
+.small{color:#98a7c3;font-size:13px}
+.footer{padding:12px 20px 30px}
+@media (max-width:960px){
+  .grid{grid-template-columns:1fr 1fr}
+  .cta2-inner{flex-direction:column;align-items:flex-start}
+}
+@media (max-width:640px){
+  .hero h1{font-size:30px}
+  .grid{grid-template-columns:1fr}
+}
