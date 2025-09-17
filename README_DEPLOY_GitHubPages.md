@@ -41,3 +41,4 @@ After HTTPS is active, in Pages “Custom domain” set the domain to `metridex.
 - Replace texts with your final marketing copy.
 - Add a short demo video and a sample PDF report.
 - Track clicks by adding UTM parameters to Telegram links.
+- 
