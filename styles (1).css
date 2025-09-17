@@ -1,52 +1,70 @@
-/* Minimal, clean, premium-like */
 :root{
-  --bg:#0b0f1a; --card:#121829; --muted:#a3b1c6; --text:#eef3ff; --accent:#7cc4ff; --brand:#8bb6ff;
-  --ring: rgba(124,196,255,.35);
+  --bg:#0a0f1c; --panel:#0f1628; --card:#121a31; --line:#1b2743;
+  --text:#eef3ff; --muted:#a7b5cc; --accent:#7cc4ff; --accent2:#60a9ff;
+  --ring:rgba(124,196,255,.35);
 }
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.5}
-.container{max-width:1100px;margin:0 auto;padding:20px}
+html,body{margin:0;padding:0;background:radial-gradient(1200px 600px at 20% -10%,rgba(124,196,255,.12),transparent),radial-gradient(1200px 600px at 120% 0,rgba(151,117,250,.12),transparent),var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
+.container{max-width:1140px;margin:0 auto;padding:20px}
+
+/* header */
+.site-header{position:sticky;top:0;z-index:10;background:rgba(12,18,36,.6);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.06)}
 .nav{display:flex;align-items:center;justify-content:space-between}
-.brand{display:flex;align-items:center;gap:12px}
-.logo{width:28px;height:28px}
+.brand{display:flex;align-items:center;gap:10px}
+.logo{width:26px;height:26px}
 .brand-name{font-weight:700;letter-spacing:.2px}
-.nav-actions{display:flex;gap:10px}
-.btn{display:inline-block;padding:10px 16px;border-radius:14px;border:1px solid transparent;text-decoration:none;font-weight:600;transition:.2s}
-.btn.solid{background:linear-gradient(180deg,#4aa8ff,#7cc4ff);color:#0c1220;box-shadow:0 6px 18px var(--ring)}
-.btn.ghost{border-color:#23314d;color:var(--text);background:transparent}
-.btn:hover{transform:translateY(-1px)}
+.top-nav a{color:var(--muted);text-decoration:none;margin-left:16px}
+.top-nav a:hover{color:#dbe6ff}
+
+/* hero */
+.hero{position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center;min-height:68vh}
+.hero-inner h1{font-size:48px;line-height:1.05;margin:8px 0 10px}
+.lead{color:var(--muted);max-width:720px;margin:0 0 18px}
+.btn{display:inline-block;padding:12px 18px;border-radius:14px;border:1px solid transparent;text-decoration:none;font-weight:700}
+.btn.primary{background:linear-gradient(180deg,var(--accent2),var(--accent));color:#0c1220;box-shadow:0 10px 30px var(--ring)}
+.btn.primary:hover{transform:translateY(-1px)}
 .btn.xl{padding:14px 22px;border-radius:16px}
-.hero{padding:72px 20px 28px}
-.hero h1{font-size:40px;line-height:1.1;margin:0 0 10px}
 .accent{color:var(--accent)}
-.lead{color:var(--muted);max-width:720px}
-.cta{display:flex;gap:12px;margin:18px 0 8px}
-.badges{display:flex;flex-wrap:wrap;gap:8px;color:#b8c7e0;padding:0;margin:18px 0 0;list-style:none}
-.badges li{border:1px solid #23314d;border-radius:999px;padding:6px 10px;font-size:13px}
-.features{padding:24px 20px 8px}
-.features h2{margin:0 0 16px}
+.signals{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 0;padding:0;list-style:none;color:#c3cfea}
+.signals li{border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:13px}
+
+/* hero visual */
+.hero-visual{position:relative;height:380px}
+.orb{position:absolute;filter:blur(40px);opacity:.7;border-radius:50%}
+.orb1{width:240px;height:240px;background:radial-gradient(circle at 30% 30%,#9ad0ff,transparent 70%);top:20px;left:40px;animation:float 9s ease-in-out infinite}
+.orb2{width:200px;height:200px;background:radial-gradient(circle at 70% 70%,#a993ff,transparent 60%);bottom:10px;right:30px;animation:float 11s ease-in-out infinite reverse}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.gridlines{position:absolute;inset:0;background:linear-gradient(transparent 95%,rgba(255,255,255,.06) 95%),linear-gradient(90deg,transparent 95%,rgba(255,255,255,.06) 95%);background-size:22px 22px;border:1px solid rgba(255,255,255,.06);border-radius:20px;opacity:.5}
+
+/* sections */
+.features{padding:36px 20px 8px}
+.features h2,.container h2{margin:0 0 14px}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.card{background:linear-gradient(180deg,#121829,#101625);border:1px solid #1a2237;border-radius:18px;padding:16px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.card{background:linear-gradient(180deg,var(--card),#0f1526);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:0 12px 28px rgba(0,0,0,.25)}
 .card h3{margin:0 0 8px}
-.cta2{padding:28px 20px}
-.cta2-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;background:linear-gradient(180deg,#0e1424,#0b1221);border:1px solid #1b2845;border-radius:18px;padding:18px 20px}
-.contact{padding:18px 20px}
-.contact-list{list-style:none;padding:0;margin:0 0 10px}
-.contact-list li{margin:6px 0}
-.small{color:#98a7c3;font-size:13px}
-.footer{padding:12px 20px 30px}
-/* form */
-input, textarea{background:#0f1524;border:1px solid #1b2845;border-radius:12px;padding:10px;color:#eef3ff;outline:none}
-input:focus, textarea:focus{border-color:#345b8a; box-shadow:0 0 0 4px rgba(124,196,255,.08)}
+.card p{color:#c7d3ea}
+.tilt{transform:perspective(800px) rotateX(0) rotateY(0);transition:transform .2s ease}
+.tilt:hover{transform:perspective(800px) rotateX(2deg) rotateY(-2deg)}
+.lift:hover{transform:translateY(-2px)}
+
+#pricing{padding:24px 20px}
+.badges{display:flex;gap:8px;flex-wrap:wrap;padding:0;margin:10px 0 0;list-style:none;color:#c3cfea}
+.badges li{border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:13px}
+
+.contact{padding:24px 20px}
+.grid.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+input,textarea{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px;color:var(--text);outline:none}
+input:focus,textarea:focus{border-color:#365a8e;box-shadow:0 0 0 4px rgba(124,196,255,.08)}
 .contact-form button{margin-top:10px}
-/* refinements */
-.card p{color:#c2cee6}
-h2{margin:0 0 12px}
-@media (max-width:960px){
+.small{color:#9fb0cc;font-size:13px}
+.footer{padding:12px 20px 30px}
+
+@media (max-width:980px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-visual{order:-1;height:260px;margin-top:6px}
   .grid{grid-template-columns:1fr 1fr}
-  .cta2-inner{flex-direction:column;align-items:flex-start}
 }
 @media (max-width:640px){
-  .hero h1{font-size:30px}
+  .hero-inner h1{font-size:34px}
   .grid{grid-template-columns:1fr}
 }
