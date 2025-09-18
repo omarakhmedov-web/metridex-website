@@ -1,48 +1,130 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Metridex — On‑chain Risk Metrics for DeFi & Telegram</title>
-
-  <!-- ✅ Favicon и Open Graph -->
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="apple-touch-icon" href="favicon-512.png">
-  <meta property="og:title" content="Metridex — Premium Security for Digital Assets" />
-  <meta property="og:description" content="Scan tokens. Generate trusted white-label reports. Powered by on-chain metrics." />
-  <meta property="og:image" content="og-cover.png" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.metridex.com/" />
-
-  <!-- ✅ Стили и шрифты -->
-  <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Metridex — On-chain risk metrics</title>
+  <meta name="description" content="Metridex QuickScan: on-chain risk metrics for DeFi & Telegram. Scan tokens in seconds, get deep checks on demand.">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20250918-restore">
+  <script defer src="script.js?v=20250918-restore"></script>
 </head>
 <body>
-
-  <!-- ✅ Шапка с логотипом -->
-  <header class="container">
-    <div>
-      <img src="zTW62b01.svg" alt="Metridex logo" class="site-logo" style="height: 80px;">
+  <!-- Header (kept intact with your items) -->
+  <header class="site-header">
+    <div class="container">
+      <a href="#" class="brand">
+        <span class="brand-logo" aria-hidden="true">M</span>
+        <span class="brand-text">Metridex</span>
+      </a>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+        <button id="theme-toggle" class="btn btn-ghost" aria-label="Toggle theme">🌙</button>
+      </nav>
     </div>
-    <nav>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><button id="theme-toggle" class="btn-animated small">🌙</button></li>
-      <li><a class="btn-animated" href="https://t.me/MetridexBot" target="_blank" rel="noopener">Open @MetridexBot</a></li></ul>
-    </nav>
   </header>
 
-  <!-- остальная часть сайта — без изменений -->
-  <!-- вставь сюда блоки hero, features, pricing и т.д., если они у тебя уже есть -->
+  <!-- Hero with CTA to bot -->
+  <main class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <h1>Metridex <span class="accent">QuickScan</span></h1>
+        <p class="lead">On‑chain risk metrics for DeFi & Telegram. QuickScan in seconds. Deep checks on demand.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary btn-lg" href="https://t.me/MetridexBot" target="_blank" rel="noopener">Connect the Bot</a>
+          <a class="btn btn-outline btn-lg" href="#features">Learn more</a>
+        </div>
+        <ul class="hero-bullets">
+          <li>Δ 5m/1h/6h/24h • Liquidity • FDV</li>
+          <li>WHOIS/RDAP • SSL • Wayback</li>
+          <li>Holders/Roles • Honeypot • TokenSniffer</li>
+        </ul>
+      </div>
+      <div class="hero-visual" role="img" aria-label="Metridex shield">
+        <div class="shield"><span class="shield-m">M</span></div>
+      </div>
+    </div>
+  </main>
 
-  <!-- ✅ Скрипты -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init();</script>
-  <script src="script.js"></script>
+  <!-- About -->
+  <section id="about" class="section">
+    <div class="container grid-2">
+      <div class="card">
+        <h2>About</h2>
+        <p>Metridex turns fragmented crypto intel into clear, actionable signals. Scan a token in seconds, then dive deep only when needed.</p>
+      </div>
+      <div class="card">
+        <h3>Tech</h3>
+        <p>Render (Flask/Gunicorn), Cloudflare Worker ds‑proxy, stateless callbacks, idempotent delivery, cache-first detail scan.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="section">
+    <div class="container grid-3">
+      <div class="card">
+        <h3>Quick</h3>
+        <p>Signal‑first QuickScan with Δ‑buttons. No waiting, no noise.</p>
+      </div>
+      <div class="card">
+        <h3>Deep</h3>
+        <p>WHOIS/RDAP, SSL, Wayback, on‑chain roles — one tap when you need it.</p>
+      </div>
+      <div class="card">
+        <h3>Reliable</h3>
+        <p>Stateless UI, duplicate‑safe replies, transparent fallbacks.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="section">
+    <div class="container">
+      <h2 class="section-title">Pricing</h2>
+      <div class="pricing-grid">
+        <div class="plan">
+          <h3>Basic</h3>
+          <p class="price">Free</p>
+          <ul><li>QuickScan</li><li>Core metrics</li></ul>
+        </div>
+        <div class="plan plan-pro">
+          <h3>Pro</h3>
+          <p class="price">$49/mo</p>
+          <ul><li>Deep checks</li><li>Chart Δ presets</li><li>Priority cache</li></ul>
+        </div>
+        <div class="plan">
+          <h3>Enterprise</h3>
+          <p class="price">Custom</p>
+          <ul><li>White‑label</li><li>Multi‑channel</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <div class="container grid-2">
+      <div class="card">
+        <h2>Contact</h2>
+        <p>omар@metridex.com • contact@metridex.com</p>
+        <p><a class="btn btn-primary" href="https://t.me/MetridexBot" target="_blank" rel="noopener">Open @MetridexBot</a></p>
+      </div>
+      <div class="card">
+        <h3>Docs</h3>
+        <p>API &amp; onboarding soon.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Metridex. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
