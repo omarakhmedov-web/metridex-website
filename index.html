@@ -7,10 +7,11 @@
   <meta name="description" content="Metridex QuickScan — on‑chain risk metrics for DeFi & Telegram. Scan tokens in seconds, get deep checks on demand.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Navbar -->
   <header class="nav">
     <div class="container nav-inner">
       <div class="brand">
@@ -24,25 +25,37 @@
       </nav>
       <div class="nav-actions">
         <button id="themeToggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">🌙</button>
-        <a class="cta cta-bot" href="https://t.me/MetridexBot" target="_blank" rel="noopener">Connect bot</a>
       </div>
       <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
     </div>
   </header>
 
+  <!-- Hero -->
   <section class="hero">
     <div class="container hero-inner">
-      <h1>On‑chain risk metrics for DeFi&nbsp;&amp;&nbsp;Telegram</h1>
-      <p class="sub">QuickScan in seconds. Deep checks on demand.</p>
-      <div class="cta-row">
-        <a class="cta cta-bot large" href="https://t.me/MetridexBot" target="_blank" rel="noopener">
-          <span class="pulse"></span><span>Open @MetridexBot</span>
-        </a>
-        <a class="cta ghost" href="#features">See features</a>
+      <div class="hero-copy">
+        <h1><span class="grad">On‑chain risk metrics</span> for DeFi & Telegram</h1>
+        <p class="sub">QuickScan in seconds. Deep checks on demand.</p>
+        <div class="cta-row">
+          <a class="cta cta-bot large" href="https://t.me/MetridexBot" target="_blank" rel="noopener">
+            <span class="aura"></span><span>Open @MetridexBot</span>
+          </a>
+          <a class="cta ghost" href="#features">See features</a>
+        </div>
+      </div>
+      <div class="hero-card glass">
+        <h3>QuickScan snapshot</h3>
+        <ul>
+          <li>Δ 5m / 1h / 6h / 24h</li>
+          <li>Liquidity & holders</li>
+          <li>Honeypot flags</li>
+          <li>Shareable report</li>
+        </ul>
       </div>
     </div>
   </section>
 
+  <!-- About -->
   <section id="about" class="section">
     <div class="container">
       <h2>About</h2>
@@ -50,36 +63,50 @@
     </div>
   </section>
 
+  <!-- Features -->
   <section id="features" class="section alt">
     <div class="container">
       <h2>Features</h2>
-      <ul class="features">
-        <li>⚡ QuickScan: token snapshot in seconds</li>
-        <li>🧠 Deep checks: WHOIS/RDAP, SSL, Wayback</li>
-        <li>📈 Δ‑metrics: 5m / 1h / 6h / 24h</li>
-        <li>🛡️ Honeypot & basic contract flags</li>
-        <li>🤖 Telegram‑friendly shareable reports</li>
-      </ul>
+      <div class="features-grid">
+        <article class="feature glass">
+          <h3>⚡ Quick</h3>
+          <p>Instant QuickScan with Δ‑buttons. No waiting, no noise.</p>
+        </article>
+        <article class="feature glass">
+          <h3>🧠 Deep</h3>
+          <p>WHOIS/RDAP, SSL, Wayback; on‑chain roles — only when needed.</p>
+        </article>
+        <article class="feature glass">
+          <h3>🧱 Tech</h3>
+          <p>Render (Flask/Gunicorn) + Cloudflare Worker ds‑proxy.</p>
+        </article>
+        <article class="feature glass">
+          <h3>✅ Reliable</h3>
+          <p>Stateless callbacks, idempotent delivery, cache‑first detail scan.</p>
+        </article>
+      </div>
     </div>
   </section>
 
+  <!-- Pricing -->
   <section id="pricing" class="section">
     <div class="container">
       <h2>Pricing</h2>
       <div class="cards">
-        <article class="card">
+        <article class="card glass">
           <h3>Basic</h3><p>QuickScan only</p><div class="price">$0</div>
         </article>
-        <article class="card">
+        <article class="card glass">
           <h3>Pro</h3><p>QuickScan + Deep checks</p><div class="price">$29/mo</div>
         </article>
-        <article class="card">
+        <article class="card glass">
           <h3>Enterprise</h3><p>White‑label + SLA</p><div class="price">Contact</div>
         </article>
       </div>
     </div>
   </section>
 
+  <!-- Contact -->
   <section id="contact" class="section alt">
     <div class="container">
       <h2>Contact</h2>
