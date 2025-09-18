@@ -1,21 +1,40 @@
+// Пока просто для возможных будущих интерактивов / анимаций
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Пример: плавная прокрутка к секциям при клике
+  const links = document.querySelectorAll('nav ul li a');
+  for (const link of links) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        window.scrollTo({
+          top: targetEl.offsetTop - 20, 
+          behavior: 'smooth'
+        });
+      }
+    });
+  }
+});
+
+
+// ===== Metridex helpers (appended, non-intrusive) =====
 (function(){
-  // Early theme apply
+  // Apply saved theme early if possible
   try {
     var htmlEl = document.documentElement;
     var stored = localStorage.getItem('metridex.theme');
     if(stored === 'light' || stored === 'dark'){
       htmlEl.setAttribute('data-theme', stored);
-    } else if(!htmlEl.getAttribute('data-theme')) {
+    } else if(!htmlEl.getAttribute('data-theme')){
       htmlEl.setAttribute('data-theme', 'dark');
     }
-  } catch(e) {}
+  } catch(e){}
 
   document.addEventListener('DOMContentLoaded', function(){
-    // Year
-    var y = document.getElementById('year'); if(y){ y.textContent = new Date().getFullYear(); }
-
-    // Theme toggle
-    try {
+    // Theme toggle by #theme-toggle button
+    try{
       var btn = document.getElementById('theme-toggle');
       if(btn){
         var cur = document.documentElement.getAttribute('data-theme') || 'dark';
@@ -30,11 +49,11 @@
       }
     } catch(e){}
 
-    // Normalize a placeholder CTA (if present) to the bot link without moving layout
+    // Normalize a placeholder bot CTA (without changing layout)
     try{
-      var cands = ['a[href="#bot"]','a[data-bot]','a#bot','#open-bot','#connect-bot'];
-      for (var i=0;i<cands.length;i++){
-        var el = document.querySelector(cands[i]);
+      var selectors = ['a[href="#bot"]','a[data-bot]','a#bot','#open-bot','#connect-bot'];
+      for(var i=0;i<selectors.length;i++){
+        var el = document.querySelector(selectors[i]);
         if(el){
           el.setAttribute('href','https://t.me/MetridexBot');
           el.setAttribute('target','_blank');
@@ -42,6 +61,6 @@
           break;
         }
       }
-    }catch(e){}
+    } catch(e){}
   });
 })();
