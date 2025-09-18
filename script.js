@@ -28,4 +28,15 @@
   document.querySelectorAll('.cta-bot').forEach(a => {
     a.href='https://t.me/MetridexBot'; a.target='_blank'; a.rel='noopener';
   });
+
+  // Compensate body padding for fixed nav exact height
+  const nav = document.getElementById('siteNav');
+  function setOffset(){
+    if(!nav) return;
+    const h = nav.getBoundingClientRect().height || 72;
+    document.body.classList.add('has-fixed-nav');
+    document.body.style.paddingTop = h + 'px';
+  }
+  window.addEventListener('load', setOffset);
+  window.addEventListener('resize', setOffset);
 })();
