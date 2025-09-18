@@ -3,101 +3,103 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Metridex — On‑chain risk metrics for DeFi & Telegram</title>
-  <meta name="description" content="Metridex QuickScan — on‑chain risk metrics for DeFi & Telegram. Scan tokens in seconds, get deep checks on demand.">
+  <title>Metridex — On‑chain Risk Metrics for DeFi & Telegram</title>
+  <meta name="description" content="QuickScan in seconds. Deep checks on demand. Δ 5m/1h/6h/24h, liquidity, holders, WHOIS/RDAP, SSL, Wayback.">
+  <meta name="x-build" content="v030b ultra">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.v030b.css">
+  <meta property="og:title" content="Metridex — On‑chain Risk Metrics">
+  <meta property="og:description" content="QuickScan in seconds. Deep checks on demand.">
+  <meta property="og:image" content="og-cover-v030b.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://metridex.com/">
+  <meta name="twitter:card" content="summary_large_image">
 </head>
-<body class="lux">
-  <!-- Navbar -->
+<body class="ultra">
+  <!-- build: v030b -->
   <header class="nav">
     <div class="container nav-inner">
-      <div class="brand">
-        <span class="logo-mark">M</span><span class="logo-text">Metridex</span>
-      </div>
+      <div class="brand"><span class="crest" aria-hidden="true">◆</span><span class="logo-text">Metridex</span></div>
       <nav class="nav-links" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#features">Features</a>
-        <a href="#pricing">Pricing</a>
-        <a href="articles.html">Articles</a>
-        <a href="#contact">Contact</a>
+        <a href="#about">About</a><a href="#features">Features</a><a href="#screens">Screens</a><a href="#pricing">Pricing</a>
+        <a href="articles.html?v030b">Articles</a><a href="#contact">Contact</a>
       </nav>
-      <div class="nav-actions">
-        <button id="themeToggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">🌙</button>
-      </div>
+      <div class="nav-actions"><button id="themeToggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">🌙</button></div>
       <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero hero-lux">
+  <section class="hero hero-ultra">
     <div class="container hero-inner">
       <div class="hero-copy">
-        <h1><span class="grad-gold">On‑chain risk metrics</span> for DeFi & Telegram</h1>
+        <h1><span class="grad-royal">On‑chain Risk Metrics</span> for DeFi & Telegram</h1>
         <p class="sub">QuickScan in seconds. Deep checks on demand.</p>
+        <div class="badges"><span class="badge">ETH</span><span class="badge">BSC</span><span class="badge">Polygon</span></div>
         <div class="cta-row">
-          <a class="cta cta-bot large" href="https://t.me/MetridexBot" target="_blank" rel="noopener">
-            <span class="aura aura-gold"></span><span>Open @MetridexBot</span>
+          <a class="cta cta-bot large" href="https://t.me/MetridexBot?start=web_landing&src=site&med=hero&ver=v030b" target="_blank" rel="noopener">
+            <span class="aura aura-royal"></span><span>Open @MetridexBot</span>
           </a>
-          <a class="cta ghost" href="articles.html">Read articles</a>
+          <a class="cta ghost" href="#features">See features</a>
         </div>
+        <div class="trust"><span class="tcap">Trusted by</span><span class="tlogo">Launchpads</span><span class="dot"></span><span class="tlogo">Pro traders</span><span class="dot"></span><span class="tlogo">Telegram communities</span></div>
       </div>
-      <div class="hero-spec glass gold">
-        <div class="spec-row"><span>Δ 5m / 1h / 6h / 24h</span><span class="dot"></span><span>Liquidity</span><span class="dot"></span><span>Holders</span></div>
-        <div class="spec-row"><span>Honeypot</span><span class="dot"></span><span>WHOIS/RDAP</span><span class="dot"></span><span>SSL</span><span class="dot"></span><span>Wayback</span></div>
+      <div class="hero-card glass gold">
+        <h3>QuickScan snapshot</h3>
+        <ul><li>Δ 5m / 1h / 6h / 24h</li><li>Liquidity & holders</li><li>Honeypot flags</li><li>Shareable report</li></ul>
       </div>
     </div>
   </section>
 
-  <!-- About -->
-  <section id="about" class="section">
+  <section class="section partners">
     <div class="container">
-      <h2>About</h2>
-      <p>Metridex helps communities, launchpads and traders spot risk signals fast: liquidity, holder patterns, contract flags, domain reputation (WHOIS/RDAP), SSL, Wayback and more.</p>
+      <div class="row-head"><h2>Partners & Users</h2><p class="sub">Selected communities & desks</p></div>
+      <div class="logos"><span class="logo-pill">Alpha Guild</span><span class="logo-pill">Launchpad X</span><span class="logo-pill">DeFi Radar</span><span class="logo-pill">Whale Club</span><span class="logo-pill">TG Security</span></div>
     </div>
   </section>
 
-  <!-- Features -->
+  <section id="about" class="section"><div class="container"><h2>About</h2><p>Metridex compresses risk discovery into seconds...</p></div></section>
+
   <section id="features" class="section alt">
-    <div class="container">
-      <h2>Features</h2>
+    <div class="container"><h2>Features</h2>
       <div class="features-grid">
         <article class="feature glass gold"><h3>⚡ Quick</h3><p>Instant QuickScan with Δ‑buttons.</p></article>
-        <article class="feature glass gold"><h3>🧠 Deep</h3><p>WHOIS/RDAP, SSL, Wayback; on‑chain roles.</p></article>
-        <article class="feature glass gold"><h3>🧱 Tech</h3><p>Render (Flask/Gunicorn) + Cloudflare Worker ds‑proxy.</p></article>
+        <article class="feature glass gold"><h3>🧠 Deep</h3><p>WHOIS/RDAP, SSL, Wayback.</p></article>
+        <article class="feature glass gold"><h3>🧱 Tech</h3><p>Render + CF Worker ds‑proxy.</p></article>
         <article class="feature glass gold"><h3>✅ Reliable</h3><p>Stateless callbacks, idempotent delivery.</p></article>
       </div>
     </div>
   </section>
 
-  <!-- Pricing -->
-  <section id="pricing" class="section">
-    <div class="container">
-      <h2>Pricing</h2>
-      <div class="cards">
-        <article class="card glass gold"><h3>Basic</h3><p>QuickScan only</p><div class="price">$0</div></article>
-        <article class="card glass gold"><h3>Pro</h3><p>QuickScan + Deep checks</p><div class="price">$29/mo</div></article>
-        <article class="card glass gold"><h3>Enterprise</h3><p>White‑label + SLA</p><div class="price">Contact</div></article>
+  <section id="screens" class="section">
+    <div class="container"><h2>Screens</h2>
+      <div class="screens-grid">
+        <figure class="shot glass"><img src="shot-quickscan-v030b.png" alt="QuickScan card"><figcaption>QuickScan</figcaption></figure>
+        <figure class="shot glass"><img src="shot-details-v030b.png" alt="Details scan"><figcaption>More details</figcaption></figure>
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="section alt">
-    <div class="container">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:contact@metridex.com">contact@metridex.com</a></p>
-    </div>
-  </section>
+  <section id="pricing" class="section"><div class="container"><h2>Pricing</h2>
+    <div class="cards"><article class="card glass gold"><h3>Basic</h3><p>QuickScan only</p><div class="price">Free</div></article>
+    <article class="card glass gold"><h3>Pro</h3><p>QuickScan + Deep checks</p><div class="price">$29/mo</div></article>
+    <article class="card glass gold"><h3>Enterprise</h3><p>White‑label + SLA</p><div class="price">Contact</div></article></div>
+  </div></section>
 
-  <footer class="footer">
-    <div class="container">
-      <p>© <span id="year"></span> Metridex. All rights reserved.</p>
+  <section id="faq" class="section alt"><div class="container"><h2>FAQ</h2>
+    <div class="faq">
+      <details class="glass"><summary>Что проверяет QuickScan?</summary><p>Δ‑метрики, ликвидность, роли холдеров.</p></details>
+      <details class="glass"><summary>Deep checks?</summary><p>WHOIS/RDAP, SSL, Wayback.</p></details>
     </div>
-  </footer>
+  </div></section>
 
-  <script src="script.js"></script>
+  <section id="contact" class="section"><div class="container"><h2>Contact</h2><p>Email: <a href="mailto:contact@metridex.com">contact@metridex.com</a></p></div></section>
+
+  <footer class="footer"><div class="container"><p>© <span id="year"></span> Metridex. All rights reserved.</p></div></footer>
+
+  <a class="float-cta cta-bot" href="https://t.me/MetridexBot?start=web_landing&src=site&med=fab&ver=v030b" target="_blank" rel="noopener"><span class="aura aura-royal"></span><span>Open @MetridexBot</span></a>
+
+  <script src="script.v030b.js"></script>
 </body>
 </html>
