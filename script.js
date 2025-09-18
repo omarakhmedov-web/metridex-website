@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scrollTo({
           top: targetEl.offsetTop - 40,
           behavior: 'smooth'
-        });
+        }); }
       }
     });
   }
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeToggle = document.getElementById('theme-toggle');
   const htmlEl = document.documentElement;
 
-  themeToggle.addEventListener('click', () => {
+  if(themeToggle && htmlEl){ themeToggle.addEventListener('click', () => {
     const currentTheme = htmlEl.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     htmlEl.setAttribute('data-theme', newTheme);
