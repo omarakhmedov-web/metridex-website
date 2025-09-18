@@ -7,12 +7,14 @@
   if(yearEl) yearEl.textContent = new Date().getFullYear();
 
   // Theme init
-  const saved = localStorage.getItem('theme');
-  if(saved === 'light'){ root.classList.add('light'); toggle && (toggle.textContent='☀️'); }
+  try{
+    const saved = localStorage.getItem('metridex.theme') || localStorage.getItem('theme');
+    if(saved === 'light'){ root.classList.add('light'); if(toggle) toggle.textContent='☀️'; }
+  }catch(e){}
   toggle && toggle.addEventListener('click', ()=>{
     root.classList.toggle('light');
     const isLight = root.classList.contains('light');
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    try{ localStorage.setItem('metridex.theme', isLight ? 'light' : 'dark'); }catch(e){}
     toggle.textContent = isLight ? '☀️' : '🌙';
   });
 
@@ -22,7 +24,8 @@
     burger.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
 
-  // Normalize CTAs to bot
-  const botLinks = document.querySelectorAll('.cta-bot, #connect-bot, a[data-bot]');
-  botLinks.forEach(a => { a.href='https://t.me/MetridexBot'; a.target='_blank'; a.rel='noopener'; });
+  // Normalize bot CTAs
+  document.querySelectorAll('.cta-bot').forEach(a => {
+    a.href='https://t.me/MetridexBot'; a.target='_blank'; a.rel='noopener';
+  });
 })();
