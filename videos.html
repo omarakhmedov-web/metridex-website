@@ -1,0 +1,89 @@
+
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Metridex — Videos</title>
+  <meta name="description" content="Videos: promo, quick tours and use cases for Metridex QuickScan.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <header class="nav" id="siteNav">
+    <div class="container nav-inner">
+      <div class="brand"><span class="logo-mark">M</span><span class="logo-text">Metridex</span></div>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/#features">Features</a>
+        <a href="/#screens">Screens</a>
+        <a href="/#partners">Partners</a>
+        <a href="/#how-it-works">How it works</a>
+        <a href="/#security">Security</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/articles.html">Articles</a>
+        <a href="/videos.html" aria-current="page">Videos</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button id="langToggle" class="icon-btn" aria-label="Toggle language" title="EN / RU">EN</button>
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">🌙</button>
+      </div>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <h1>Videos</h1>
+      <div class="videos-grid">
+        <article class="video-card glass">
+          <div class="thumb" data-video="promo">
+            <img src="/posters/promo.jpg" alt="Promo video">
+            <button class="play" aria-label="Play promo">▶</button>
+          </div>
+          <h3>Metridex — Promo</h3>
+          <p>60s intro for QuickScan and deep checks.</p>
+        </article>
+        <article class="video-card glass">
+          <div class="thumb" data-video="tour">
+            <img src="/posters/tour.jpg" alt="Quick Tour video">
+            <button class="play" aria-label="Play tour">▶</button>
+          </div>
+          <h3>Quick Tour</h3>
+          <p>2‑minute walkthrough of the main flows.</p>
+        </article>
+        <article class="video-card glass">
+          <div class="thumb" data-video="usecase">
+            <img src="/posters/usecase.jpg" alt="Use case video">
+            <button class="play" aria-label="Play use case">▶</button>
+          </div>
+          <h3>Use Case</h3>
+          <p>Scanning a token with red flags and next actions.</p>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <!-- Reuse the same modal -->
+  <div id="videoModal" class="modal" aria-modal="true" role="dialog" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-dialog glass" role="document">
+      <button class="modal-close" aria-label="Close" data-close>✕</button>
+      <div class="modal-body">
+        <video id="lightboxVideo" controls playsinline poster="/posters/promo.jpg"></video>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container"><p>© <span id="year"></span> Metridex.</p></div>
+  </footer>
+
+  <script src="/script.js"></script>
+</body>
+</html>
