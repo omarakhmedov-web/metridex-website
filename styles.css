@@ -1,13 +1,7 @@
-/* Metridex v0.2.2 — Premium look */
+/* v0.2.3 Luxury Black&Gold */
 :root{
-  --bg:#090b0f;
-  --ink:#e9eef6;
-  --muted:#9aa7b6;
-  --glass:#0f141b;
-  --stroke:rgba(255,255,255,.08);
-  --gold1:#f2d58c; /* soft gold */
-  --gold2:#b38a3a; /* deep gold */
-  --teal:#23d6c6;  /* accent */
+  --bg:#08090c; --ink:#EEF2F7; --muted:#97A3B2; --glass:#0d1016; --stroke:rgba(255,255,255,.08);
+  --gold1:#f4e2b4; --gold2:#b08b3b; --teal:#20dbc7;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -16,22 +10,19 @@ body{
   margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
   color:var(--ink);
   background:
-    radial-gradient(800px 400px at 80% 10%, rgba(35,214,198,.10), transparent 60%),
-    radial-gradient(900px 500px at 10% 20%, rgba(242,213,140,.10), transparent 60%),
-    radial-gradient(1200px 600px at 70% 70%, rgba(255,255,255,.04), transparent 60%),
-    var(--bg);
+    radial-gradient(900px 500px at 85% 10%, rgba(32,219,199,.12), transparent 60%),
+    radial-gradient(1200px 600px at 10% 80%, rgba(244,226,180,.10), transparent 60%),
+    linear-gradient(180deg, #0a0c10, #08090c 22%, #08090c);
   line-height:1.6;
 }
-
-/* Containers */
-.container{width:min(1120px, 92%); margin:0 auto}
+.container{width:min(1140px,92%); margin:0 auto}
 
 /* Navbar */
 .nav{position:sticky; top:0; z-index:50; border-bottom:1px solid var(--stroke);
-  backdrop-filter:saturate(140%) blur(6px); background:rgba(9,11,15,.6)}
+  backdrop-filter:saturate(160%) blur(8px); background:rgba(8,9,12,.65)}
 .nav-inner{display:flex; align-items:center; gap:16px; padding:12px 0}
 .brand{display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:.2px}
-.logo-mark{display:inline-grid; place-items:center; width:32px; height:32px; border-radius:10px;
+.logo-mark{display:inline-grid; place-items:center; width:34px; height:34px; border-radius:10px;
   background:linear-gradient(135deg, var(--gold1), var(--gold2)); color:#0d1116; font-weight:900}
 .logo-text{font-weight:900}
 .nav-links{display:flex; gap:22px; margin-left:auto}
@@ -43,48 +34,53 @@ body{
   border-radius:10px; padding:8px 10px; cursor:pointer}
 
 /* Hero */
-.hero{padding:96px 0 56px}
-.hero-inner{display:grid; grid-template-columns: 1.2fr .8fr; gap:32px; align-items:center}
-.hero-copy h1{font-size: clamp(34px, 5.6vw, 64px); line-height:1.08; margin:0 0 10px; font-weight:900; letter-spacing:-.02em}
-.grad{background:linear-gradient(90deg, var(--gold1), var(--teal)); -webkit-background-clip:text; background-clip:text; color:transparent}
+.hero{padding:108px 0 56px}
+.hero-inner{display:grid; grid-template-columns:1.2fr .8fr; gap:36px; align-items:center}
+.hero-copy h1{font-size: clamp(36px, 5.6vw, 68px); line-height:1.05; margin:0 0 12px; font-weight:900; letter-spacing:-.02em}
+.grad-gold{background:linear-gradient(90deg, var(--gold1), var(--teal)); -webkit-background-clip:text; background-clip:text; color:transparent}
 .sub{color:var(--muted); margin:0}
-.cta-row{display:flex; gap:12px; margin-top:16px}
-.cta{display:inline-flex; align-items:center; gap:10px; text-decoration:none; font-weight:800; padding:12px 16px; border-radius:16px;
+.cta-row{display:flex; gap:12px; margin-top:18px}
+.cta{display:inline-flex; align-items:center; gap:10px; text-decoration:none; font-weight:800; padding:12px 18px; border-radius:16px;
   border:1px solid var(--stroke); background:linear-gradient(180deg, #141a22, #0e1318)}
 .cta:hover{transform:translateY(-1px)}
 .cta.ghost{background:transparent}
-/* Premium animated aura */
 .cta-bot{position:relative; overflow:hidden}
-.cta-bot .aura{
-  position:absolute; inset:-2px; border-radius:18px; pointer-events:none;
-  background:conic-gradient(from 0deg, rgba(242,213,140,.0), rgba(179,138,58,.35), rgba(35,214,198,.35), rgba(242,213,140,.0));
-  filter:blur(8px); animation:spin 2.8s linear infinite;
-}
+.cta-bot .aura{position:absolute; inset:-2px; border-radius:18px; pointer-events:none; filter:blur(8px); animation:spin 3s linear infinite}
+.aura-gold{background:conic-gradient(from 0deg, rgba(244,226,180,.0), rgba(176,139,59,.35), rgba(32,219,199,.28), rgba(244,226,180,.0))}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* Glass cards */
+/* Spec card */
 .glass{background:rgba(255,255,255,.02); border:1px solid var(--stroke); border-radius:18px; box-shadow:0 12px 36px rgba(0,0,0,.35); backdrop-filter: blur(8px)}
-.hero-card{padding:18px}
-.hero-card h3{margin:0 0 8px}
-.hero-card ul{margin:0; padding-left:18px}
+.gold{border-color: rgba(244,226,180,.18)}
+.hero-spec{padding:18px}
+.hero-spec .spec-row{display:flex; flex-wrap:wrap; gap:10px; align-items:center}
+.hero-spec .dot{width:6px; height:6px; border-radius:999px; background:linear-gradient(135deg,var(--gold1),var(--gold2))}
 
 /* Sections */
-.section{padding:68px 0}
+.section{padding:72px 0}
 .section.alt{background:linear-gradient(180deg, rgba(255,255,255,.02), transparent)}
 h2{font-size:32px; margin:0 0 14px}
 .features-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px}
-.feature{padding:16px}
-.cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px}
+.feature{padding:18px}
+.cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px}
 .card{padding:18px}
 .card .price{font-size:22px; font-weight:900}
 
 /* Footer */
-.footer{padding:36px 0; border-top:1px solid var(--stroke); color:var(--muted)}
+.footer{padding:40px 0; border-top:1px solid var(--stroke); color:var(--muted)}
+
+/* Articles */
+.articles-hero{padding:96px 0 28px}
+.article-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px}
+.article-card{padding:18px}
+.article-card h3{margin:0 0 8px}
+.article-card p{margin:0}
+.article-meta{color:var(--muted); font-size:14px}
 
 /* Mobile */
 @media (max-width:900px){
   .hero-inner{grid-template-columns:1fr; gap:18px}
-  .hero{padding-top:64px}
+  .hero{padding-top:72px}
   .nav-inner{flex-wrap:wrap}
   .nav-links{display:none; flex-direction:column; width:100%; order:3; padding:8px 0}
   .nav-actions{margin-left:auto}
