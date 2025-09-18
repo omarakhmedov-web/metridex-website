@@ -4,58 +4,59 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Metridex — Articles</title>
+  <meta name="description" content="Insights on on‑chain risk, token intel and Web3 security from the Metridex team.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
 </head>
-<body class="lux">
+<body>
   <header class="nav">
     <div class="container nav-inner">
       <div class="brand">
-        <span class="logo-mark">M</span><a class="logo-text" href="index.html">Metridex</a>
+        <span class="logo-mark">M</span><span class="logo-text">Metridex</span>
       </div>
       <nav class="nav-links" aria-label="Primary">
-        <a href="index.html#features">Features</a>
-        <a href="index.html#pricing">Pricing</a>
-        <a href="articles.html">Articles</a>
-        <a href="index.html#contact">Contact</a>
+        <a href="/">Home</a>
+        <a href="/#features">Features</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/articles.html" aria-current="page">Articles</a>
+        <a href="/#contact">Contact</a>
       </nav>
       <div class="nav-actions">
-        <button id="themeToggle" class="icon-btn">🌙</button>
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">🌙</button>
       </div>
       <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
     </div>
   </header>
 
-  <section class="articles-hero">
+  <main class="section">
     <div class="container">
       <h1>Articles</h1>
-      <p class="sub">Insights on anti‑scam, token risk, and Web3 security from the Metridex team.</p>
+      <p class="sub">Insights on on‑chain risk, token intel and Web3 security.</p>
+      <div class="articles">
+        <article class="post glass">
+          <h3><a class="link" href="#">QuickScan method: how we compress risk into seconds</a></h3>
+          <p>Our philosophy: “fast first, deep on demand” — metrics, signals, and design principles.</p>
+        </article>
+        <article class="post glass">
+          <h3><a class="link" href="#">WHOIS & Wayback: a domain tells you more than you think</a></h3>
+          <p>Using registrars, SSL chains and historical snapshots to catch red flags early.</p>
+        </article>
+        <article class="post glass">
+          <h3><a class="link" href="#">Telegram safety for token communities</a></h3>
+          <p>Moderation, anti‑spam, and what to automate with Metridex.</p>
+        </article>
+      </div>
     </div>
-  </section>
+  </main>
 
-  <section class="section">
-    <div class="container article-grid">
-      <article class="glass article-card gold">
-        <h3><a href="article-quickscan-method.html">QuickScan method: how we compress risk into seconds</a></h3>
-        <p class="article-meta">Guide · 6 min read</p>
-        <p>Our philosophy of “fast first, deep on demand” — metrics, signals and design trade‑offs.</p>
-      </article>
-      <article class="glass article-card gold">
-        <h3><a href="article-whois-wayback-checks.html">WHOIS & Wayback: domain tells you more than you think</a></h3>
-        <p class="article-meta">Technique · 5 min read</p>
-        <p>Using registrar, SSL chains and historical snapshots to catch red flags early.</p>
-      </article>
-      <article class="glass article-card gold">
-        <h3><a href="article-telegram-safety.html">Telegram safety for token communities</a></h3>
-        <p class="article-meta">Checklist · 4 min read</p>
-        <p>Moderation, anti‑spam, and what to automate with Metridex.</p>
-      </article>
+  <footer class="footer">
+    <div class="container">
+      <p>© <span id="year"></span> Metridex. All rights reserved.</p>
     </div>
-  </section>
+  </footer>
 
-  <footer class="footer"><div class="container"><p>© <span id="year"></span> Metridex.</p></div></footer>
-  <script src="script.js"></script>
+  <script src="/script.js"></script>
 </body>
 </html>
