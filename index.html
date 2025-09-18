@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="lux">
   <!-- Navbar -->
   <header class="nav">
     <div class="container nav-inner">
@@ -21,6 +21,7 @@
         <a href="#about">About</a>
         <a href="#features">Features</a>
         <a href="#pricing">Pricing</a>
+        <a href="articles.html">Articles</a>
         <a href="#contact">Contact</a>
       </nav>
       <div class="nav-actions">
@@ -31,26 +32,21 @@
   </header>
 
   <!-- Hero -->
-  <section class="hero">
+  <section class="hero hero-lux">
     <div class="container hero-inner">
       <div class="hero-copy">
-        <h1><span class="grad">On‑chain risk metrics</span> for DeFi & Telegram</h1>
+        <h1><span class="grad-gold">On‑chain risk metrics</span> for DeFi & Telegram</h1>
         <p class="sub">QuickScan in seconds. Deep checks on demand.</p>
         <div class="cta-row">
           <a class="cta cta-bot large" href="https://t.me/MetridexBot" target="_blank" rel="noopener">
-            <span class="aura"></span><span>Open @MetridexBot</span>
+            <span class="aura aura-gold"></span><span>Open @MetridexBot</span>
           </a>
-          <a class="cta ghost" href="#features">See features</a>
+          <a class="cta ghost" href="articles.html">Read articles</a>
         </div>
       </div>
-      <div class="hero-card glass">
-        <h3>QuickScan snapshot</h3>
-        <ul>
-          <li>Δ 5m / 1h / 6h / 24h</li>
-          <li>Liquidity & holders</li>
-          <li>Honeypot flags</li>
-          <li>Shareable report</li>
-        </ul>
+      <div class="hero-spec glass gold">
+        <div class="spec-row"><span>Δ 5m / 1h / 6h / 24h</span><span class="dot"></span><span>Liquidity</span><span class="dot"></span><span>Holders</span></div>
+        <div class="spec-row"><span>Honeypot</span><span class="dot"></span><span>WHOIS/RDAP</span><span class="dot"></span><span>SSL</span><span class="dot"></span><span>Wayback</span></div>
       </div>
     </div>
   </section>
@@ -68,22 +64,10 @@
     <div class="container">
       <h2>Features</h2>
       <div class="features-grid">
-        <article class="feature glass">
-          <h3>⚡ Quick</h3>
-          <p>Instant QuickScan with Δ‑buttons. No waiting, no noise.</p>
-        </article>
-        <article class="feature glass">
-          <h3>🧠 Deep</h3>
-          <p>WHOIS/RDAP, SSL, Wayback; on‑chain roles — only when needed.</p>
-        </article>
-        <article class="feature glass">
-          <h3>🧱 Tech</h3>
-          <p>Render (Flask/Gunicorn) + Cloudflare Worker ds‑proxy.</p>
-        </article>
-        <article class="feature glass">
-          <h3>✅ Reliable</h3>
-          <p>Stateless callbacks, idempotent delivery, cache‑first detail scan.</p>
-        </article>
+        <article class="feature glass gold"><h3>⚡ Quick</h3><p>Instant QuickScan with Δ‑buttons.</p></article>
+        <article class="feature glass gold"><h3>🧠 Deep</h3><p>WHOIS/RDAP, SSL, Wayback; on‑chain roles.</p></article>
+        <article class="feature glass gold"><h3>🧱 Tech</h3><p>Render (Flask/Gunicorn) + Cloudflare Worker ds‑proxy.</p></article>
+        <article class="feature glass gold"><h3>✅ Reliable</h3><p>Stateless callbacks, idempotent delivery.</p></article>
       </div>
     </div>
   </section>
@@ -93,15 +77,9 @@
     <div class="container">
       <h2>Pricing</h2>
       <div class="cards">
-        <article class="card glass">
-          <h3>Basic</h3><p>QuickScan only</p><div class="price">$0</div>
-        </article>
-        <article class="card glass">
-          <h3>Pro</h3><p>QuickScan + Deep checks</p><div class="price">$29/mo</div>
-        </article>
-        <article class="card glass">
-          <h3>Enterprise</h3><p>White‑label + SLA</p><div class="price">Contact</div>
-        </article>
+        <article class="card glass gold"><h3>Basic</h3><p>QuickScan only</p><div class="price">$0</div></article>
+        <article class="card glass gold"><h3>Pro</h3><p>QuickScan + Deep checks</p><div class="price">$29/mo</div></article>
+        <article class="card glass gold"><h3>Enterprise</h3><p>White‑label + SLA</p><div class="price">Contact</div></article>
       </div>
     </div>
   </section>
