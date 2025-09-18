@@ -1,106 +1,119 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Metridex — On‑chain Risk Metrics</title>
-  <meta name="description" content="QuickScan for tokens and projects — on-chain checks, liquidity, roles, honeypot hints, WHOIS/SSL/Wayback, PDF reports, 7‑day monitoring. Built for DeFi & Telegram channels.">
-  <link rel="canonical" href="https://www.metridex.com/" />
-  <meta name="robots" content="index,follow" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css">
-  <meta property="og:title" content="Metridex — On‑chain Risk Metrics">
-  <meta property="og:description" content="QuickScan, on‑chain checks, PDF reports, monitoring.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.metridex.com/">
-  <meta property="og:image" content="https://www.metridex.com/assets/og-cover.png">
-  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <title>Metridex — On‑chain Risk Metrics for DeFi & Telegram</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container nav">
-      <div class="brand">
-        <img src="./assets/logo.svg" alt="Metridex logo" class="logo">
-        <span class="brand-name">Metridex</span>
-      </div>
-      <nav class="top-nav">
-        <a href="#features">Features</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
+  <header class="container">
+    <div class="logo">Metridex</div>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <main>
-    <section class="hero container">
-      <div class="hero-inner">
-        <h1>On‑chain risk metrics<br>for <span class="accent">DeFi</span> & Telegram</h1>
-        <p class="lead">QuickScan in seconds. Deep checks on demand. White‑label PDF your audience can trust.</p>
-        <a class="btn primary xl" href="https://t.me/MetridexBot?start=web_www&utm_source=website&utm_medium=hero_cta&utm_campaign=launch" target="_blank" rel="noopener">@MetridexBot</a>
-        <ul class="signals">
-          <li>Δ 5m / 1h / 6h / 24h</li>
-          <li>Why / Why++ signals</li>
-          <li>7‑day monitoring</li>
+  <section class="hero container">
+    <h1>On‑chain risk metrics for DeFi & Telegram</h1>
+    <p>QuickScan in seconds. Deep checks on demand. White‑label PDF your audience can trust.</p>
+    <button class="btn" onclick="window.location.href='https://t.me/YourBotLink'">Launch Telegram Bot</button>
+  </section>
+
+  <section id="features" class="container">
+    <div class="features">
+      <div class="feature-card">
+        <div class="step-icon">🔍</div>
+        <h3>QuickScan in Seconds</h3>
+        <p>Lightning fast on‑chain checks to surface risk immediately.</p>
+      </div>
+      <div class="feature-card">
+        <div class="step-icon">🛡️</div>
+        <h3>Deep Checks On Demand</h3>
+        <p>In‑depth analysis when you need it, beyond the surface.</p>
+      </div>
+      <div class="feature-card">
+        <div class="step-icon">📄</div>
+        <h3>White‑Label PDF Reports</h3>
+        <p>Reports your audience can trust, branded as you.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="container how-it-works">
+    <div class="step">
+      <div class="step-icon">1️⃣</div>
+      <div class="step-content">
+        <h4>Connect / Start Bot</h4>
+        <p>User clicks “Launch Telegram Bot” and connects.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">2️⃣</div>
+      <div class="step-content">
+        <h4>QuickScan Run</h4>
+        <p>Instant risk metrics from on‑chain data.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-icon">3️⃣</div>
+      <div class="step-content">
+        <h4>Get Report</h4>
+        <p>Receive white‑label PDF / detailed breakdown.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="container">
+    <div class="pricing-cards">
+      <div class="pricing-card">
+        <h3>Silver Plan</h3>
+        <div class="price">$199 / mo</div>
+        <ul>
+          <li>QuickScan Alerts</li>
+          <li>Basic PDF Report</li>
+          <li>Email Support</li>
         </ul>
+        <button class="btn">Subscribe</button>
       </div>
-      <div class="hero-visual" aria-hidden="true">
-        <div class="orb orb1"></div>
-        <div class="orb orb2"></div>
-        <div class="gridlines"></div>
+      <div class="pricing-card">
+        <h3>Gold Plan</h3>
+        <div class="price">$499 / mo</div>
+        <ul>
+          <li>Everything in Silver</li>
+          <li>Deep Checks on Demand</li>
+          <li>Branding Options</li>
+        </ul>
+        <button class="btn">Subscribe</button>
       </div>
-    </section>
-
-    <section id="features" class="features container">
-      <h2>What’s inside</h2>
-      <div class="grid">
-        <article class="card tilt"><h3>QuickScan</h3><p>Price context, liquidity, FDV/MC, red‑flags in one compact view.</p></article>
-        <article class="card tilt"><h3>On‑chain checks</h3><p>Proxy/implementation, roles, mint/pause/blacklist, honeypot hints.</p></article>
-        <article class="card tilt"><h3>Domain intel</h3><p>WHOIS/RDAP, SSL, Wayback — verify web footprint and age.</p></article>
-        <article class="card tilt"><h3>White‑label PDF</h3><p>Export clean report with links (Etherscan, DexScreener, RDAP).</p></article>
-        <article class="card tilt"><h3>Channel‑grade</h3><p>Made for 100k+ Telegram channels, launchpads, analysts.</p></article>
-        <article class="card tilt"><h3>Automations</h3><p>Batch verification, alerts, 7‑day post‑monitoring.</p></article>
+      <div class="pricing-card">
+        <h3>Platinum Plan</h3>
+        <div class="price">$999 / mo</div>
+        <ul>
+          <li>All Gold Features</li>
+          <li>White‑Label PDF + Custom Add‑Ons</li>
+          <li>Dedicated Support</li>
+        </ul>
+        <button class="btn">Subscribe</button>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="container" id="pricing">
-      <h2>Pilot & Pricing</h2>
-      <div class="grid">
-        <article class="card lift">
-          <h3>Pilot (Escrow)</h3>
-          <p>Private setup + calibration for your audience. Pay only if KPIs hit.</p>
-          <ul class="badges"><li>1–2 weeks</li><li>white‑label</li><li>PDF exports</li></ul>
-        </article>
-        <article class="card lift">
-          <h3>Channel Plan</h3>
-          <p>Unlimited QuickScan, monitoring, PDF reports, Telegram shortcuts.</p>
-          <ul class="badges"><li>per‑channel</li><li>no lock‑in</li><li>API soon</li></ul>
-        </article>
-      </div>
-    </section>
+  <section id="contact" class="container">
+    <h3>Contact</h3>
+    <p>Have questions? Reach us on Telegram or by email.</p>
+    <p><a href="mailto:info@metridex.com">info@metridex.com</a> • <a href="https://t.me/YourContact">Telegram</a></p>
+  </section>
 
-    <section id="contact" class="contact container">
-      <h2>Contact</h2>
-      <form class="contact-form" action="mailto:contact@metridex.com" method="post" enctype="text/plain">
-        <div class="grid two">
-          <input required name="name" placeholder="Your name" />
-          <input required name="email" type="email" placeholder="Work email" />
-        </div>
-        <textarea name="message" placeholder="Tell us about your channel / use‑case" rows="4"></textarea>
-        <button class="btn primary" type="submit">Request private demo</button>
-      </form>
-      <p class="small">Prefer Telegram? DM <a href="https://t.me/MetridexBot" target="_blank" rel="noopener">@MetridexBot</a></p>
-      <p class="small">© <span id="year"></span> Metridex.</p>
-    </section>
-  </main>
-
-  <footer class="container footer">
-    <p class="small">Metridex provides analytical signals; not financial advice.</p>
+  <footer>
+    &copy; 2025 Metridex. All rights reserved.
   </footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
