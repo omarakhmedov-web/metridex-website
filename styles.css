@@ -48,8 +48,9 @@ header nav ul {
   display: flex;
   gap: 30px;
 }
-header nav ul li {
+header nav ul li a {
   font-size: 16px;
+  color: var(--color-accent);
 }
 
 .hero {
@@ -201,7 +202,7 @@ footer {
   }
 }
 
-/* 🔥 АНИМИРОВАННАЯ КНОПКА */
+/* 🔥 АНИМИРОВАННАЯ VIP-КНОПКА */
 .btn-animated {
   display: inline-block;
   padding: 15px 35px;
