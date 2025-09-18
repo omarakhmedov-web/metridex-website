@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Metridex — On‑chain Risk Metrics for DeFi & Telegram</title>
   <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 </head>
 <body>
   <header class="container">
@@ -15,17 +17,18 @@
         <li><a href="#features">Features</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li><button id="theme-toggle" class="btn-animated small">🌙</button></li>
       </ul>
     </nav>
   </header>
 
-  <section class="hero container">
-    <h1>On‑chain risk metrics for DeFi & Telegram</h1>
+  <section class="hero container" data-aos="fade-up">
+    <h1>Metridex: Elite On‑Chain Risk Metrics</h1>
     <p>QuickScan in seconds. Deep checks on demand. White‑label PDF your audience can trust.</p>
     <a href="https://t.me/MetridexBot" class="btn-animated" target="_blank">🚀 Launch Telegram Bot</a>
   </section>
 
-  <section id="features" class="container">
+  <section id="features" class="container" data-aos="fade-up">
     <div class="features">
       <div class="feature-card">
         <div class="step-icon">🔍</div>
@@ -45,7 +48,13 @@
     </div>
   </section>
 
-  <section id="how" class="container how-it-works">
+  <section id="report-demo" class="container" data-aos="fade-up">
+    <h3>📥 Download Sample Report</h3>
+    <p>Want to see how your branded PDF will look?</p>
+    <a href="#" class="btn-animated">View Example</a>
+  </section>
+
+  <section id="how" class="container how-it-works" data-aos="fade-up">
     <div class="step">
       <div class="step-icon">1️⃣</div>
       <div class="step-content">
@@ -69,7 +78,7 @@
     </div>
   </section>
 
-  <section id="pricing" class="container">
+  <section id="pricing" class="container" data-aos="fade-up">
     <div class="pricing-cards">
       <div class="pricing-card">
         <h3>Silver Plan</h3>
@@ -104,7 +113,13 @@
     </div>
   </section>
 
-  <section id="contact" class="container">
+  <section id="testimonials" class="container" data-aos="fade-up">
+    <h3>What Users Say</h3>
+    <p>"Metridex saved our DAO from a high-risk token!" — @cryptoalpha</p>
+    <p>"The branded PDF reports are 🔥" — Anonymous VC Analyst</p>
+  </section>
+
+  <section id="contact" class="container" data-aos="fade-up">
     <h3>Contact</h3>
     <p>Have questions? Reach us on Telegram or by email.</p>
     <p><a href="mailto:info@metridex.com">info@metridex.com</a> • <a href="https://t.me/YourContact">Telegram</a></p>
@@ -114,6 +129,8 @@
     &copy; 2025 Metridex. All rights reserved.
   </footer>
 
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
   <script src="script.js"></script>
 </body>
 </html>
