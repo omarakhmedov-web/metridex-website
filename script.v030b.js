@@ -1,3 +1,4 @@
+// build: v030b
 (function(){
   const root = document.documentElement;
   const toggle = document.getElementById('themeToggle');
@@ -22,7 +23,11 @@
     burger.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
 
-  document.querySelectorAll('.cta-bot').forEach(a => {
-    a.href='https://t.me/MetridexBot'; a.target='_blank'; a.rel='noopener';
-  });
+  const botUrlHero = 'https://t.me/MetridexBot?start=web_landing&src=site&med=hero&ver=v030b';
+  const botUrlFab  = 'https://t.me/MetridexBot?start=web_landing&src=site&med=fab&ver=v030b';
+  document.querySelectorAll('.cta-row .cta-bot').forEach(a => { a.href=botUrlHero; a.target='_blank'; a.rel='noopener'; });
+  const fab = document.querySelector('.float-cta'); if(fab) fab.href = botUrlFab;
+
+  function track(event, extra){ try{ window.dataLayer = window.dataLayer || []; window.dataLayer.push({event, ...extra}); }catch(e){} }
+  document.querySelectorAll('.cta-bot').forEach(a => a.addEventListener('click', ()=>track('bot_click', {place:a.className, ver:'v030b'})));
 })();
