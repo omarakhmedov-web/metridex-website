@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,12 +9,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:title" content="Metridex — Articles">
+  <meta property="og:description" content="Insights on on‑chain risk, token intel and Web3 security.">
+  <meta property="og:image" content="https://metridex.com/og-image.png">
+  <meta property="og:url" content="https://metridex.com/articles.html">
+  <meta property="og:type" content="article">
 </head>
 <body>
   <header class="nav" id="siteNav">
     <div class="container nav-inner">
       <div class="brand">
-        <span class="logo-mark">M</span><span class="logo-text">Metridex</span>
+        <span class="logo-mark">M</</span><span class="logo-text">Metridex</span>
       </div>
       <nav class="nav-links" aria-label="Primary">
         <a href="/">Home</a>
@@ -26,6 +32,7 @@
         <a href="/#contact">Contact</a>
       </nav>
       <div class="nav-actions">
+        <button id="langToggle" class="icon-btn" aria-label="Toggle language" title="EN / RU">EN</button>
         <button id="themeToggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">🌙</button>
       </div>
       <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
@@ -34,18 +41,18 @@
 
   <main class="section">
     <div class="container">
-      <h1>Articles</h1>
-      <p class="sub">Insights on on‑chain risk, token intel and Web3 security.</p>
+      <h1 data-i18n="articles.title">Articles</h1>
+      <p class="sub" data-i18n="articles.sub">Insights on on‑chain risk, token intel and Web3 security.</p>
       <div class="articles">
-        <article class="post glass">
+        <article class="post glass reveal">
           <h3><a class="link" href="#">QuickScan method: how we compress risk into seconds</a></h3>
           <p>Our philosophy: “fast first, deep on demand” — metrics, signals, and design principles.</p>
         </article>
-        <article class="post glass">
+        <article class="post glass reveal">
           <h3><a class="link" href="#">WHOIS & Wayback: a domain tells you more than you think</a></h3>
           <p>Using registrars, SSL chains and historical snapshots to catch red flags early.</p>
         </article>
-        <article class="post glass">
+        <article class="post glass reveal">
           <h3><a class="link" href="#">Telegram safety for token communities</a></h3>
           <p>Moderation, anti‑spam, and what to automate with Metridex.</p>
         </article>
@@ -55,7 +62,7 @@
 
   <footer class="footer">
     <div class="container">
-      <p>© <span id="year"></span> Metridex. All rights reserved.</p>
+      <p>© <span id="year"></span> <span>Metridex.</span> <span data-i18n="footer.rights">All rights reserved.</span></p>
     </div>
   </footer>
 
