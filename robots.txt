@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://www.metridex.com/sitemap.xml
+
+Sitemap: https://metridex.com/sitemap.xml
