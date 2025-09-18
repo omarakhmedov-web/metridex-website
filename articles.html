@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Metridex — Articles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="lux">
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <span class="logo-mark">M</span><a class="logo-text" href="index.html">Metridex</a>
+      </div>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="articles.html">Articles</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button id="themeToggle" class="icon-btn">🌙</button>
+      </div>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <section class="articles-hero">
+    <div class="container">
+      <h1>Articles</h1>
+      <p class="sub">Insights on anti‑scam, token risk, and Web3 security from the Metridex team.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container article-grid">
+      <article class="glass article-card gold">
+        <h3><a href="article-quickscan-method.html">QuickScan method: how we compress risk into seconds</a></h3>
+        <p class="article-meta">Guide · 6 min read</p>
+        <p>Our philosophy of “fast first, deep on demand” — metrics, signals and design trade‑offs.</p>
+      </article>
+      <article class="glass article-card gold">
+        <h3><a href="article-whois-wayback-checks.html">WHOIS & Wayback: domain tells you more than you think</a></h3>
+        <p class="article-meta">Technique · 5 min read</p>
+        <p>Using registrar, SSL chains and historical snapshots to catch red flags early.</p>
+      </article>
+      <article class="glass article-card gold">
+        <h3><a href="article-telegram-safety.html">Telegram safety for token communities</a></h3>
+        <p class="article-meta">Checklist · 4 min read</p>
+        <p>Moderation, anti‑spam, and what to automate with Metridex.</p>
+      </article>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="container"><p>© <span id="year"></span> Metridex.</p></div></footer>
+  <script src="script.js"></script>
+</body>
+</html>
