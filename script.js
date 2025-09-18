@@ -1,19 +1,28 @@
-// Пока просто для возможных будущих интерактивов / анимаций
-
 document.addEventListener('DOMContentLoaded', () => {
-  // Пример: плавная прокрутка к секциям при клике
-  const links = document.querySelectorAll('nav ul li a');
+  // 🔽 Плавная прокрутка к якорям
+  const links = document.querySelectorAll('nav ul li a[href^="#"]');
   for (const link of links) {
-    link.addEventListener('click', function(e) {
+    link.addEventListener('click', function (e) {
       e.preventDefault();
       const targetId = this.getAttribute('href').substring(1);
       const targetEl = document.getElementById(targetId);
       if (targetEl) {
         window.scrollTo({
-          top: targetEl.offsetTop - 20, 
+          top: targetEl.offsetTop - 40,
           behavior: 'smooth'
         });
       }
     });
   }
+
+  // 🌓 Переключение темы
+  const themeToggle = document.getElementById('theme-toggle');
+  const htmlEl = document.documentElement;
+
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = htmlEl.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    htmlEl.setAttribute('data-theme', newTheme);
+    themeToggle.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+  });
 });
