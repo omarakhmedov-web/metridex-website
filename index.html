@@ -20,8 +20,10 @@
       <nav class="nav-links" aria-label="Primary">
         <a href="#about">About</a>
         <a href="#features">Features</a>
+        <a href="#screens">Screens</a>
         <a href="#pricing">Pricing</a>
         <a href="/articles.html">Articles</a>
+        <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
       </nav>
       <div class="nav-actions">
@@ -91,6 +93,28 @@
     </div>
   </section>
 
+  <!-- Screens (restored) -->
+  <section id="screens" class="section">
+    <div class="container">
+      <h2>Screens</h2>
+      <div class="screens-grid">
+        <figure class="screen glass">
+          <div class="viewport">
+            <img src="/screens/quickscan.png" alt="QuickScan screen" onerror="this.parentElement.classList.add('placeholder'); this.remove();">
+          </div>
+          <figcaption>QuickScan</figcaption>
+        </figure>
+        <figure class="screen glass">
+          <div class="viewport">
+            <img src="/screens/details.png" alt="More details screen" onerror="this.parentElement.classList.add('placeholder'); this.remove();">
+          </div>
+          <figcaption>More details</figcaption>
+        </figure>
+      </div>
+      <p class="hint">Drop your PNGs to <code>/screens/quickscan.png</code> and <code>/screens/details.png</code>. Placeholders will be used if images are absent.</p>
+    </div>
+  </section>
+
   <!-- Pricing -->
   <section id="pricing" class="section">
     <div class="container">
@@ -109,8 +133,29 @@
     </div>
   </section>
 
+  <!-- FAQ (restored) -->
+  <section id="faq" class="section alt">
+    <div class="container">
+      <h2>FAQ</h2>
+      <div class="faq">
+        <details class="qa glass" open>
+          <summary>What does QuickScan check?</summary>
+          <p>Δ‑metrics, liquidity & holders, basic contract flags, and a shareable report.</p>
+        </details>
+        <details class="qa glass">
+          <summary>What’s in Deep checks?</summary>
+          <p>WHOIS/RDAP, SSL chains, Wayback snapshots, and on‑chain roles — on demand.</p>
+        </details>
+        <details class="qa glass">
+          <summary>Where can I use it?</summary>
+          <p>Works great for launchpads, pro traders, and Telegram communities.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <!-- Contact -->
-  <section id="contact" class="section alt">
+  <section id="contact" class="section">
     <div class="container">
       <h2>Contact</h2>
       <p>Email: <a class="link" href="mailto:contact@metridex.com">contact@metridex.com</a></p>
