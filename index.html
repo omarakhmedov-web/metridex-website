@@ -27,7 +27,7 @@
 </head>
 <body>
   <header class="nav" id="siteNav">
-    <div class="container nav-inner">
+    <div class="container nav-inner nav-container-wide">
       <div class="brand">
         <span class="logo-mark">M</span><span class="logo-text">Metridex</span>
       </div>
@@ -60,7 +60,7 @@
         <div class="cta-row">
           <a class="cta cta-bot large" href="https://t.me/MetridexBot" target="_blank" rel="noopener"><span class="aura"></span><span data-i18n="cta.open">Open @MetridexBot</span></a>
           <a class="cta ghost" href="#features" data-i18n="cta.features">See features</a>
-          <button class="cta" id="watchDemo" data-video="promo" aria-haspopup="dialog">▶ Watch demo</button>
+          <button class="cta" id="watchDemo" data-video="promo" aria-haspopup="dialog" data-i18n="cta.watch">▶ Watch demo</button>
         </div>
       </div>
       <div class="hero-card glass">
@@ -115,7 +115,7 @@
   <section id="partners" class="section alt reveal">
     <div class="container">
       <h2 data-i18n="partners.title">Trusted by</h2>
-      <div class="logos">
+      <div class="logos spin-slow">
         <div class="logo glass"><img src="/logos/partner1.svg" alt="Partner 1" onerror="this.replaceWith(document.createTextNode('Logo'));"></div>
         <div class="logo glass"><img src="/logos/partner2.svg" alt="Partner 2" onerror="this.replaceWith(document.createTextNode('Logo'));"></div>
         <div class="logo glass"><img src="/logos/partner3.svg" alt="Partner 3" onerror="this.replaceWith(document.createTextNode('Logo'));"></div>
@@ -163,9 +163,18 @@
     <div class="container">
       <h2 data-i18n="faq.title">FAQ</h2>
       <div class="faq">
-        <details class="qa glass" open><summary data-i18n="faq.q1">What does QuickScan check?</summary><p data-i18n="faq.a1">Δ‑metrics, liquidity & holders, basic contract flags, and a shareable report.</p></details>
-        <details class="qa glass"><summary data-i18n="faq.q2">What’s in Deep checks?</summary><p data-i18n="faq.a2">WHOIS/RDAP, SSL chains, Wayback snapshots, and on‑chain roles — on demand.</p></details>
-        <details class="qa glass"><summary data-i18n="faq.q3">Where can I use it?</summary><p data-i18n="faq.a3">Works great for launchpads, pro traders, and Telegram communities.</p></details>
+        <details class="qa glass">
+          <summary data-i18n="faq.q1">What does QuickScan check?</summary>
+          <p data-i18n="faq.a1">Δ‑metrics, liquidity & holders, basic contract flags, and a shareable report.</p>
+        </details>
+        <details class="qa glass">
+          <summary data-i18n="faq.q2">What’s in Deep checks?</summary>
+          <p data-i18n="faq.a2">WHOIS/RDAP, SSL chains, Wayback snapshots, and on‑chain roles — on demand.</p>
+        </details>
+        <details class="qa glass">
+          <summary data-i18n="faq.q3">Where can I use it?</summary>
+          <p data-i18n="faq.a3">Works great for launchpads, pro traders, and Telegram communities.</p>
+        </details>
       </div>
     </div>
   </section>
@@ -177,14 +186,12 @@
     </div>
   </section>
 
-  <!-- Lightbox modal -->
   <div id="videoModal" class="modal" aria-modal="true" role="dialog" hidden>
     <div class="modal-backdrop" data-close></div>
     <div class="modal-dialog glass" role="document">
       <button class="modal-close" aria-label="Close" data-close>✕</button>
       <div class="modal-body">
         <video id="lightboxVideo" controls playsinline poster="/posters/promo.jpg">
-          <!-- sources will be injected on open -->
           Sorry, your browser doesn't support embedded videos.
         </video>
       </div>
