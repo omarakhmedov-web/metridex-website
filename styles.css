@@ -1,4 +1,4 @@
-/* v0.4.2 — i18n fix, modal close button, brand spacing, rotating partners, FAQ closed */
+/* v0.4.3 — partners marquee + extra brand spacing */
 :root{ --bg:#070709; --ink:#f5f3eb; --muted:#b9b3a3; --glass:#0c0d11; --stroke:rgba(255,255,255,.10);
   --gold1:#f7e3a1; --gold2:#b88a2a; --link:#f0c65a; --link-visited:#d0b36e }
 *{box-sizing:border-box} html{scroll-behavior:smooth} html,body{height:100%}
@@ -10,8 +10,8 @@ a{color:var(--link); text-decoration:none} a:hover{text-decoration:underline} a:
 
 /* Navbar */
 .nav{position:fixed; top:0; left:0; right:0; z-index:100; border-bottom:1px solid var(--stroke); backdrop-filter:saturate(150%) blur(8px); background:rgba(7,7,9,.70); box-shadow:0 6px 18px rgba(0,0,0,.35)}
-.nav-inner{display:flex; align-items:center; gap:20px; padding:12px 0}
-.brand{display:flex; align-items:center; gap:10px; font-weight:900; margin-right:18px}
+.nav-inner{display:flex; align-items:center; gap:24px; padding:12px 0}
+.brand{display:flex; align-items:center; gap:10px; font-weight:900; margin-right:36px}
 .logo-mark{display:inline-grid; place-items:center; width:34px; height:34px; border-radius:10px; background:linear-gradient(135deg, var(--gold1), var(--gold2)); color:#0d1116; font-weight:900}
 .logo-text{font-weight:900}
 .nav-links{display:flex; gap:22px; margin-left:auto}
@@ -53,15 +53,16 @@ body.has-fixed-nav{padding-top:72px}
 .card{padding:18px}
 .card .price{font-size:22px; font-weight:900}
 
-/* Partners — smooth 3D rotation */
-.logos{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; align-items:center; perspective:800px}
-.logo{display:grid; place-items:center; padding:14px; height:84px; transform-style:preserve-3d}
+/* Partners — marquee "train" */
+.logos.marquee{overflow:hidden; mask-image:linear-gradient(to right, transparent, black 8%, black 92%, transparent); -webkit-mask-image:linear-gradient(to right, transparent, black 8%, black 92%, transparent)}
+.logos.marquee .marquee-track{display:flex; gap:16px; align-items:center; width:max-content; animation:marquee-left 28s linear infinite}
+/* reverse direction: .logos.marquee.rtl -> right */
+.logos.marquee.rtl .marquee-track{animation-name:marquee-right}
+.logo{flex:0 0 auto; display:grid; place-items:center; padding:14px; height:84px; border-radius:18px; border:1px solid var(--stroke); background:rgba(255,255,255,.03); box-shadow:0 18px 48px rgba(0,0,0,.20); backdrop-filter: blur(6px)}
 .logo img{max-width:120px; max-height:56px; opacity:.95; filter:grayscale(100%) contrast(105%)}
-.spin-slow .logo{ animation:spinY 24s linear infinite }
-.spin-slow .logo:nth-child(2){ animation-delay:-4s } .spin-slow .logo:nth-child(3){ animation-delay:-8s }
-.spin-slow .logo:nth-child(4){ animation-delay:-12s } .spin-slow .logo:nth-child(5){ animation-delay:-16s } .spin-slow .logo:nth-child(6){ animation-delay:-20s }
-@keyframes spinY{ from{ transform:rotateY(0deg) } to{ transform:rotateY(360deg) } }
-.logo:hover{ animation-play-state:paused }
+@keyframes marquee-left{ from{ transform:translateX(0) } to{ transform:translateX(-50%) } }
+@keyframes marquee-right{ from{ transform:translateX(-50%) } to{ transform:translateX(0) } }
+.logos.marquee:hover .marquee-track{ animation-play-state:paused }
 
 /* How & Security */
 .how-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px}
