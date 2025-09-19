@@ -1,28 +1,28 @@
-/* Metridex v0.4.0 — Video lightbox & videos page (builds on v0.3.1 styles) */
+/* v0.4.2 — i18n fix, modal close button, brand spacing, rotating partners, FAQ closed */
 :root{ --bg:#070709; --ink:#f5f3eb; --muted:#b9b3a3; --glass:#0c0d11; --stroke:rgba(255,255,255,.10);
   --gold1:#f7e3a1; --gold2:#b88a2a; --link:#f0c65a; --link-visited:#d0b36e }
 *{box-sizing:border-box} html{scroll-behavior:smooth} html,body{height:100%}
 body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; color:var(--ink);
-  background:
-    radial-gradient(900px 500px at 10% 15%, rgba(247,227,161,.08), transparent 60%),
-    radial-gradient(800px 420px at 80% 8%, rgba(184,138,42,.10), transparent 60%),
-    radial-gradient(1200px 600px at 70% 70%, rgba(255,255,255,.05), transparent 60%),
-    var(--bg); line-height:1.6 }
+  background: radial-gradient(900px 500px at 10% 15%, rgba(247,227,161,.08), transparent 60%), radial-gradient(800px 420px at 80% 8%, rgba(184,138,42,.10), transparent 60%), radial-gradient(1200px 600px at 70% 70%, rgba(255,255,255,.05), transparent 60%), var(--bg); line-height:1.6 }
 a{color:var(--link); text-decoration:none} a:hover{text-decoration:underline} a:visited{color:var(--link-visited)}
 .container{width:min(1120px, 92%); margin:0 auto}
-.nav{position:fixed; top:0; left:0; right:0; z-index:100; border-bottom:1px solid var(--stroke);
-  backdrop-filter:saturate(150%) blur(8px); background:rgba(7,7,9,.70); box-shadow:0 6px 18px rgba(0,0,0,.35)}
-.nav-inner{display:flex; align-items:center; gap:16px; padding:12px 0}
-.brand{display:flex; align-items:center; gap:10px; font-weight:900}
+.nav-container-wide{width:min(1160px, 96%)} /* больше воздуха слева для бренда */
+
+/* Navbar */
+.nav{position:fixed; top:0; left:0; right:0; z-index:100; border-bottom:1px solid var(--stroke); backdrop-filter:saturate(150%) blur(8px); background:rgba(7,7,9,.70); box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.nav-inner{display:flex; align-items:center; gap:20px; padding:12px 0}
+.brand{display:flex; align-items:center; gap:10px; font-weight:900; margin-right:18px}
 .logo-mark{display:inline-grid; place-items:center; width:34px; height:34px; border-radius:10px; background:linear-gradient(135deg, var(--gold1), var(--gold2)); color:#0d1116; font-weight:900}
 .logo-text{font-weight:900}
 .nav-links{display:flex; gap:22px; margin-left:auto}
-.nav-links a{color:var(--muted); font-weight:600} .nav-links a:hover{color:var(--ink)} .nav-links a[aria-current="page"]{color:var(--ink)}
+.nav-links a{color:var(--muted); font-weight:600}
+.nav-links a:hover{color:var(--ink)} .nav-links a[aria-current="page"]{color:var(--ink)}
 .nav-actions{display:flex; gap:8px; margin-left:8px}
 .icon-btn{border:1px solid var(--stroke); background:transparent; color:var(--ink); padding:8px 10px; border-radius:10px; cursor:pointer}
 .burger{display:none; margin-left:8px; background:transparent; border:1px solid var(--stroke); color:var(--ink); border-radius:10px; padding:8px 10px; cursor:pointer}
 body.has-fixed-nav{padding-top:72px}
 
+/* Hero & sections */
 .hero{padding:96px 0 56px}
 .hero-inner{display:grid; grid-template-columns: 1.2fr .8fr; gap:32px; align-items:center}
 .hero-copy h1{font-size: clamp(36px, 5.8vw, 66px); line-height:1.06; margin:0 0 10px; font-weight:900; letter-spacing:-.02em}
@@ -31,26 +31,39 @@ body.has-fixed-nav{padding-top:72px}
 .cta-row{display:flex; gap:12px; margin-top:16px}
 .cta{display:inline-flex; align-items:center; gap:10px; text-decoration:none; font-weight:800; padding:12px 16px; border-radius:16px; border:1px solid var(--stroke); background:linear-gradient(180deg, #141414, #0f1115); color:var(--ink)}
 .cta:hover{transform:translateY(-1px)} .cta.ghost{background:transparent; color:var(--ink); border-color:var(--stroke)}
-.cta-bot{position:relative; overflow:hidden} .cta-bot .aura{position:absolute; inset:-2px; border-radius:18px; pointer-events:none;
-  background:conic-gradient(from 0deg, rgba(247,227,161,.0), rgba(247,227,161,.35), rgba(184,138,42,.35), rgba(247,227,161,.0)); filter:blur(8px); animation:spin 3s linear infinite}
+.cta-bot{position:relative; overflow:hidden} .cta-bot .aura{position:absolute; inset:-2px; border-radius:18px; pointer-events:none; background:conic-gradient(from 0deg, rgba(247,227,161,.0), rgba(247,227,161,.35), rgba(184,138,42,.35), rgba(247,227,161,.0)); filter:blur(8px); animation:spin 3s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .glass{background:rgba(255,255,255,.03); border:1px solid var(--stroke); border-radius:18px; box-shadow:0 18px 48px rgba(0,0,0,.45); backdrop-filter: blur(10px)}
+
 .section{padding:68px 0} .section.alt{background:linear-gradient(180deg, rgba(255,255,255,.03), transparent)}
 .band{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.00))}
 .center{min-height:260px; padding:0} .band-inner{display:flex; align-items:center; min-height:260px}
-.features-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px}
-.feature{padding:16px}
+
+/* Screens */
 .screens-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px}
 .screen{padding:16px}
 .viewport{border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.02); overflow:hidden; aspect-ratio:16/10; display:grid; place-items:center}
 .viewport img{width:100%; height:100%; object-fit:cover; display:block}
 .viewport.placeholder{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01)), radial-gradient(600px 300px at 80% 10%, rgba(247,227,161,.10), transparent 60%), rgba(0,0,0,.15)}
+
+/* Features & cards */
+.features-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px}
+.feature{padding:16px}
 .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px}
 .card{padding:18px}
 .card .price{font-size:22px; font-weight:900}
-.logos{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; align-items:center}
-.logo{display:grid; place-items:center; padding:14px; height:84px}
+
+/* Partners — smooth 3D rotation */
+.logos{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; align-items:center; perspective:800px}
+.logo{display:grid; place-items:center; padding:14px; height:84px; transform-style:preserve-3d}
 .logo img{max-width:120px; max-height:56px; opacity:.95; filter:grayscale(100%) contrast(105%)}
+.spin-slow .logo{ animation:spinY 24s linear infinite }
+.spin-slow .logo:nth-child(2){ animation-delay:-4s } .spin-slow .logo:nth-child(3){ animation-delay:-8s }
+.spin-slow .logo:nth-child(4){ animation-delay:-12s } .spin-slow .logo:nth-child(5){ animation-delay:-16s } .spin-slow .logo:nth-child(6){ animation-delay:-20s }
+@keyframes spinY{ from{ transform:rotateY(0deg) } to{ transform:rotateY(360deg) } }
+.logo:hover{ animation-play-state:paused }
+
+/* How & Security */
 .how-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px}
 .how{padding:18px; position:relative}
 .step{position:absolute; top:12px; right:14px; font-weight:900; opacity:.4}
@@ -58,33 +71,31 @@ body.has-fixed-nav{padding-top:72px}
 .sec{padding:18px}
 .sec h3{margin:0 0 8px}
 .sec ul{margin:0; padding-left:18px}
-.faq{display:grid; gap:12px}
-.qa{padding:12px}
-.qa > summary{cursor:pointer; font-weight:800; outline:none}
-.qa[open] > summary{margin-bottom:8px}
-.footer{padding:36px 0; border-top:1px solid var(--stroke); color:var(--muted)}
-.reveal{opacity:0; transform:translateY(14px); will-change:opacity, transform}
-.reveal.in{opacity:1; transform:none; transition:opacity .6s ease, transform .6s ease}
 
-/* Videos grid (page) */
+/* Articles & Videos */
+.articles{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px}
+.post{padding:16px 18px 16px 22px}
 .videos-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px}
 .video-card{padding:12px}
 .video-card .thumb{position:relative; border-radius:12px; overflow:hidden; border:1px solid var(--stroke); cursor:pointer}
 .video-card .thumb img{display:block; width:100%; height:auto}
 .video-card .thumb .play{position:absolute; bottom:10px; right:10px; border:1px solid var(--stroke); background:rgba(0,0,0,.45); color:#fff; border-radius:10px; padding:6px 10px; cursor:pointer}
 
-/* Modal (lightbox) */
+/* Modal */
 .modal[hidden]{display:none}
 .modal{position:fixed; inset:0; z-index:200; display:grid; place-items:center}
 .modal-backdrop{position:absolute; inset:0; background:rgba(0,0,0,.6)}
 .modal-dialog{position:relative; width:min(920px, 92%); padding:0}
 .modal-body{padding:10px}
-.modal-close{position:absolute; top:8px; right:8px; border:1px solid var(--stroke); background:transparent; color:var(--ink); border-radius:10px; padding:6px 10px; cursor:pointer}
+.modal-close{position:absolute; top:8px; right:8px; border:1px solid var(--stroke); background:rgba(0,0,0,.35); color:var(--ink); border-radius:10px; padding:6px 10px; cursor:pointer; z-index:5}
 .modal video{width:100%; height:auto; display:block; border-radius:12px; background:#000}
 
-/* Articles page cards (if used) */
-.articles{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px}
-.post{padding:16px 18px 16px 22px} .post h3{margin:0 0 6px}
+/* Footer */
+.footer{padding:36px 0; border-top:1px solid var(--stroke); color:var(--muted)}
+
+/* Reveal */
+.reveal{opacity:0; transform:translateY(14px); will-change:opacity, transform}
+.reveal.in{opacity:1; transform:none; transition:opacity .6s ease, transform .6s ease}
 
 /* Mobile */
 @media (max-width:900px){
@@ -93,7 +104,7 @@ body.has-fixed-nav{padding-top:72px}
   .nav-actions{margin-left:auto} .burger{display:inline-block} .nav-links.open{display:flex}
 }
 
-/* Light theme tuning */
+/* Light theme */
 :root.light{--bg:#faf8f2; --ink:#14120e; --muted:#5a5346; --glass:#ffffff; --stroke:rgba(0,0,0,.10); --link:#916c16; --link-visited:#6d5524; background:none}
 :root.light body{background:var(--bg)}
 :root.light .nav{background:rgba(255,255,255,.90); border-bottom-color:var(--stroke); box-shadow:0 6px 18px rgba(0,0,0,.08)}
