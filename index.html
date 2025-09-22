@@ -169,9 +169,61 @@
     <div class="container">
       <h2 data-i18n="pricing.title">Pricing</h2>
       <div class="cards">
-        <article class="card glass"><h3 data-i18n="pricing.basic_t">Basic</h3><p data-i18n="pricing.basic_d">QuickScan only</p><div class="price" data-i18n="pricing.basic_p">Free</div></article>
-        <article class="card glass"><h3 data-i18n="pricing.pro_t">Pro</h3><p data-i18n="pricing.pro_d">QuickScan + Deep checks</p><div class="price" data-i18n="pricing.pro_p">$29/mo</div></article>
-        <article class="card glass"><h3 data-i18n="pricing.ent_t">Enterprise</h3><p data-i18n="pricing.ent_d">White‑label + SLA</p><div class="price" data-i18n="pricing.ent_p">Contact</div></article>
+        <article class="card glass">
+          <h3 data-i18n="pricing.free_t">Free</h3>
+          <p data-i18n="pricing.free_d">2 QuickScan total, slow lane</p>
+          <ul class="features small">
+            <li data-i18n="pricing.free_li1">2 lifetime scans</li>
+            <li data-i18n="pricing.free_li2">No Deep checks</li>
+            <li data-i18n="pricing.free_li3">Watermarked report</li>
+          </ul>
+          <div class="price" data-i18n="pricing.free_p">$0</div>
+          <div class="actions">
+            <a class="btn primary cta-bot" data-i18n="pricing.free_cta">Start in Telegram</a>
+          </div>
+        </article>
+        
+        <article class="card glass">
+          <h3 data-i18n="pricing.pro_t">Pro</h3>
+          <p data-i18n="pricing.pro_d">QuickScan + Deep checks</p>
+          <ul class="features small">
+            <li data-i18n="pricing.pro_li1">300 scans / month</li>
+            <li data-in18n="pricing.pro_li2">WHOIS/RDAP/SSL/Wayback</li>
+            <li data-i18n="pricing.pro_li3">Export PDF/CSV, private links</li>
+          </ul>
+          <div class="price" data-i18n="pricing.pro_p">$29/mo</div>
+          <div class="actions">
+            <a class="btn accent cta-bot" data-i18n="pricing.pro_cta">Upgrade via Bot</a>
+          </div>
+        </article>
+        
+        <article class="card glass">
+          <h3 data-i18n="pricing.teams_t">Teams</h3>
+          <p data-i18n="pricing.teams_d">For groups with higher limits</p>
+          <ul class="features small">
+            <li data-i18n="pricing.teams_li1">1,500 scans / month</li>
+            <li data-i18n="pricing.teams_li2">5 seats, shared dashboard</li>
+            <li data-i18n="pricing.teams_li3">Webhooks, SSO‑ready</li>
+          </ul>
+          <div class="price" data-i18n="pricing.teams_p">$99/mo</div>
+          <div class="actions">
+            <a class="btn cta-bot" data-i18n="pricing.teams_cta">Start via Bot</a>
+          </div>
+        </article>
+        
+        <article class="card glass">
+          <h3 data-i18n="pricing.ent_t">Enterprise</h3>
+          <p data-i18n="pricing.ent_d">White‑label + SLA</p>
+          <ul class="features small">
+            <li data-i18n="pricing.ent_li1">Custom limits</li>
+            <li data-i18n="pricing.ent_li2">SSO, SLA</li>
+            <li data-i18n="pricing.ent_li3">Dedicated support</li>
+          </ul>
+          <div class="price" data-i18n="pricing.ent_p">Contact</div>
+          <div class="actions">
+            <a class="btn ghost" href="#contact" data-i18n="pricing.ent_cta">Contact sales</a>
+          </div>
+        </article>
       </div>
     </div>
   </section>
