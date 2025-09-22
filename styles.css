@@ -138,3 +138,14 @@ body.has-fixed-nav{padding-top:72px}
 :root.light .cta.ghost{background:transparent; color:#14120e; border-color:var(--stroke)}
 :root.light .glass{background:rgba(255,255,255,.75); box-shadow:0 8px 24px rgba(0,0,0,.10)}
 :root.light .grad{background:linear-gradient(90deg, #14120e 0%, #14120e 40%, #b88a2a 80%); -webkit-background-clip:text; background-clip:text; color:transparent}
+
+
+/* Pricing CTA buttons */
+.card .features.small{margin:8px 0 12px; padding-left:18px; color:var(--muted); font-size:14px}
+.card .features.small li{margin:2px 0}
+.card .actions{margin-top:10px; display:flex; gap:8px; flex-wrap:wrap}
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:10px 14px; border-radius:12px; border:1px solid var(--stroke); text-decoration:none; font-weight:800; cursor:pointer}
+.btn.primary{background:linear-gradient(180deg, #141414, #0f1115); color:var(--ink)}
+.btn.accent{background:linear-gradient(180deg, var(--gold1), var(--gold2)); color:#0d1116; border-color:transparent}
+.btn.ghost{background:transparent; color:var(--ink)}
+.btn:hover{transform:translateY(-1px)}
