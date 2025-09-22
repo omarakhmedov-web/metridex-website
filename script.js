@@ -100,3 +100,48 @@
     });
   }
 })();
+
+
+
+// --- Paywall banner logic ---
+function showPaywallBanner(){
+  const bar = document.getElementById('paywallBanner'); if(!bar) return;
+  bar.hidden = false;
+}
+function hidePaywallBanner(){
+  const bar = document.getElementById('paywallBanner'); if(!bar) return;
+  bar.hidden = true;
+}
+// Banner close
+document.addEventListener('click', (e)=>{
+  const btn = e.target.closest('.banner-close');
+  if(btn){ hidePaywallBanner(); try{ localStorage.setItem('metridex.bannerClosed','1'); }catch(_){} }
+});
+// After first "demo" interaction (watchDemo or any [data-video]), set demoUsed
+(function bannerInit(){
+  const lang = (document.documentElement.getAttribute('data-lang')||'en');
+  try{
+    const used = parseInt(localStorage.getItem('metridex.demoCount')||'0',10);
+    const closed = localStorage.getItem('metridex.bannerClosed')==='1';
+    if(used>=1 && !closed){ showPaywallBanner(); }
+  }catch(_){}
+  // Hook watch demo button
+  document.querySelectorAll('[data-video]').forEach(el=>el.addEventListener('click', ()=>{
+    try{
+      const cnt = parseInt(localStorage.getItem('metridex.demoCount')||'0',10)+1;
+      localStorage.setItem('metridex.demoCount', String(cnt));
+      if(cnt===1){ setTimeout(showPaywallBanner, 800); }
+    }catch(_){}
+    if(window.plausible){ window.plausible('Demo Click'); }
+  }));
+  // Banner CTA routing
+  document.querySelectorAll('#paywallBanner .cta-bot').forEach(a=>{
+    a.addEventListener('click', ()=>{
+      if(window.plausible){ window.plausible('Banner CTA'); }
+    });
+  });
+})();
+
+
+// Ensure CTA bot links always point to Telegram bot
+document.querySelectorAll('.cta-bot').forEach(a => { a.href='https://t.me/MetridexBot'; a.target='_blank'; a.rel='noopener'; });
