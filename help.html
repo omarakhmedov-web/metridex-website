@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Metridex — Help & FAQ</title>
+  <meta name="description" content="Help & FAQ for Metridex QuickScan bot">
+  <link rel="icon" href="/assets/favicon.ico">
+  <style>
+    :root { --bg:#0b0b0c; --card:#131316; --fg:#f2f2f2; --gold:#c8a24a; --muted:#9aa0a6; }
+    html,body { margin:0; padding:0; background:var(--bg); color:var(--fg); font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif; }
+    .wrap { max-width: 920px; margin: 40px auto; padding: 0 16px; }
+    .hero { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+    h1 { font-size: 32px; margin: 0 0 8px; letter-spacing: .2px; }
+    .sub { color:var(--muted); margin-bottom: 20px; }
+    .card { background:linear-gradient(180deg,#111 0%,#0d0d0f 100%); border:1px solid #242427; border-radius:16px; padding:20px; box-shadow:0 2px 24px rgba(0,0,0,.25); }
+    .gold { color: var(--gold); }
+    a { color: var(--gold); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    details { background:var(--card); border:1px solid #242427; border-radius:12px; padding:16px; margin:10px 0; }
+    details > summary { cursor:pointer; font-weight:600; }
+    .grid { display:grid; grid-template-columns: 1fr; gap:14px; }
+    .form { background:var(--card); border:1px solid #242427; border-radius:16px; padding:16px; }
+    input, textarea { width:100%; background:#0e0e10; color:#fff; border:1px solid #2a2a2e; border-radius:10px; padding:10px 12px; font-size:15px; }
+    textarea { min-height:120px; resize:vertical; }
+    .row { display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
+    .btn { background:var(--gold); color:#0b0b0c; font-weight:700; border:0; border-radius:12px; padding:12px 14px; cursor:pointer; }
+    .muted { color:var(--muted); font-size:13px; }
+    @media (max-width:720px){ .row{grid-template-columns:1fr;} .hero{flex-direction:column; align-items:flex-start;} }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <h1>Metridex <span class="gold">Help & FAQ</span></h1>
+        <div class="sub">Quick answers for the Telegram bot <a href="https://t.me/MetridexBot">@MetridexBot</a>. If you still need help — write us below.</div>
+      </div>
+      <div><a class="btn" href="https://t.me/MetridexBot">Open the bot</a></div>
+    </div>
+
+    <div class="card">
+      <h2>FAQ</h2>
+      <div class="grid">
+        <details open>
+          <summary>How to run a QuickScan?</summary>
+          <div>Send a token <b>contract address</b>, <b>DexScreener URL</b> or a <b>pair address</b> to the bot. Example: <code>0x6982508145454Ce325dDbE47a25d4ec3d2311933</code>.</div>
+        </details>
+        <details>
+          <summary>What do the Δ buttons (5m / 1h / 6h / 24h) do?</summary>
+          <div>They switch the time range for price deltas in the QuickScan reply.</div>
+        </details>
+        <details>
+          <summary>How do I open Report (HTML) / Why / Why++?</summary>
+          <div>Tap the corresponding inline buttons under the scan result. The report opens as a web page.</div>
+        </details>
+        <details>
+          <summary>What is LP lock (lite)?</summary>
+          <div>We show a compact LP lock block with links to UNCX / TeamFinance and an approximate unlock date if we can detect it.</div>
+        </details>
+        <details>
+          <summary>My report shows outdated stats.</summary>
+          <div>Reports cache for a short time to improve speed. Re-run the scan after a minute or use the Δ buttons to refresh.</div>
+        </details>
+      </div>
+    </div>
+
+    <div class="form" id="contact">
+      <h2>Contact us</h2>
+      <form action="https://formsubmit.co/contact@metridex.com" method="POST">
+        <!-- formsubmit.co: you will get a verification email on first submit -->
+        <input type="hidden" name="_subject" value="Metridex support message">
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="_honey" style="display:none">
+        <div class="row">
+          <p><label>Your name<br><input required name="name" maxlength="120"></label></p>
+          <p><label>Your email<br><input required type="email" name="email" maxlength="160"></label></p>
+        </div>
+        <p><label>Message<br><textarea required name="message" maxlength="5000" placeholder="Describe your issue or question…"></textarea></label></p>
+        <p><button class="btn" type="submit">Send</button></p>
+        <p class="muted">Alternatively, email us: <a href="mailto:contact@metridex.com">contact@metridex.com</a>.</p>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
