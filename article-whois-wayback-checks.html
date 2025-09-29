@@ -1,34 +1,165 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>WHOIS & Wayback checks — Metridex</title>
+  <title>Metridex — WHOIS & Wayback checks (EN/RU)</title>
+  <meta name="description" content="Why WHOIS/RDAP, SSL, and Wayback matter for token due diligence — EN/RU bilingual article.">
   <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <style>
+    .lang-switch { display:flex; gap:10px; align-items:center; }
+    .lang-btn {
+      padding:.5rem .85rem;
+      border:1px solid rgba(255,255,255,.35);
+      background: rgba(255,255,255,.08);
+      border-radius:12px;
+      cursor:pointer;
+      font-weight:600;
+      line-height:1;
+      backdrop-filter: saturate(120%) blur(2px);
+      color:#fff;
+    }
+    .lang-btn, .lang-btn * { color:#fff !important; }
+    [data-theme="light"] .lang-btn,
+    body:not(.lux) .lang-btn {
+      border-color: rgba(0,0,0,.25);
+      background: rgba(0,0,0,.06);
+      color:#000;
+    }
+    [data-theme="light"] .lang-btn, [data-theme="light"] .lang-btn *,
+    body:not(.lux) .lang-btn, body:not(.lux) .lang-btn * { color:#000 !important; }
+    .lang-btn[aria-pressed="true"] {
+      outline: 2px solid var(--accent, #d4af37);
+      box-shadow: 0 0 0 3px rgba(212,175,55,.15);
+    }
+    .hero-subtle { padding-top: 96px; scroll-margin-top: 96px; }
+    .article-author { opacity:.8; margin-top:.4rem; }
+    .tip { background: rgba(212,175,55,.12); border:1px solid rgba(212,175,55,.35); padding:.75rem 1rem; border-radius:12px; }
+  </style>
 </head>
 <body class="lux">
 <header class="nav">
-  <div class="container nav-inner">
+  <div class="container nav-inner nav-container-wide">
     <div class="brand"><span class="logo-mark">M</span><a class="logo-text" href="index.html">Metridex</a></div>
-    <nav class="nav-links"><a href="articles.html">All articles</a></nav>
-    <div class="nav-actions"><button id="themeToggle" class="icon-btn">🌙</button></div>
+    <nav class="nav-links">
+      <a href="articles.html">All articles</a>
+      <a href="videos.html">Videos</a>
+      <a href="help.html">Help</a>
+    </nav>
+    <div class="nav-actions"><button id="themeToggle" class="icon-btn" title="Toggle theme">🌙</button></div>
   </div>
 </header>
 
+<section class="hero-subtle">
+  <div class="container">
+    <div class="flex-row space-between" style="display:flex; align-items:center; justify-content:space-between; gap:16px;">
+      <div>
+        <h1 style="margin-top:0.25rem">WHOIS & Wayback checks</h1>
+        <p class="article-meta">Guide · Sep 29, 2025</p>
+        <p class="article-author">— Omar Ahmad, Founder of Metridex · Sep 29, 2025</p>
+      </div>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button class="lang-btn" id="btn-en" data-lang="en" aria-pressed="true">EN</button>
+        <button class="lang-btn" id="btn-ru" data-lang="ru" aria-pressed="false">RU</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section">
-  <div class="container glass article-card gold">
-    <h1>WHOIS & Wayback: domain tells you more than you think</h1>
-    <p class="article-meta">Technique · 5 min read</p>
-    <p>Registrar reputation, certificate chain and archive history often reveal rushed launches, burner setups and recycled scams.</p>
-    <ul>
-      <li>Check registrar + creation date + host</li>
-      <li>Verify SSL issuer + expiry; warn on shared DV cert farms</li>
-      <li>Wayback baseline: first snapshot + gaps</li>
-    </ul>
+  <div class="container article">
+
+    <!-- EN -->
+    <div class="lang-block lang-en active">
+      <p><strong>TL;DR</strong>: domains and their history often expose “fast-fork” behavior or short-lived sites. We check WHOIS/RDAP, SSL chains, and Wayback snapshots to catch red flags early.</p>
+
+      <h2>1) WHOIS/RDAP: age and stewardship</h2>
+      <p>Young domains aren’t a crime — but they correlate with higher risk when paired with other signals. We read registrar, creation date, and changes. Sudden registrar hops are a smell.</p>
+
+      <h2>2) SSL: minimal hygiene baseline</h2>
+      <p>A valid TLS chain with sane expiry doesn’t mean “safe” — but broken or self-signed certs are a clear baseline fail. We surface issuer and expiry to spot neglect.</p>
+
+      <h2>3) Wayback: time is a moat</h2>
+      <p>Snapshots indicate persistence. No snapshots on an “established” brand? Suspicious. A handful of recent snapshots for a new token site? Acceptable, but note it.</p>
+
+      <div class="tip"><strong>Tip:</strong> combine website hygiene with on-chain context: if LP is thin and domain is brand new with no snapshots, slow down.</div>
+
+      <h2>4) Common red flags</h2>
+      <ul>
+        <li>Brand-new domain + aggressive marketing + thin LP.</li>
+        <li>Registrar changes clustered around token launch.</li>
+        <li>Mismatch between site domain and links embedded in social posts.</li>
+        <li>SSL expiring in days or issued by dubious CAs.</li>
+      </ul>
+
+      <h2>5) In QuickScan</h2>
+      <p>We fetch WHOIS/RDAP, SSL issuer/expiry, and Wayback presence for the provided site. Signals are folded into the verdict via <em>Why++</em>.</p>
+
+      <hr>
+      <p><strong>Try it</strong>: <a href="https://t.me/MetridexBot" target="_blank" rel="noopener">@MetridexBot</a> • <a href="https://metridex.com" target="_blank" rel="noopener">metridex.com</a></p>
+    </div>
+
+    <!-- RU -->
+    <div class="lang-block lang-ru">
+      <p><strong>Кратко</strong>: домены и их история часто выдают «быстрые форки» и краткоживущие сайты. Мы проверяем WHOIS/RDAP, SSL-цепочки и снимки Wayback, чтобы ловить риски заранее.</p>
+
+      <h2>1) WHOIS/RDAP: возраст и «опека» домена</h2>
+      <p>Новый домен — не преступление, но вместе с другими сигналами риск выше. Смотрим регистратор, дату создания и изменения. Резкая смена регистратора — тревожный сигнал.</p>
+
+      <h2>2) SSL: базовая гигиена</h2>
+      <p>Валидная TLS-цепочка не гарантирует безопасность, но битый/самоподписанный сертификат — явный провал. Мы показываем издателя и срок действия.</p>
+
+      <h2>3) Wayback: время — это «ров»</h2>
+      <p>Снимки указывают на устойчивость. Нет снимков у «давно существующего» бренда? Подозрительно. Несколько свежих снимков у нового токен‑сайта? Допустимо, но отметим.</p>
+
+      <div class="tip"><strong>Совет:</strong> совмещайте гигиену сайта с ончейн-контекстом: тонкий LP + новый домен без снимков — повод притормозить.</div>
+
+      <h2>4) Частые красные флаги</h2>
+      <ul>
+        <li>Совсем новый домен + агрессивный маркетинг + тонкий LP.</li>
+        <li>Смена регистратора вокруг даты запуска токена.</li>
+        <li>Несоответствие домена сайта ссылкам в соцсетях.</li>
+        <li>SSL скоро истекает или выдан сомнительным УЦ.</li>
+      </ul>
+
+      <h2>5) В QuickScan</h2>
+      <p>Мы подтягиваем WHOIS/RDAP, издателя/срок SSL и наличие снимков Wayback для сайта из карточки. Сигналы учитываются в вердикте через <em>Why++</em>.</p>
+
+      <hr>
+      <p><strong>Попробовать</strong>: <a href="https://t.me/MetridexBot" target="_blank" rel="noopener">@MetridexBot</a> • <a href="https://metridex.com" target="_blank" rel="noopener">metridex.com</a></p>
+    </div>
+
   </div>
 </section>
 
 <footer class="footer"><div class="container"><p>© <span id="year"></span> Metridex.</p></div></footer>
+
+<script>
+(function() {
+  const KEY = "mdx_lang";
+  const root = document.documentElement;
+  const btnEN = document.getElementById("btn-en");
+  const btnRU = document.getElementById("btn-ru");
+  const blockEN = document.querySelector(".lang-en");
+  const blockRU = document.querySelector(".lang-ru");
+
+  function apply(lang) {
+    localStorage.setItem(KEY, lang);
+    root.setAttribute("data-lang", lang);
+    btnEN.setAttribute("aria-pressed", String(lang === "en"));
+    btnRU.setAttribute("aria-pressed", String(lang === "ru"));
+    blockEN.classList.toggle("active", lang === "en");
+    blockRU.classList.toggle("active", lang === "ru");
+  }
+
+  btnEN.addEventListener("click", () => apply("en"));
+  btnRU.addEventListener("click", () => apply("ru"));
+
+  const saved = localStorage.getItem(KEY) || "en";
+  apply(saved);
+})();
+</script>
 <script src="script.js"></script>
 </body>
 </html>
