@@ -1,294 +1,278 @@
-<!doctype html>
-<html lang="en" data-lang="en">
+<!DOCTYPE html>
+
+<html data-lang="en" lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Metridex — On‑chain risk metrics for DeFi & Telegram</title>
-  <meta name="description" content="Metridex QuickScan — on‑chain risk metrics for DeFi & Telegram. Scan tokens in seconds, get deep checks on demand.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="/favicon-512.png" sizes="512x512">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <meta name="theme-color" content="#070709" media="(prefers-color-scheme: dark)">
-  <meta name="theme-color" content="#faf8f2" media="(prefers-color-scheme: light)">
-  <meta property="og:title" content="Metridex — QuickScan for on‑chain risk">
-  <meta property="og:description" content="Scan tokens in seconds. Deep checks on demand.">
-  <meta property="og:image" content="https://metridex.com/og-image.png">
-  <meta property="og:url" content="https://metridex.com/">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Metridex — QuickScan for on‑chain risk">
-  <meta name="twitter:description" content="Scan tokens in seconds. Deep checks on demand.">
-  <meta name="twitter:image" content="https://metridex.com/og-image.png">
-  <script defer data-domain="metridex.com" src="https://plausible.io/js/script.js"></script>
-</head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Metridex — On‑chain risk metrics for DeFi &amp; Telegram</title>
+<meta content="Metridex QuickScan — on‑chain risk metrics for DeFi &amp; Telegram. Scan tokens in seconds, get deep checks on demand." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="/styles.css" rel="stylesheet"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/favicon-512.png" rel="icon" sizes="512x512"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+<meta content="#070709" media="(prefers-color-scheme: dark)" name="theme-color"/>
+<meta content="#faf8f2" media="(prefers-color-scheme: light)" name="theme-color"/>
+<meta content="Metridex — QuickScan for on‑chain risk" property="og:title"/>
+<meta content="Scan tokens in seconds. Deep checks on demand." property="og:description"/>
+<meta content="https://metridex.com/og-image.png" property="og:image"/>
+<meta content="https://metridex.com/" property="og:url"/>
+<meta content="website" property="og:type"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Metridex — QuickScan for on‑chain risk" name="twitter:title"/>
+<meta content="Scan tokens in seconds. Deep checks on demand." name="twitter:description"/>
+<meta content="https://metridex.com/og-image.png" name="twitter:image"/>
+<script data-domain="metridex.com" defer="" src="https://plausible.io/js/script.js"></script>
+<link href="/onepager_en_print.html" hreflang="en" rel="alternate"/><link href="/onepager_ru_print.html" hreflang="ru" rel="alternate"/></head>
 <body>
-  <header class="nav" id="siteNav">
-    <div class="container nav-inner nav-container-wide">
-      <div class="brand">
-        <span class="logo-mark">M</span><span class="logo-text">Metridex</span>
-      </div>
-      <nav class="nav-links" aria-label="Primary">
-        <a data-i18n="nav.about" href="#about">About</a>
-        <a data-i18n="nav.features" href="#features">Features</a>
-        <a data-i18n="nav.screens" href="#screens">Screens</a>
-        <a data-i18n="nav.partners" href="#partners">Partners</a>
-        <a data-i18n="nav.how" href="#how-it-works">How it works</a>
-        <a data-i18n="nav.security" href="#security">Security</a>
-        <a data-i18n="nav.pricing" href="#pricing">Pricing</a>
-        <a data-i18n="nav.articles" href="/articles.html">Articles</a>
-        <a data-i18n="nav.videos" href="/videos.html">Videos</a>
-        <a data-i18n="nav.faq" href="#faq">FAQ</a>
-        <a data-i18n="nav.contact" href="#contact">Contact</a>
-      </nav>
-      <div class="nav-actions">
-        <button id="langToggle" class="icon-btn" aria-label="Toggle language" title="EN / RU">EN</button>
-        <button id="themeToggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">🌙</button>
-      </div>
-      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
-    </div>
-  </header>
-
-  <section class="hero reveal">
-    <div class="container hero-inner">
-      <div class="hero-copy">
-        <h1><span class="grad" data-i18n="hero.title_a">On‑chain Risk Metrics</span> <span data-i18n="hero.title_b">for DeFi & Telegram</span></h1>
-        <p class="sub" data-i18n="hero.sub">QuickScan in seconds. Deep checks on demand.</p>
-        <div class="cta-row">
-          <a class="cta cta-bot large" href="https://t.me/MetridexBot" target="_blank" rel="noopener"><span class="aura"></span><span data-i18n="cta.open">Open @MetridexBot</span></a>
-          <a class="cta ghost" href="#features" data-i18n="cta.features">See features</a>
-          <button class="cta" id="watchDemo" data-video="promo" aria-haspopup="dialog" data-i18n="cta.watch">▶ Watch demo</button>
-        </div>
-      </div>
-      <div class="hero-card glass">
-        <h3 data-i18n="hero.card_title">QuickScan snapshot</h3>
-        <ul>
-          <li data-i18n="hero.card_li1">Δ 5m / 1h / 6h / 24h</li>
-          <li data-i18n="hero.card_li2">Liquidity & holders</li>
-          <li data-i18n="hero.card_li3">Honeypot flags</li>
-          <li data-i18n="hero.card_li4">Shareable report</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="about" class="section band center reveal">
-    <div class="container band-inner">
-      <div class="band-copy">
-        <h2 data-i18n="about.title">About</h2>
-        <p data-i18n="about.copy">Metridex helps communities, launchpads and traders spot risk signals fast: liquidity, holder patterns, contract flags, domain reputation (WHOIS/RDAP), SSL, Wayback and more.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="features" class="section alt reveal">
-    <div class="container">
-      <h2 data-i18n="features.title">Features</h2>
-      <div class="features-grid">
-        <article class="feature glass"><h3 data-i18n="feat.quick_t">⚡ Quick</h3><p data-i18n="feat.quick_d">Instant QuickScan with Δ‑buttons. No waiting, no noise.</p></article>
-        <article class="feature glass"><h3 data-i18n="feat.deep_t">🧠 Deep</h3><p data-i18n="feat.deep_d">WHOIS/RDAP, SSL, Wayback; on‑chain roles — only when needed.</p></article>
-        <article class="feature glass"><h3 data-i18n="feat.tech_t">🧱 Tech</h3><p data-i18n="feat.tech_d">Render (Flask/Gunicorn) + Cloudflare Worker ds‑proxy.</p></article>
-        <article class="feature glass"><h3 data-i18n="feat.rel_t">✅ Reliable</h3><p data-i18n="feat.rel_d">Stateless callbacks, idempotent delivery, cache‑first detail scan.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <section id="screens" class="section reveal">
-    <div class="container">
-      <h2 data-i18n="screens.title">Screens</h2>
-      <div class="screens-grid">
-        <figure class="screen glass">
-          <div class="viewport"><img src="/screens/quickscan.png" alt="QuickScan screen" onerror="this.parentElement.classList.add('placeholder'); this.remove();"></div>
-          <figcaption data-i18n="screens.cap1">QuickScan</figcaption>
-        </figure>
-        <figure class="screen glass">
-          <div class="viewport"><img src="/screens/details.png" alt="More details screen" onerror="this.parentElement.classList.add('placeholder'); this.remove();"></div>
-          <figcaption data-i18n="screens.cap2">More details</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <section id="partners" class="section alt reveal">
-    <div class="container">
-      <h2 data-i18n="partners.title">Trusted by</h2>
-      <div class="logos marquee planet" aria-label="Trusted logos">
-        <div class="marquee-track">
-          <!-- set A -->
-          <div class="logo glass"><img src="/logos/partner1.svg" alt="Partner 1" onerror="this.replaceWith(document.createTextNode('Logo'));"></div>
-          <div class="logo glass"><img src="/logos/partner2.svg" alt="Partner 2" onerror="this.replaceWith(document.createTextNode('Logo'));"></div>
-          <div class="logo glass"><img src="/logos/partner3.svg" alt="Partner 3" onerror="this.replaceWith(document.createTextNode('Logo'));"></div>
-          <div class="logo glass"><img src="/logos/partner4.svg" alt="Partner 4" onerror="this.replaceWith(document.createTextNode('Logo'));"></div>
-          <div class="logo glass"><img src="/logos/partner5.svg" alt="Partner 5" onerror="this.replaceWith(document.createTextNode('Logo'));"></div>
-          <div class="logo glass"><img src="/logos/partner6.svg" alt="Partner 6" onerror="this.replaceWith(document.createTextNode('Logo'));"></div>
-          <!-- set B -->
-          <div class="logo glass"><img src="/logos/partner1.svg" alt="Partner 1"></div>
-          <div class="logo glass"><img src="/logos/partner2.svg" alt="Partner 2"></div>
-          <div class="logo glass"><img src="/logos/partner3.svg" alt="Partner 3"></div>
-          <div class="logo glass"><img src="/logos/partner4.svg" alt="Partner 4"></div>
-          <div class="logo glass"><img src="/logos/partner5.svg" alt="Partner 5"></div>
-          <div class="logo glass"><img src="/logos/partner6.svg" alt="Partner 6"></div>
-          <!-- set C -->
-          <div class="logo glass"><img src="/logos/partner1.svg" alt="Partner 1"></div>
-          <div class="logo glass"><img src="/logos/partner2.svg" alt="Partner 2"></div>
-          <div class="logo glass"><img src="/logos/partner3.svg" alt="Partner 3"></div>
-          <div class="logo glass"><img src="/logos/partner4.svg" alt="Partner 4"></div>
-          <div class="logo glass"><img src="/logos/partner5.svg" alt="Partner 5"></div>
-          <div class="logo glass"><img src="/logos/partner6.svg" alt="Partner 6"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="how-it-works" class="section reveal">
-    <div class="container">
-      <h2 data-i18n="how.title">How it works</h2>
-      <div class="how-grid">
-        <article class="how glass"><div class="step">1</div><h3 data-i18n="how.s1_t">Paste token/contract</h3><p data-i18n="how.s1_d">Run QuickScan in seconds.</p></article>
-        <article class="how glass"><div class="step">2</div><h3 data-i18n="how.s2_t">Review signals</h3><p data-i18n="how.s2_d">Δ‑metrics, holders, liquidity, flags.</p></article>
-        <article class="how glass"><div class="step">3</div><h3 data-i18n="how.s3_t">Deep on demand</h3><p data-i18n="how.s3_d">WHOIS/RDAP, SSL, Wayback, on‑chain roles.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <section id="security" class="section alt reveal">
-    <div class="container">
-      <h2 data-i18n="sec.title">Security</h2>
-      <div class="security-grid">
-        <article class="sec glass"><h3 data-i18n="sec.data_t">Data handling</h3><ul><li data-i18n="sec.data_li1">No private keys, seed phrases, or wallets collected.</li><li data-i18n="sec.data_li2">Requests processed transit‑only; minimized logs.</li></ul></article>
-        <article class="sec glass"><h3 data-i18n="sec.infra_t">Infrastructure</h3><ul><li data-i18n="sec.infra_li1">HTTPS, security headers, environment isolation.</li><li data-i18n="sec.infra_li2">Cloudflare edge + Render app isolation.</li></ul></article>
-        <article class="sec glass"><h3 data-i18n="sec.compliance_t">Compliance</h3><ul><li data-i18n="sec.compliance_li1">GDPR‑friendly, deletion on request.</li><li data-i18n="sec.compliance_li2">Responsible disclosure contact.</li></ul></article>
-      </div>
-    </div>
-  </section>
-
-  <section id="pricing" class="section reveal">
-    <div class="container">
-      <h2 data-i18n="pricing.title">Pricing</h2>
-      <div class="cards">
-        <article class="card glass">
-          <h3 data-i18n="pricing.free_t">Free</h3>
-          <p data-i18n="pricing.free_d">2 QuickScan total, slow lane</p>
-          <ul class="features small">
-            <li data-i18n="pricing.free_li1">2 lifetime scans</li>
-            <li data-i18n="pricing.free_li2">No Deep checks</li>
-            <li data-i18n="pricing.free_li3">Watermarked report</li>
-          </ul>
-          <div class="price" data-i18n="pricing.free_p">$0</div>
-          <div class="actions">
-            <a class="btn primary cta-bot" data-i18n="pricing.free_cta">Start in Telegram</a>
-          </div>
-        </article>
-        
-        <article class="card glass">
-          <h3 data-i18n="pricing.pro_t">Pro</h3>
-          <p data-i18n="pricing.pro_d">QuickScan + Deep checks</p>
-          <ul class="features small">
-            <li data-i18n="pricing.pro_li1">300 scans / month</li>
-            <li data-in18n="pricing.pro_li2">WHOIS/RDAP/SSL/Wayback</li>
-            <li data-i18n="pricing.pro_li3">Export PDF/CSV, private links</li>
-          </ul>
-          <div class="price" data-i18n="pricing.pro_p">$29/mo</div>
-          <div class="actions">
-            <a class="btn accent cta-bot" data-i18n="pricing.pro_cta">Upgrade via Bot</a>
-          </div>
-        </article>
-        
-        <article class="card glass">
-          <h3 data-i18n="pricing.teams_t">Teams</h3>
-          <p data-i18n="pricing.teams_d">For groups with higher limits</p>
-          <ul class="features small">
-            <li data-i18n="pricing.teams_li1">1,500 scans / month</li>
-            <li data-i18n="pricing.teams_li2">5 seats, shared dashboard</li>
-            <li data-i18n="pricing.teams_li3">Webhooks, SSO‑ready</li>
-          </ul>
-          <div class="price" data-i18n="pricing.teams_p">$99/mo</div>
-          <div class="actions">
-            <a class="btn cta-bot" data-i18n="pricing.teams_cta">Start via Bot</a>
-          </div>
-        </article>
-        
-        <article class="card glass">
-          <h3 data-i18n="pricing.ent_t">Enterprise</h3>
-          <p data-i18n="pricing.ent_d">White‑label + SLA</p>
-          <ul class="features small">
-            <li data-i18n="pricing.ent_li1">Custom limits</li>
-            <li data-i18n="pricing.ent_li2">SSO, SLA</li>
-            <li data-i18n="pricing.ent_li3">Dedicated support</li>
-          </ul>
-          <div class="price" data-i18n="pricing.ent_p">Contact</div>
-          <div class="actions">
-            <a class="btn ghost" href="#contact" data-i18n="pricing.ent_cta">Contact sales</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="faq" class="section alt reveal">
-    <div class="container">
-      <h2 data-i18n="faq.title">FAQ</h2>
-      <div class="faq">
-        <details class="qa glass">
-          <summary data-i18n="faq.q1">What does QuickScan check?</summary>
-          <p data-i18n="faq.a1">Δ‑metrics, liquidity & holders, basic contract flags, and a shareable report.</p>
-        </details>
-        <details class="qa glass">
-          <summary data-i18n="faq.q2">What’s in Deep checks?</summary>
-          <p data-i18n="faq.a2">WHOIS/RDAP, SSL chains, Wayback snapshots, and on‑chain roles — on demand.</p>
-        </details>
-        <details class="qa glass">
-          <summary data-i18n="faq.q3">Where can I use it?</summary>
-          <p data-i18n="faq.a3">Works great for launchpads, pro traders, and Telegram communities.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="section reveal">
-    <div class="container">
-      <h2 data-i18n="contact.title">Contact</h2>
-      <p><span data-i18n="contact.email">Email:</span> <a class="link" href="mailto:contact@metridex.com">contact@metridex.com</a></p>
-    </div>
-  </section>
-
-  <div id="videoModal" class="modal" aria-modal="true" role="dialog" hidden>
-    <div class="modal-backdrop" data-close></div>
-    <div class="modal-dialog glass" role="document">
-      <button class="modal-close" aria-label="Close" data-close>✕</button>
-      <div class="modal-body">
-        <video id="lightboxVideo" controls playsinline poster="/posters/promo.jpg">
+<header class="nav" id="siteNav">
+<div class="container nav-inner nav-container-wide">
+<div class="brand">
+<span class="logo-mark">M</span><span class="logo-text">Metridex</span>
+</div>
+<nav aria-label="Primary" class="nav-links">
+<a data-i18n="nav.about" href="#about">About</a>
+<a data-i18n="nav.features" href="#features">Features</a>
+<a data-i18n="nav.screens" href="#screens">Screens</a>
+<a data-i18n="nav.partners" href="#partners">Partners</a>
+<a data-i18n="nav.how" href="#how-it-works">How it works</a>
+<a data-i18n="nav.security" href="#security">Security</a>
+<a data-i18n="nav.pricing" href="#pricing">Pricing</a>
+<a href="/onepager_en.html">One‑Pager (EN)</a><a href="/onepager_ru.html">One‑Pager (RU)</a><a data-i18n="nav.articles" href="/articles.html">Articles</a>
+<a data-i18n="nav.videos" href="/videos.html">Videos</a>
+<a data-i18n="nav.faq" href="#faq">FAQ</a>
+<a data-i18n="nav.contact" href="#contact">Contact</a>
+</nav>
+<div class="nav-actions">
+<button aria-label="Toggle language" class="icon-btn" id="langToggle" title="EN / RU">EN</button>
+<button aria-label="Toggle theme" class="icon-btn" id="themeToggle" title="Toggle theme">🌙</button>
+</div>
+<button aria-expanded="false" aria-label="Open menu" class="burger" id="burger">☰</button>
+</div>
+</header>
+<section class="hero reveal">
+<div class="container hero-inner">
+<div class="hero-copy">
+<h1><span class="grad" data-i18n="hero.title_a">On‑chain Risk Metrics</span> <span data-i18n="hero.title_b">for DeFi &amp; Telegram</span></h1>
+<p class="sub" data-i18n="hero.sub">QuickScan in seconds. Deep checks on demand.</p>
+<div class="cta-row">
+<a class="cta cta-bot large" href="https://t.me/MetridexBot" rel="noopener" target="_blank"><span class="aura"></span><span data-i18n="cta.open">Open @MetridexBot</span></a>
+<a class="cta ghost" data-i18n="cta.features" href="#features">See features</a>
+<button aria-haspopup="dialog" class="cta" data-i18n="cta.watch" data-video="promo" id="watchDemo">▶ Watch demo</button>
+<a class="cta ghost" href="/onepager_en.html">One‑Pager (EN)</a><a class="cta" href="/onepager_ru_print_SAFE.pdf">Скачать PDF (RU)</a></div>
+</div>
+<div class="hero-card glass">
+<h3 data-i18n="hero.card_title">QuickScan snapshot</h3>
+<ul>
+<li data-i18n="hero.card_li1">Δ 5m / 1h / 6h / 24h</li>
+<li data-i18n="hero.card_li2">Liquidity &amp; holders</li>
+<li data-i18n="hero.card_li3">Honeypot flags</li>
+<li data-i18n="hero.card_li4">Shareable report</li>
+</ul>
+</div>
+</div>
+</section>
+<section class="section band center reveal" id="about">
+<div class="container band-inner">
+<div class="band-copy">
+<h2 data-i18n="about.title">About</h2>
+<p data-i18n="about.copy">Metridex helps communities, launchpads and traders spot risk signals fast: liquidity, holder patterns, contract flags, domain reputation (WHOIS/RDAP), SSL, Wayback and more.</p>
+</div>
+</div>
+</section>
+<section class="section alt reveal" id="features">
+<div class="container">
+<h2 data-i18n="features.title">Features</h2>
+<div class="features-grid">
+<article class="feature glass"><h3 data-i18n="feat.quick_t">⚡ Quick</h3><p data-i18n="feat.quick_d">Instant QuickScan with Δ‑buttons. No waiting, no noise.</p></article>
+<article class="feature glass"><h3 data-i18n="feat.deep_t">🧠 Deep</h3><p data-i18n="feat.deep_d">WHOIS/RDAP, SSL, Wayback; on‑chain roles — only when needed.</p></article>
+<article class="feature glass"><h3 data-i18n="feat.tech_t">🧱 Tech</h3><p data-i18n="feat.tech_d">Render (Flask/Gunicorn) + Cloudflare Worker ds‑proxy.</p></article>
+<article class="feature glass"><h3 data-i18n="feat.rel_t">✅ Reliable</h3><p data-i18n="feat.rel_d">Stateless callbacks, idempotent delivery, cache‑first detail scan.</p></article>
+</div>
+</div>
+</section>
+<section class="section reveal" id="screens">
+<div class="container">
+<h2 data-i18n="screens.title">Screens</h2>
+<div class="screens-grid">
+<figure class="screen glass">
+<div class="viewport"><img alt="QuickScan screen" onerror="this.parentElement.classList.add('placeholder'); this.remove();" src="/screens/quickscan.png"/></div>
+<figcaption data-i18n="screens.cap1">QuickScan</figcaption>
+</figure>
+<figure class="screen glass">
+<div class="viewport"><img alt="More details screen" onerror="this.parentElement.classList.add('placeholder'); this.remove();" src="/screens/details.png"/></div>
+<figcaption data-i18n="screens.cap2">More details</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section class="section alt reveal" id="partners">
+<div class="container">
+<h2 data-i18n="partners.title">Trusted by</h2>
+<div aria-label="Trusted logos" class="logos marquee planet">
+<div class="marquee-track">
+<!-- set A -->
+<div class="logo glass"><img alt="Partner 1" onerror="this.replaceWith(document.createTextNode('Logo'));" src="/logos/partner1.svg"/></div>
+<div class="logo glass"><img alt="Partner 2" onerror="this.replaceWith(document.createTextNode('Logo'));" src="/logos/partner2.svg"/></div>
+<div class="logo glass"><img alt="Partner 3" onerror="this.replaceWith(document.createTextNode('Logo'));" src="/logos/partner3.svg"/></div>
+<div class="logo glass"><img alt="Partner 4" onerror="this.replaceWith(document.createTextNode('Logo'));" src="/logos/partner4.svg"/></div>
+<div class="logo glass"><img alt="Partner 5" onerror="this.replaceWith(document.createTextNode('Logo'));" src="/logos/partner5.svg"/></div>
+<div class="logo glass"><img alt="Partner 6" onerror="this.replaceWith(document.createTextNode('Logo'));" src="/logos/partner6.svg"/></div>
+<!-- set B -->
+<div class="logo glass"><img alt="Partner 1" src="/logos/partner1.svg"/></div>
+<div class="logo glass"><img alt="Partner 2" src="/logos/partner2.svg"/></div>
+<div class="logo glass"><img alt="Partner 3" src="/logos/partner3.svg"/></div>
+<div class="logo glass"><img alt="Partner 4" src="/logos/partner4.svg"/></div>
+<div class="logo glass"><img alt="Partner 5" src="/logos/partner5.svg"/></div>
+<div class="logo glass"><img alt="Partner 6" src="/logos/partner6.svg"/></div>
+<!-- set C -->
+<div class="logo glass"><img alt="Partner 1" src="/logos/partner1.svg"/></div>
+<div class="logo glass"><img alt="Partner 2" src="/logos/partner2.svg"/></div>
+<div class="logo glass"><img alt="Partner 3" src="/logos/partner3.svg"/></div>
+<div class="logo glass"><img alt="Partner 4" src="/logos/partner4.svg"/></div>
+<div class="logo glass"><img alt="Partner 5" src="/logos/partner5.svg"/></div>
+<div class="logo glass"><img alt="Partner 6" src="/logos/partner6.svg"/></div>
+</div>
+</div>
+</div>
+</section>
+<section class="section reveal" id="how-it-works">
+<div class="container">
+<h2 data-i18n="how.title">How it works</h2>
+<div class="how-grid">
+<article class="how glass"><div class="step">1</div><h3 data-i18n="how.s1_t">Paste token/contract</h3><p data-i18n="how.s1_d">Run QuickScan in seconds.</p></article>
+<article class="how glass"><div class="step">2</div><h3 data-i18n="how.s2_t">Review signals</h3><p data-i18n="how.s2_d">Δ‑metrics, holders, liquidity, flags.</p></article>
+<article class="how glass"><div class="step">3</div><h3 data-i18n="how.s3_t">Deep on demand</h3><p data-i18n="how.s3_d">WHOIS/RDAP, SSL, Wayback, on‑chain roles.</p></article>
+</div>
+</div>
+</section>
+<section class="section alt reveal" id="security">
+<div class="container">
+<h2 data-i18n="sec.title">Security</h2>
+<div class="security-grid">
+<article class="sec glass"><h3 data-i18n="sec.data_t">Data handling</h3><ul><li data-i18n="sec.data_li1">No private keys, seed phrases, or wallets collected.</li><li data-i18n="sec.data_li2">Requests processed transit‑only; minimized logs.</li></ul></article>
+<article class="sec glass"><h3 data-i18n="sec.infra_t">Infrastructure</h3><ul><li data-i18n="sec.infra_li1">HTTPS, security headers, environment isolation.</li><li data-i18n="sec.infra_li2">Cloudflare edge + Render app isolation.</li></ul></article>
+<article class="sec glass"><h3 data-i18n="sec.compliance_t">Compliance</h3><ul><li data-i18n="sec.compliance_li1">GDPR‑friendly, deletion on request.</li><li data-i18n="sec.compliance_li2">Responsible disclosure contact.</li></ul></article>
+</div>
+</div>
+</section>
+<section class="section reveal" id="pricing">
+<div class="container">
+<h2 data-i18n="pricing.title">Pricing</h2>
+<div class="cards">
+<article class="card glass">
+<h3 data-i18n="pricing.free_t">Free</h3>
+<p data-i18n="pricing.free_d">2 QuickScan total, slow lane</p>
+<ul class="features small">
+<li data-i18n="pricing.free_li1">2 lifetime scans</li>
+<li data-i18n="pricing.free_li2">No Deep checks</li>
+<li data-i18n="pricing.free_li3">Watermarked report</li>
+</ul>
+<div class="price" data-i18n="pricing.free_p">$0</div>
+<div class="actions">
+<a class="btn primary cta-bot" data-i18n="pricing.free_cta">Start in Telegram</a>
+</div>
+</article>
+<article class="card glass">
+<h3 data-i18n="pricing.pro_t">Pro</h3>
+<p data-i18n="pricing.pro_d">QuickScan + Deep checks</p>
+<ul class="features small">
+<li data-i18n="pricing.pro_li1">300 scans / month</li>
+<li data-in18n="pricing.pro_li2">WHOIS/RDAP/SSL/Wayback</li>
+<li data-i18n="pricing.pro_li3">Export PDF/CSV, private links</li>
+</ul>
+<div class="price" data-i18n="pricing.pro_p">$29/mo</div>
+<div class="actions">
+<a class="btn accent cta-bot" data-i18n="pricing.pro_cta">Upgrade via Bot</a>
+</div>
+</article>
+<article class="card glass">
+<h3 data-i18n="pricing.teams_t">Teams</h3>
+<p data-i18n="pricing.teams_d">For groups with higher limits</p>
+<ul class="features small">
+<li data-i18n="pricing.teams_li1">1,500 scans / month</li>
+<li data-i18n="pricing.teams_li2">5 seats, shared dashboard</li>
+<li data-i18n="pricing.teams_li3">Webhooks, SSO‑ready</li>
+</ul>
+<div class="price" data-i18n="pricing.teams_p">$99/mo</div>
+<div class="actions">
+<a class="btn cta-bot" data-i18n="pricing.teams_cta">Start via Bot</a>
+</div>
+</article>
+<article class="card glass">
+<h3 data-i18n="pricing.ent_t">Enterprise</h3>
+<p data-i18n="pricing.ent_d">White‑label + SLA</p>
+<ul class="features small">
+<li data-i18n="pricing.ent_li1">Custom limits</li>
+<li data-i18n="pricing.ent_li2">SSO, SLA</li>
+<li data-i18n="pricing.ent_li3">Dedicated support</li>
+</ul>
+<div class="price" data-i18n="pricing.ent_p">Contact</div>
+<div class="actions">
+<a class="btn ghost" data-i18n="pricing.ent_cta" href="#contact">Contact sales</a>
+</div>
+</article>
+</div>
+</div>
+</section>
+<section class="section alt reveal" id="faq">
+<div class="container">
+<h2 data-i18n="faq.title">FAQ</h2>
+<div class="faq">
+<details class="qa glass">
+<summary data-i18n="faq.q1">What does QuickScan check?</summary>
+<p data-i18n="faq.a1">Δ‑metrics, liquidity &amp; holders, basic contract flags, and a shareable report.</p>
+</details>
+<details class="qa glass">
+<summary data-i18n="faq.q2">What’s in Deep checks?</summary>
+<p data-i18n="faq.a2">WHOIS/RDAP, SSL chains, Wayback snapshots, and on‑chain roles — on demand.</p>
+</details>
+<details class="qa glass">
+<summary data-i18n="faq.q3">Where can I use it?</summary>
+<p data-i18n="faq.a3">Works great for launchpads, pro traders, and Telegram communities.</p>
+</details>
+</div>
+</div>
+</section>
+<section class="section reveal" id="contact">
+<div class="container">
+<h2 data-i18n="contact.title">Contact</h2>
+<p><span data-i18n="contact.email">Email:</span> <a class="link" href="mailto:contact@metridex.com">contact@metridex.com</a></p>
+</div>
+</section>
+<div aria-modal="true" class="modal" hidden="" id="videoModal" role="dialog">
+<div class="modal-backdrop" data-close=""></div>
+<div class="modal-dialog glass" role="document">
+<button aria-label="Close" class="modal-close" data-close="">✕</button>
+<div class="modal-body">
+<video controls="" id="lightboxVideo" playsinline="" poster="/posters/promo.jpg">
           Sorry, your browser doesn't support embedded videos.
         </video>
-      </div>
-    </div>
-  </div>
-
-  <!-- Paywall banner -->
-<div id="paywallBanner" class="banner" hidden>
-  <div class="container banner-inner">
-    <div class="banner-text">
-      <strong data-i18n="banner.title">You have 1 free QuickScan left</strong>
-      <span class="muted" data-i18n="banner.sub">Unlock Deep checks, exports and fast lane</span>
-    </div>
-    <div class="banner-actions">
-      <a class="btn primary cta-bot" data-i18n="banner.cta_open">Open Bot</a>
-      <a class="btn accent cta-bot" data-i18n="banner.cta_day">Day‑Pass $9</a>
-      <a class="btn ghost cta-bot" data-i18n="banner.cta_pro">Go Pro $29/mo</a>
-      <button class="icon-btn banner-close" aria-label="Close">✕</button>
-    </div>
-  </div>
 </div>
-
-  <footer class="footer">
-    <div class="container">
-      <p>© <span id="year"></span> <span>Metridex.</span> <span data-i18n="footer.rights">All rights reserved.</span></p>
-    </div>
-  </footer>
-
-  <script src="/script.js"></script>
+</div>
+</div>
+<!-- Paywall banner -->
+<div class="banner" hidden="" id="paywallBanner">
+<div class="container banner-inner">
+<div class="banner-text">
+<strong data-i18n="banner.title">You have 1 free QuickScan left</strong>
+<span class="muted" data-i18n="banner.sub">Unlock Deep checks, exports and fast lane</span>
+</div>
+<div class="banner-actions">
+<a class="btn primary cta-bot" data-i18n="banner.cta_open">Open Bot</a>
+<a class="btn accent cta-bot" data-i18n="banner.cta_day">Day‑Pass $9</a>
+<a class="btn ghost cta-bot" data-i18n="banner.cta_pro">Go Pro $29/mo</a>
+<button aria-label="Close" class="icon-btn banner-close">✕</button>
+</div>
+</div>
+</div>
+<footer class="footer">
+<div class="container">
+<p>© <span id="year"></span> <span>Metridex.</span> <span data-i18n="footer.rights">All rights reserved.</span></p>
+<p><a href="/onepager_en.html">One‑Pager (EN)</a> · <a href="/onepager_ru.html">One‑Pager (RU)</a> · <a href="/onepager_en_print_SAFE.pdf">PDF (EN)</a> · <a href="/onepager_ru_print_SAFE.pdf">PDF (RU)</a></p></div>
+</footer>
+<script src="/script.js"></script>
 </body>
 </html>
