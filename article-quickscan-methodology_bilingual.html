@@ -14,7 +14,37 @@
     .lang-block { display:none; }
     .lang-block.active { display:block; }
     .article-author { opacity:.8; margin-top:.4rem; }
-  </style>
+  
+    /* ---- SAFE SPACING UNDER STICKY HEADER ---- */
+    .hero-subtle { padding-top: 96px; scroll-margin-top: 96px; }
+
+    /* ---- LANGUAGE TOGGLE VISIBILITY ---- */
+    .lang-switch { gap:10px; }
+    .lang-btn {
+      padding:.5rem .85rem;
+      border:1px solid rgba(255,255,255,.35);
+      background: rgba(255,255,255,.08);
+      border-radius:12px;
+      cursor:pointer;
+      font-weight:600;
+      line-height:1;
+      backdrop-filter: saturate(120%) blur(2px);
+    }
+    [data-theme="light"] .lang-btn,
+    body:not(.lux) .lang-btn {
+      border-color: rgba(0,0,0,.25);
+      background: rgba(0,0,0,.06);
+    }
+    .lang-btn:hover { background: rgba(255,255,255,.16); }
+    [data-theme="light"] .lang-btn:hover,
+    body:not(.lux) .lang-btn:hover { background: rgba(0,0,0,.1); }
+
+    .lang-btn[aria-pressed="true"] {
+      outline: 2px solid var(--accent, #d4af37);
+      box-shadow: 0 0 0 3px rgba(212,175,55,.15);
+    }
+
+</style>
 </head>
 <body class="lux">
 <header class="nav">
@@ -33,7 +63,7 @@
   <div class="container">
     <div class="flex-row space-between" style="display:flex; align-items:center; justify-content:space-between; gap:16px;">
       <div>
-        <h1>QuickScan methodology</h1>
+        <h1 style="margin-top:0.25rem">QuickScan methodology</h1>
         <p class="article-meta">Guide · Sep 29, 2025</p>
         <p class="article-author">— Omar, Founder of Metridex · Sep 29, 2025</p>
       </div>
