@@ -8,34 +8,28 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <style>
+    .hero-subtle { padding-top: 96px; scroll-margin-top: 96px; }
+    .article-author { opacity:.8; margin-top:.4rem; }
+
+    /* Language switch & visibility */
     .lang-switch { display:flex; gap:10px; align-items:center; }
     .lang-btn {
-      padding:.5rem .85rem;
-      border:1px solid rgba(255,255,255,.35);
-      background: rgba(255,255,255,.08);
-      border-radius:12px;
-      cursor:pointer;
-      font-weight:600;
-      line-height:1;
-      backdrop-filter: saturate(120%) blur(2px);
+      padding:.5rem .85rem; border:1px solid rgba(255,255,255,.35);
+      background: rgba(255,255,255,.08); border-radius:12px; cursor:pointer;
+      font-weight:600; line-height:1; backdrop-filter: saturate(120%) blur(2px);
       color:#fff;
     }
     .lang-btn, .lang-btn * { color:#fff !important; }
-    [data-theme="light"] .lang-btn,
-    body:not(.lux) .lang-btn {
-      border-color: rgba(0,0,0,.25);
-      background: rgba(0,0,0,.06);
-      color:#000;
+    [data-theme="light"] .lang-btn, body:not(.lux) .lang-btn {
+      border-color: rgba(0,0,0,.25); background: rgba(0,0,0,.06); color:#000;
     }
     [data-theme="light"] .lang-btn, [data-theme="light"] .lang-btn *,
     body:not(.lux) .lang-btn, body:not(.lux) .lang-btn * { color:#000 !important; }
-    .lang-btn[aria-pressed="true"] {
-      outline: 2px solid var(--accent, #d4af37);
-      box-shadow: 0 0 0 3px rgba(212,175,55,.15);
-    }
-    .hero-subtle { padding-top: 96px; scroll-margin-top: 96px; }
-    .article-author { opacity:.8; margin-top:.4rem; }
-    .tip { background: rgba(212,175,55,.12); border:1px solid rgba(212,175,55,.35); padding:.75rem 1rem; border-radius:12px; }
+    .lang-btn[aria-pressed="true"] { outline: 2px solid var(--accent, #d4af37); box-shadow: 0 0 0 3px rgba(212,175,55,.15); }
+
+    /* Force visibility control regardless of global CSS */
+    .lang-block { display:none !important; }
+    .lang-block.active { display:block !important; }
   </style>
 </head>
 <body class="lux">
@@ -71,7 +65,7 @@
   <div class="container article">
 
     <!-- EN -->
-    <div class="lang-block lang-en active">
+    <div class="lang-block lang-en active" id="block-en">
       <p><strong>TL;DR</strong>: domains and their history often expose “fast-fork” behavior or short-lived sites. We check WHOIS/RDAP, SSL chains, and Wayback snapshots to catch red flags early.</p>
 
       <h2>1) WHOIS/RDAP: age and stewardship</h2>
@@ -101,7 +95,7 @@
     </div>
 
     <!-- RU -->
-    <div class="lang-block lang-ru">
+    <div class="lang-block lang-ru" id="block-ru">
       <p><strong>Кратко</strong>: домены и их история часто выдают «быстрые форки» и краткоживущие сайты. Мы проверяем WHOIS/RDAP, SSL-цепочки и снимки Wayback, чтобы ловить риски заранее.</p>
 
       <h2>1) WHOIS/RDAP: возраст и «опека» домена</h2>
@@ -111,7 +105,7 @@
       <p>Валидная TLS-цепочка не гарантирует безопасность, но битый/самоподписанный сертификат — явный провал. Мы показываем издателя и срок действия.</p>
 
       <h2>3) Wayback: время — это «ров»</h2>
-      <p>Снимки указывают на устойчивость. Нет снимков у «давно существующего» бренда? Подозрительно. Несколько свежих снимков у нового токен‑сайта? Допустимо, но отметим.</p>
+      <p>Снимки указывают на устойчивость. Нет снимков у «давно существующего» бренда? Подозрительно. Несколько свежих снимков у нового токен-сайта? Допустимо, но отметим.</p>
 
       <div class="tip"><strong>Совет:</strong> совмещайте гигиену сайта с ончейн-контекстом: тонкий LP + новый домен без снимков — повод притормозить.</div>
 
@@ -141,23 +135,28 @@
   const root = document.documentElement;
   const btnEN = document.getElementById("btn-en");
   const btnRU = document.getElementById("btn-ru");
-  const blockEN = document.querySelector(".lang-en");
-  const blockRU = document.querySelector(".lang-ru");
+  const blockEN = document.getElementById("block-en");
+  const blockRU = document.getElementById("block-ru");
 
-  function apply(lang) {
-    localStorage.setItem(KEY, lang);
-    root.setAttribute("data-lang", lang);
-    btnEN.setAttribute("aria-pressed", String(lang === "en"));
-    btnRU.setAttribute("aria-pressed", String(lang === "ru"));
+  function show(lang) {
+    // Class toggle
     blockEN.classList.toggle("active", lang === "en");
     blockRU.classList.toggle("active", lang === "ru");
+    // Inline style override as a hard fallback
+    blockEN.style.display = (lang === "en") ? "block" : "none";
+    blockRU.style.display = (lang === "ru") ? "block" : "none";
+
+    btnEN.setAttribute("aria-pressed", String(lang === "en"));
+    btnRU.setAttribute("aria-pressed", String(lang === "ru"));
+    root.setAttribute("data-lang", lang);
+    localStorage.setItem(KEY, lang);
   }
 
-  btnEN.addEventListener("click", () => apply("en"));
-  btnRU.addEventListener("click", () => apply("ru"));
+  btnEN.addEventListener("click", () => show("en"));
+  btnRU.addEventListener("click", () => show("ru"));
 
   const saved = localStorage.getItem(KEY) || "en";
-  apply(saved);
+  show(saved);
 })();
 </script>
 <script src="script.js"></script>
