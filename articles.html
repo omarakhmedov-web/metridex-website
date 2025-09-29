@@ -4,45 +4,67 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Metridex — Articles</title>
-  <meta name="description" content="Insights on on-chain risk, token intel and Web3 security from the Metridex team.">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="description" content="Insights on on‑chain risk, token intel and Web3 security from the Metridex team.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 </head>
 <body>
   <header class="nav" id="siteNav">
     <div class="container nav-inner nav-container-wide">
-      <div class="brand"><span class="logo-mark">M</span><a class="logo-text" href="index.html">Metridex</a></div>
-      <nav class="nav-links">
-        <a href="articles.html">Articles</a>
-        <a href="videos.html">Videos</a>
-        <a href="help.html">Help</a>
+      <div class="brand">
+        <span class="logo-mark">M</span><span class="logo-text">Metridex</span>
+      </div>
+      <nav class="nav-links" aria-label="Primary">
+        <a data-i18n="nav.home" href="/">Home</a>
+        <a data-i18n="nav.features" href="/#features">Features</a>
+        <a data-i18n="nav.screens" href="/#screens">Screens</a>
+        <a data-i18n="nav.partners" href="/#partners">Partners</a>
+        <a data-i18n="nav.how" href="/#how-it-works">How it works</a>
+        <a data-i18n="nav.security" href="/#security">Security</a>
+        <a data-i18n="nav.pricing" href="/#pricing">Pricing</a>
+        <a data-i18n="nav.articles" href="/articles.html" aria-current="page">Articles</a>
+        <a data-i18n="nav.videos" href="/videos.html">Videos</a>
+        <a data-i18n="nav.faq" href="/#faq">FAQ</a>
+        <a data-i18n="nav.contact" href="/#contact">Contact</a>
       </nav>
       <div class="nav-actions">
-        <button id="themeToggle" class="icon-btn">🌙</button>
+        <button id="langToggle" class="icon-btn" aria-label="Toggle language" title="EN / RU">EN</button>
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">🌙</button>
       </div>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
     </div>
   </header>
 
   <main class="section">
     <div class="container">
-      <h1>Articles</h1>
-      <p class="sub">Insights on on-chain risk, token intel and Web3 security.</p>
-
+      <h1 data-i18n="articles.title">Articles</h1>
+      <p class="sub" data-i18n="articles.sub">Insights on on‑chain risk, token intel and Web3 security.</p>
       <div class="articles">
         <article class="post glass reveal">
-          <h3><a class="link" href="article-quickscan-methodology_bilingual_v3.html">QuickScan methodology (EN/RU)</a></h3>
-          <p>How we compress the first pass into seconds with explainable Why++.</p>
+          <h3><a class="link" href="article-quickscan-methodology_bilingual_v3.html" data-i18n="articles.p1_t">QuickScan method: how we compress risk into seconds</a></h3>
+          <p data-i18n="articles.p1_d">Our philosophy: “fast first, deep on demand” — metrics, signals, and design principles.</p>
         </article>
-
         <article class="post glass reveal">
-          <h3><a class="link" href="article-whois-wayback_bilingual_v2.html">WHOIS & Wayback checks (EN/RU)</a></h3>
-          <p>Why domains, SSL, and snapshots matter — and how we read them.</p>
+          <h3><a class="link" href="article-whois-wayback-checks.html" data-i18n="articles.p2_t">WHOIS & Wayback: a domain tells you more than you think</a></h3>
+          <p data-i18n="articles.p2_d">Using registrars, SSL chains and historical snapshots to catch red flags early.</p>
+        </article>
+        <article class="post glass reveal">
+          <h3><a class="link" href="#" data-i18n="articles.p3_t">Telegram safety for token communities</a></h3>
+          <p data-i18n="articles.p3_d">Moderation, anti‑spam, and what to automate with Metridex.</p>
         </article>
       </div>
     </div>
   </main>
 
-  <footer class="footer"><div class="container"><p>© <span id="year"></span> Metridex.</p></div></footer>
-  <script src="script.js"></script>
+  <footer class="footer">
+    <div class="container">
+      <p>© <span id="year"></span> <span>Metridex.</span> <span data-i18n="footer.rights">All rights reserved.</span></p>
+    </div>
+  </footer>
+
+  <script src="/script.js"></script>
 </body>
 </html>
