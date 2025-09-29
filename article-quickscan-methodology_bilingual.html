@@ -9,7 +9,7 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <style>
     .lang-switch { display:flex; gap:8px; align-items:center; }
-    .lang-btn { padding:.4rem .7rem; border:1px solid var(--stroke); background:var(--bg-elev); border-radius:10px; cursor:pointer; }
+    .lang-btn { color:#fff; padding:.4rem .7rem; border:1px solid var(--stroke); background:var(--bg-elev); border-radius:10px; cursor:pointer; }
     .lang-btn[aria-pressed="true"] { outline:2px solid var(--accent); }
     .lang-block { display:none; }
     .lang-block.active { display:block; }
@@ -44,6 +44,8 @@
       box-shadow: 0 0 0 3px rgba(212,175,55,.15);
     }
 
+
+    .lang-btn, .lang-btn * { color:#fff !important; }
 </style>
 </head>
 <body class="lux">
@@ -65,7 +67,7 @@
       <div>
         <h1 style="margin-top:0.25rem">QuickScan methodology</h1>
         <p class="article-meta">Guide · Sep 29, 2025</p>
-        <p class="article-author">— Omar, Founder of Metridex · Sep 29, 2025</p>
+        <p class="article-author">— Omar Ahmad, Founder of Metridex · Sep 29, 2025</p>
       </div>
       <div class="lang-switch" role="group" aria-label="Language">
         <button class="lang-btn" id="btn-en" data-lang="en" aria-pressed="true">EN</button>
