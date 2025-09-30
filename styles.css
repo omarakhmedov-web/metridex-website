@@ -218,3 +218,12 @@ body.has-fixed-nav{padding-top:72px}
 @media (max-width: 720px){
   .hero .cta-stack .cta-row{ justify-content:center; }
 }
+
+
+/* Nudge the whole CTA stack slightly to the left on desktop */
+.hero .cta-stack { margin-left: -12px; }
+
+@media (max-width: 720px){
+  /* On mobile keep it centered (no left nudge) */
+  .hero .cta-stack { margin-left: 0; }
+}
