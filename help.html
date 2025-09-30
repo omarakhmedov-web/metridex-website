@@ -1,86 +1,45 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Metridex — Help & FAQ</title>
-  <meta name="description" content="Help & FAQ for Metridex QuickScan bot">
-  <link rel="icon" href="/assets/favicon.ico">
-  <style>
-    :root { --bg:#0b0b0c; --card:#131316; --fg:#f2f2f2; --gold:#c8a24a; --muted:#9aa0a6; }
-    html,body { margin:0; padding:0; background:var(--bg); color:var(--fg); font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif; }
-    .wrap { max-width: 920px; margin: 40px auto; padding: 0 16px; }
-    .hero { display:flex; align-items:center; justify-content:space-between; gap:16px; }
-    h1 { font-size: 32px; margin: 0 0 8px; letter-spacing: .2px; }
-    .sub { color:var(--muted); margin-bottom: 20px; }
-    .card { background:linear-gradient(180deg,#111 0%,#0d0d0f 100%); border:1px solid #242427; border-radius:16px; padding:20px; box-shadow:0 2px 24px rgba(0,0,0,.25); }
-    .gold { color: var(--gold); }
-    a { color: var(--gold); text-decoration:none; }
-    a:hover { text-decoration:underline; }
-    details { background:var(--card); border:1px solid #242427; border-radius:12px; padding:16px; margin:10px 0; }
-    details > summary { cursor:pointer; font-weight:600; }
-    .grid { display:grid; grid-template-columns: 1fr; gap:14px; }
-    .form { background:var(--card); border:1px solid #242427; border-radius:16px; padding:16px; }
-    input, textarea { width:100%; background:#0e0e10; color:#fff; border:1px solid #2a2a2e; border-radius:10px; padding:10px 12px; font-size:15px; }
-    textarea { min-height:120px; resize:vertical; }
-    .row { display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
-    .btn { background:var(--gold); color:#0b0b0c; font-weight:700; border:0; border-radius:12px; padding:12px 14px; cursor:pointer; }
-    .muted { color:var(--muted); font-size:13px; }
-    @media (max-width:720px){ .row{grid-template-columns:1fr;} .hero{flex-direction:column; align-items:flex-start;} }
-  </style>
-</head>
-<body>
-  <div class="wrap">
-    <div class="hero">
-      <div>
-        <h1>Metridex <span class="gold">Help & FAQ</span></h1>
-        <div class="sub">Quick answers for the Telegram bot <a href="https://t.me/MetridexBot">@MetridexBot</a>. If you still need help — write us below.</div>
-      </div>
-      <div><a class="btn" href="https://t.me/MetridexBot">Open the bot</a></div>
-    </div>
+<html lang="en"><head>
+<meta charset="utf-8"><title>Metridex — Help / FAQ</title>
+<link rel="canonical" href="/help.html">
+<meta name="description" content="Help & FAQ for Metridex: Watchlist & Alerts (lite), features, usage.">
+<meta property="og:title" content="Metridex — Help / FAQ">
+<meta property="og:description" content="Help & FAQ for Metridex: Watchlist & Alerts (lite), features, usage.">
+<meta property="og:type" content="website"><meta property="og:url" content="https://metridex.com/help.html">
+<meta property="og:image" content="/assets/og-cover.png">
 
-    <div class="card">
-      <h2>FAQ</h2>
-      <div class="grid">
-        <details open>
-          <summary>How to run a QuickScan?</summary>
-          <div>Send a token <b>contract address</b>, <b>DexScreener URL</b> or a <b>pair address</b> to the bot. Example: <code>0x6982508145454Ce325dDbE47a25d4ec3d2311933</code>.</div>
-        </details>
-        <details>
-          <summary>What do the Δ buttons (5m / 1h / 6h / 24h) do?</summary>
-          <div>They switch the time range for price deltas in the QuickScan reply.</div>
-        </details>
-        <details>
-          <summary>How do I open Report (HTML) / Why / Why++?</summary>
-          <div>Tap the corresponding inline buttons under the scan result. The report opens as a web page.</div>
-        </details>
-        <details>
-          <summary>What is LP lock (lite)?</summary>
-          <div>We show a compact LP lock block with links to UNCX / TeamFinance and an approximate unlock date if we can detect it.</div>
-        </details>
-        <details>
-          <summary>My report shows outdated stats.</summary>
-          <div>Reports cache for a short time to improve speed. Re-run the scan after a minute or use the Δ buttons to refresh.</div>
-        </details>
-      </div>
-    </div>
+<style>
+  body{font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Arial,sans-serif; background:#000; color:#e8e8e8; margin:0; padding:0}
+  .wrap{max-width:920px; margin:40px auto; padding:0 16px}
+  h1{font-size:30px; margin:.2em 0 .4em; color:#f4f0e6}
+  h2{font-size:20px; margin:1.2em 0 .4em; color:#e5c97a}
+  p,li{font-size:15px; line-height:1.6}
+  .note{font-size:13px; opacity:.85}
+  a{color:#e5c97a; text-decoration:none; border-bottom:1px solid rgba(229,201,122,.3)}
+  a:hover{border-color:#e5c97a}
+</style>
 
-    <div class="form" id="contact">
-      <h2>Contact us</h2>
-      <form action="https://formsubmit.co/contact@metridex.com" method="POST">
-        <!-- formsubmit.co: you will get a verification email on first submit -->
-        <input type="hidden" name="_subject" value="Metridex support message">
-        <input type="hidden" name="_template" value="table">
-        <input type="text" name="_honey" style="display:none">
-        <div class="row">
-          <p><label>Your name<br><input required name="name" maxlength="120"></label></p>
-          <p><label>Your email<br><input required type="email" name="email" maxlength="160"></label></p>
-        </div>
-        <p><label>Message<br><textarea required name="message" maxlength="5000" placeholder="Describe your issue or question…"></textarea></label></p>
-        <p><button class="btn" type="submit">Send</button></p>
-        <p class="muted">Alternatively, email us: <a href="mailto:contact@metridex.com">contact@metridex.com</a>.</p>
-      </form>
-    </div>
-  </div>
-</body>
-</html>
+</head><body>
+<div class="wrap">
+  <h1>Help / FAQ</h1>
+  <h2>What is Watchlist & Alerts (lite)?</h2>
+  <p>A simple way to follow specific tokens. When you <strong>Watch</strong> a token, Metridex checks it periodically and sends lightweight alerts on notable changes (price Δ, liquidity shifts, holder concentration, LP-lock milestones, major flags). It’s designed to be useful yet quiet.</p>
+  <h2>How do I enable it?</h2>
+  <p>In the bot, open a token report and tap <strong>Watch</strong>. You’ll get a confirmation. To stop, tap <strong>Unwatch</strong> in the same place.</p>
+  <h2>What alerts will I receive?</h2>
+  <ul>
+    <li><strong>Price Δ</strong> thresholds (e.g., ±5%, ±10%, 24h moves).</li>
+    <li><strong>Liquidity</strong> adds/removes over a threshold.</li>
+    <li><strong>Holders</strong> concentration shifts.</li>
+    <li><strong>LP lock</strong> upcoming/expired milestones.</li>
+    <li><strong>Major flags</strong> (e.g., new proxy/admin risks detected).</li>
+  </ul>
+  <h2>How often are checks made?</h2>
+  <p>We use a conservative cadence (and cooldowns) to avoid spam. Expect a few alerts per day per watched token at most, only on material changes.</p>
+  <h2>How do I mute alerts?</h2>
+  <p>Tap <strong>Unwatch</strong> in the token card, or use <strong>/watchlist</strong> to manage subscriptions.</p>
+  <h2>Limits & availability</h2>
+  <p>Watchlist is <em>lite</em> in MVP: coverage for <strong>ETH/BSC/Polygon</strong>, reasonable caps per user, and guardrails to prevent spam. Pro tiers increase limits.</p>
+  <p class="note">Need more? Contact us to unlock higher limits and faster cadence.</p>
+</div>
+</body></html>
