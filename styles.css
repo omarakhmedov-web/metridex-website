@@ -214,3 +214,22 @@ body.has-fixed-nav{padding-top:72px}
   .hero .cta-stack{ justify-items: center; }
   .hero .cta-stack .cta-row{ justify-content: center; }
 }
+
+/* ===== SAFE8-FOX OVERRIDE (2025-09-30) — CTA two-row alignment: share the same LEFT edge ===== */
+.hero .cta-stack{ justify-items: start !important; }
+.hero .cta-stack .cta-row{ justify-content: flex-start !important; }
+.hero .cta-stack .cta-row--secondary{ justify-content: flex-start !important; }
+
+/* Ensure buttons don't cause overflow or wrap oddly */
+.hero .cta-stack .cta-row .cta{
+  margin: 0 !important;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
+/* Mobile: center both rows for balance */
+@media (max-width: 720px){
+  .hero .cta-stack{ justify-items: center !important; }
+  .hero .cta-stack .cta-row{ justify-content: center !important; }
+}
+/* ===== END SAFE8-FOX OVERRIDE ===== */
