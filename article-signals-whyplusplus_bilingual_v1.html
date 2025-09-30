@@ -1,13 +1,14 @@
-<!doctype html>
-<html lang="en" data-lang="en">
+<!DOCTYPE html>
+
+<html data-lang="en" lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Metridex — Signals & Why++ (EN/RU)</title>
-  <meta name="description" content="How QuickScan converts raw checks into an explainable verdict with Why++ factors — EN/RU bilingual.">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Metridex — Signals &amp; Why++ (EN/RU)</title>
+<meta content="How QuickScan converts raw checks into an explainable verdict with Why++ factors — EN/RU bilingual." name="description"/>
+<link href="styles.css" rel="stylesheet"/>
+<link href="favicon.svg" rel="icon" type="image/svg+xml"/>
+<style>
     .hero-subtle { padding-top: 96px; scroll-margin-top: 96px; }
     .article-author { opacity:.8; margin-top:.4rem; }
     .lang-switch { display:flex; gap:10px; align-items:center; }
@@ -37,103 +38,84 @@
 </head>
 <body class="lux">
 <header class="nav">
-  <div class="container nav-inner nav-container-wide">
-    <div class="brand"><span class="logo-mark">M</span><a class="logo-text" href="index.html">Metridex</a></div>
-    <nav class="nav-links">
-      <a href="articles.html">All articles</a>
-      <a href="videos.html">Videos</a>
-      <a href="help.html">Help</a>
-    </nav>
-    <div class="nav-actions"><button id="themeToggle" class="icon-btn" title="Toggle theme">🌙</button></div>
-  </div>
+<div class="container nav-inner nav-container-wide">
+<div class="brand"><span class="logo-mark">M</span><a class="logo-text" href="index.html">Metridex</a></div>
+<nav class="nav-links">
+<a href="articles.html">All articles</a>
+<a href="videos.html">Videos</a>
+<a href="help.html">Help</a>
+</nav>
+<div class="nav-actions"><button class="icon-btn" id="themeToggle" title="Toggle theme">🌙</button></div>
+</div>
 </header>
-
 <section class="hero-subtle">
-  <div class="container">
-    <div class="flex-row space-between" style="display:flex; align-items:center; justify-content:space-between; gap:16px;">
-      <div>
-        <h1 style="margin-top:0.25rem">Signals & Why++</h1>
-        <p class="article-meta">Guide · Sep 29, 2025</p>
-        <p class="article-author">— Omar Ahmad, Founder of Metridex · Sep 29, 2025</p>
-      </div>
-      <div class="lang-switch" role="group" aria-label="Language">
-        <button class="lang-btn" id="btn-en" data-lang="en" aria-pressed="true">EN</button>
-        <button class="lang-btn" id="btn-ru" data-lang="ru" aria-pressed="false">RU</button>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="flex-row space-between" style="display:flex; align-items:center; justify-content:space-between; gap:16px;">
+<div>
+<h1 style="margin-top:0.25rem">Signals &amp; Why++</h1>
+<p class="article-meta">Guide · Sep 29, 2025</p>
+<p class="article-author">— Omar Ahmad, Founder of Metridex · Sep 29, 2025</p>
+</div>
+<div aria-label="Language" class="lang-switch" role="group">
+<button aria-pressed="true" class="lang-btn" data-lang="en" id="btn-en">EN</button>
+<button aria-pressed="false" class="lang-btn" data-lang="ru" id="btn-ru">RU</button>
+</div>
+</div>
+</div>
 </section>
-
 <section class="section">
-  <div class="container article">
-
-    <!-- EN -->
-    <div class="lang-block lang-en active" id="block-en">
-      <p><strong>TL;DR</strong>: QuickScan aggregates a small set of high-signal checks and explains the verdict via <em>Why++</em> — short, auditable reasons you can trust in a chat.</p>
-
-      <h2>1) The signal set</h2>
-      <div class="kpi-grid">
-        <div class="kpi"><h3>Pair context</h3><p>Liquidity, FDV/MC, 24h volume, short-term Δ (DexScreener).</p></div>
-        <div class="kpi"><h3>On-chain</h3><p>Bytecode presence, proxy/admin flags, holders & LP concentration.</p></div>
-        <div class="kpi"><h3>Hygiene</h3><p>WHOIS/RDAP, SSL issuer/expiry, Wayback snapshots.</p></div>
-      </div>
-
-      <h2>2) Scoring to verdict</h2>
-      <p>We bucket risk as <code>Low</code>/<code>Medium</code>/<code>High</code>. Each bucket is driven by thresholds (e.g., LP ≥ X%, top holders ≤ Y%). Grey zones resolve via tie‑breakers (age, hygiene, recent Δ).</p>
-
-      <h2>3) Why++: explainability</h2>
-      <p>Every verdict includes 3–6 concise reasons, e.g. <em>“High liquidity”</em>, <em>“Contract missing”</em>, <em>“No Wayback snapshots”</em>. Reasons map 1:1 to checks and link back to sources in the HTML report.</p>
-
-      <h2>4) Limits & design choices</h2>
-      <ul>
-        <li><strong>Speed over breadth</strong>: we prefer fewer, stronger checks you can see in chat.</li>
-        <li><strong>First pass</strong>: meant to filter, not to replace due diligence.</li>
-        <li><strong>Transparent tradeoffs</strong>: Why++ always states <em>why</em>, not just a score.</li>
-      </ul>
-
-      <h2>5) What’s next</h2>
-      <p>Share links (TTL), PDF export, watchlists/alerts (lite), deeper LP-lock analytics, more chains.</p>
-
-      <hr>
-      <p><strong>Try it</strong>: <a href="https://t.me/MetridexBot" target="_blank" rel="noopener">@MetridexBot</a> • <a href="https://metridex.com" target="_blank" rel="noopener">metridex.com</a></p>
-    </div>
-
-    <!-- RU -->
-    <div class="lang-block lang-ru" id="block-ru">
-      <p><strong>Кратко</strong>: QuickScan собирает короткий набор сильных сигналов и объясняет вердикт через <em>Why++</em> — сжатые, проверяемые причины, понятные прямо в чате.</p>
-
-      <h2>1) Набор сигналов</h2>
-      <div class="kpi-grid">
-        <div class="kpi"><h3>Контекст пары</h3><p>Ликвидность, FDV/MC, объём 24h, краткосрочные Δ (DexScreener).</p></div>
-        <div class="kpi"><h3>Ончейн</h3><p>Наличие байткода, прокси/админ-флаги, холдеры и концентрация LP.</p></div>
-        <div class="kpi"><h3>Гигиена</h3><p>WHOIS/RDAP, издатель/срок SSL, снимки Wayback.</p></div>
-      </div>
-
-      <h2>2) От баллов к вердикту</h2>
-      <p>Риск — <code>Low</code>/<code>Medium</code>/<code>High</code>. Каждая корзина задаётся порогами (например, LP ≥ X%, топ‑холдеры ≤ Y%). Серые зоны решаем тай‑брейкерами (возраст, гигиена, недавние Δ).</p>
-
-      <h2>3) Why++: пояснимость</h2>
-      <p>В каждом вердикте 3–6 коротких причин: <em>«Высокая ликвидность»</em>, <em>«Контракт отсутствует»</em>, <em>«Нет снимков Wayback»</em>. Причины 1:1 соответствуют проверкам и в HTML‑отчёте ведут к источникам.</p>
-
-      <h2>4) Ограничения и дизайн‑выборы</h2>
-      <ul>
-        <li><strong>Скорость вместо широты</strong>: меньше, но сильнее — и видно прямо в чате.</li>
-        <li><strong>Первый проход</strong>: фильтр, а не замена дью‑дилидженса.</li>
-        <li><strong>Прозрачные компромиссы</strong>: Why++ всегда поясняет <em>почему</em>, а не просто очко.</li>
-      </ul>
-
-      <h2>5) Что дальше</h2>
-      <p>Шер‑ссылки (TTL), экспорт PDF, watchlists/alerts (lite), расширенная аналитика LP‑lock, больше сетей.</p>
-
-      <hr>
-      <p><strong>Попробовать</strong>: <a href="https://t.me/MetridexBot" target="_blank" rel="noopener">@MetridexBot</a> • <a href="https://metridex.com" target="_blank" rel="noopener">metridex.com</a></p>
-    </div>
-
-  </div>
+<div class="container article">
+<!-- EN -->
+<div class="lang-block lang-en active" id="block-en">
+<p><strong>TL;DR</strong>: QuickScan aggregates a small set of high-signal checks and explains the verdict via <em>Why++</em> — short, auditable reasons you can trust in a chat.</p>
+<h2>1) The signal set</h2>
+<div class="kpi-grid">
+<div class="kpi"><h3>Pair context</h3><p>Liquidity, FDV/MC, 24h volume, short-term Δ (DexScreener).</p></div>
+<div class="kpi"><h3>On-chain</h3><p>Bytecode presence, proxy/admin flags, holders &amp; LP concentration.</p></div>
+<div class="kpi"><h3>Hygiene</h3><p>WHOIS/RDAP, SSL issuer/expiry, Wayback snapshots.</p></div>
+</div>
+<h2>2) Scoring to verdict</h2>
+<p>We bucket risk as <code>Low</code>/<code>Medium</code>/<code>High</code>. Each bucket is driven by thresholds (e.g., LP ≥ X%, top holders ≤ Y%). Grey zones resolve via tie‑breakers (age, hygiene, recent Δ).</p>
+<h2>3) Why++: explainability</h2>
+<p>Every verdict includes 3–6 concise reasons, e.g. <em>“High liquidity”</em>, <em>“Contract missing”</em>, <em>“No Wayback snapshots”</em>. Reasons map 1:1 to checks and link back to sources in the HTML report.</p>
+<h2>4) Limits &amp; design choices</h2>
+<ul>
+<li><strong>Speed over breadth</strong>: we prefer fewer, stronger checks you can see in chat.</li>
+<li><strong>First pass</strong>: meant to filter, not to replace due diligence.</li>
+<li><strong>Transparent tradeoffs</strong>: Why++ always states <em>why</em>, not just a score.</li>
+</ul>
+<h2>5) What’s next</h2>
+<p>Share links (TTL), PDF export, watchlists/alerts (lite), deeper LP-lock analytics, more chains.</p>
+<p>Note: You can Watch any token to be alerted when these “Why++” factors change materially (lite cadence).</p><hr/>
+<p><strong>Try it</strong>: <a href="https://t.me/MetridexBot" rel="noopener" target="_blank">@MetridexBot</a> • <a href="https://metridex.com" rel="noopener" target="_blank">metridex.com</a></p>
+</div>
+<!-- RU -->
+<div class="lang-block lang-ru" id="block-ru">
+<p><strong>Кратко</strong>: QuickScan собирает короткий набор сильных сигналов и объясняет вердикт через <em>Why++</em> — сжатые, проверяемые причины, понятные прямо в чате.</p>
+<h2>1) Набор сигналов</h2>
+<div class="kpi-grid">
+<div class="kpi"><h3>Контекст пары</h3><p>Ликвидность, FDV/MC, объём 24h, краткосрочные Δ (DexScreener).</p></div>
+<div class="kpi"><h3>Ончейн</h3><p>Наличие байткода, прокси/админ-флаги, холдеры и концентрация LP.</p></div>
+<div class="kpi"><h3>Гигиена</h3><p>WHOIS/RDAP, издатель/срок SSL, снимки Wayback.</p></div>
+</div>
+<h2>2) От баллов к вердикту</h2>
+<p>Риск — <code>Low</code>/<code>Medium</code>/<code>High</code>. Каждая корзина задаётся порогами (например, LP ≥ X%, топ‑холдеры ≤ Y%). Серые зоны решаем тай‑брейкерами (возраст, гигиена, недавние Δ).</p>
+<h2>3) Why++: пояснимость</h2>
+<p>В каждом вердикте 3–6 коротких причин: <em>«Высокая ликвидность»</em>, <em>«Контракт отсутствует»</em>, <em>«Нет снимков Wayback»</em>. Причины 1:1 соответствуют проверкам и в HTML‑отчёте ведут к источникам.</p>
+<h2>4) Ограничения и дизайн‑выборы</h2>
+<ul>
+<li><strong>Скорость вместо широты</strong>: меньше, но сильнее — и видно прямо в чате.</li>
+<li><strong>Первый проход</strong>: фильтр, а не замена дью‑дилидженса.</li>
+<li><strong>Прозрачные компромиссы</strong>: Why++ всегда поясняет <em>почему</em>, а не просто очко.</li>
+</ul>
+<h2>5) Что дальше</h2>
+<p>Шер‑ссылки (TTL), экспорт PDF, watchlists/alerts (lite), расширенная аналитика LP‑lock, больше сетей.</p>
+<p>Примечание: Добавьте токен в Watch, чтобы получать оповещения при существенных изменениях факторов «Why++» (lite‑каденс).</p><hr/>
+<p><strong>Попробовать</strong>: <a href="https://t.me/MetridexBot" rel="noopener" target="_blank">@MetridexBot</a> • <a href="https://metridex.com" rel="noopener" target="_blank">metridex.com</a></p>
+</div>
+</div>
 </section>
-
 <footer class="footer"><div class="container"><p>© <span id="year"></span> Metridex.</p></div></footer>
-
 <script>
 (function() {
   const KEY = "mdx_lang";
