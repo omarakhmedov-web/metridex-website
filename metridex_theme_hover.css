@@ -1,0 +1,74 @@
+
+/* === Metridex: hover & light-theme enhancements (additive, safe) === */
+
+/* Subtle hover for feature cards (keeps layout stable) */
+.features-grid .feature.glass {
+  transition: transform .12s ease, box-shadow .18s ease, border-color .18s ease, background-color .18s ease;
+  will-change: transform;
+}
+.features-grid .feature.glass:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.28);
+  border-color: rgba(229,201,122,.65); /* gold */
+}
+
+/* Reduced-motion: disable lift */
+@media (prefers-reduced-motion: reduce) {
+  .features-grid .feature.glass,
+  .cta-row .cta {
+    transition: none !important;
+  }
+  .features-grid .feature.glass:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}
+
+/* CTA gentle hover (matches earlier style) */
+.cta-row .cta {
+  transition: transform .08s ease, box-shadow .14s ease, border-color .14s ease;
+}
+.cta-row .cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0,0,0,.22);
+  border-color: #f1d58a;
+}
+
+/* Hero tip readability */
+.hero-tip.text-center {
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* === Light theme (automatic) === */
+@media (prefers-color-scheme: light) {
+  body { background: #fafafa; color: #0f0f0f; }
+  .glass, .feature.glass {
+    background: #ffffff;
+    border-color: #e7e7e7;
+    box-shadow: 0 1px 0 rgba(0,0,0,.02) inset;
+  }
+  h1, h2, h3, h4 { color: #111; }
+  .hero-tip { color: #333; }
+  /* Accent gold slightly darker for light bg */
+  .accent, .badge, .plan-note, a, .cta-row .cta {
+    border-color: rgba(193,154,52,.55);
+    color: #111;
+  }
+  .cta-row .cta:hover {
+    box-shadow: 0 8px 18px rgba(0,0,0,.12);
+    border-color: rgba(193,154,52,.85);
+    background: #fffdf4;
+  }
+  /* Bottom banner (if present) */
+  #paywallBanner, #paywall, .paywall, .footer-bar {
+    background: #fffef7;
+    color: #111;
+    border-top: 1px solid #ece2c2;
+  }
+  #paywallBanner a, #paywall a, .paywall a, .footer-bar a {
+    color: #111;
+    border-color: rgba(193,154,52,.45);
+  }
+}
