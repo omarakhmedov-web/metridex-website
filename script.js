@@ -145,3 +145,29 @@ document.addEventListener('click', (e)=>{
 
 // Ensure CTA bot links always point to Telegram bot
 document.querySelectorAll('.cta-bot').forEach(a => { a.href='https://t.me/MetridexBot'; a.target='_blank'; a.rel='noopener'; });
+
+
+// Add title-translation support for [data-i18n-title]
+(function(){
+  function setTooltipTitles(lang){
+    try {
+      var L = (lang || (localStorage.getItem('lang')||'en')).toLowerCase();
+      var bag = (window.dict && window.dict[L]) || {};
+      document.querySelectorAll('[data-i18n-title]').forEach(function(el){
+        var key = el.getAttribute('data-i18n-title');
+        if (key && bag[key]) el.setAttribute('title', bag[key]);
+      });
+    } catch(e){}
+  }
+  // On load
+  if (document.readyState !== 'loading') setTooltipTitles();
+  else document.addEventListener('DOMContentLoaded', function(){ setTooltipTitles(); });
+
+  // Patch applyLanguage if present
+  if (typeof window.applyLanguage === 'function'){
+    var _orig = window.applyLanguage;
+    window.applyLanguage = function(lang){
+      try { _orig(lang); } finally { setTooltipTitles(lang); }
+    };
+  }
+})();
