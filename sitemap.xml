@@ -1,15 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ns0:urlset xmlns:ns0="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <ns0:url>
-    <ns0:loc>https://metridex.com/</ns0:loc>
-    <ns0:lastmod>2025-09-18</ns0:lastmod>
-    <ns0:changefreq>weekly</ns0:changefreq>
-    <ns0:priority>0.9</ns0:priority>
-  </ns0:url>
-  <ns0:url>
-    <ns0:loc>https://metridex.com/articles.html</ns0:loc>
-    <ns0:lastmod>2025-09-18</ns0:lastmod>
-    <ns0:changefreq>weekly</ns0:changefreq>
-    <ns0:priority>0.6</ns0:priority>
-  </ns0:url>
-<url><loc>https://metridex.com/onepager_en_print.html</loc><lastmod>2025-09-29</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url><loc>https://metridex.com/onepager_ru_print.html</loc><lastmod>2025-09-29</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url><loc>https://metridex.com/onepager_en_print_SAFE.pdf</loc><lastmod>2025-09-29</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url><loc>https://metridex.com/onepager_ru_print_SAFE.pdf</loc><lastmod>2025-09-29</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url><loc>https://metridex.com/onepager_en.html</loc><lastmod>2025-09-29</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url><loc>https://metridex.com/onepager_ru.html</loc><lastmod>2025-09-29</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url></ns0:urlset>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://metridex.com/</loc><lastmod>2025-09-18</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url><loc>https://metridex.com/articles.html</loc><lastmod>2025-09-18</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url><loc>https://metridex.com/help.html</loc><lastmod>2025-09-30</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url><loc>https://metridex.com/methodology.html</loc><lastmod>2025-09-30</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url><loc>https://metridex.com/onepager_en.html</loc><lastmod>2025-09-29</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url><loc>https://metridex.com/onepager_en_print.html</loc><lastmod>2025-09-29</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url><loc>https://metridex.com/onepager_en_print_SAFE.pdf</loc><lastmod>2025-09-29</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url><loc>https://metridex.com/onepager_ru.html</loc><lastmod>2025-09-29</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url><loc>https://metridex.com/onepager_ru_print.html</loc><lastmod>2025-09-29</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url><loc>https://metridex.com/onepager_ru_print_SAFE.pdf</loc><lastmod>2025-09-29</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>
