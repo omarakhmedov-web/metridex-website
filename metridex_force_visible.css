@@ -1,0 +1,12 @@
+
+/* Emergency visibility hotfix: if JS fails or is blocked, show content */
+.reveal { 
+  opacity: 1 !important;
+  transform: none !important;
+}
+/* If any reveal logic was using display:none; undo it */
+.reveal, .section.reveal { 
+  display: block !important;
+}
+/* Basic layout guard */
+.section { visibility: visible !important; }
