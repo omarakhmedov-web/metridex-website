@@ -194,11 +194,14 @@ body.has-fixed-nav{padding-top:72px}
 
 
 /* Align second CTA row (PDF buttons) to the right on desktop */
-.hero .cta-row--secondary {
-  justify-content: flex-end;
-}
 
 /* Keep mobile centered for neat stacking */
+@media (max-width: 720px) {
+
+/* Align second CTA row (PDF buttons) to the left on desktop for column match */
+.hero .cta-row--secondary { justify-content: flex-start; }
+
+/* Keep mobile centered */
 @media (max-width: 720px) {
   .hero .cta-row--secondary { justify-content: center; }
 }
