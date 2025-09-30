@@ -159,3 +159,7 @@ body.has-fixed-nav{padding-top:72px}
 .banner-actions{display:flex; align-items:center; gap:8px; flex-wrap:wrap}
 .banner .icon-btn.banner-close{border-color:var(--stroke)}
 @media (max-width:900px){ .banner{top:64px} }
+
+/* Tip under hero CTA */
+.hero-tip{margin-top:8px; font-size:13px; color:var(--muted)}
+.hero-tip.text-center{text-align:center}
