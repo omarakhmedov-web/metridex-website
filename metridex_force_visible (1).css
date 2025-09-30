@@ -1,0 +1,5 @@
+
+/* Emergency: make content visible even if JS fails */
+.reveal { opacity: 1 !important; transform: none !important; }
+.reveal, .section.reveal { display: block !important; visibility: visible !important; }
+body { visibility: visible !important; }
