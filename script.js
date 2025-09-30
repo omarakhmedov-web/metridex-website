@@ -145,3 +145,23 @@ document.addEventListener('click', (e)=>{
 
 // Ensure CTA bot links always point to Telegram bot
 document.querySelectorAll('.cta-bot').forEach(a => { a.href='https://t.me/MetridexBot'; a.target='_blank'; a.rel='noopener'; });
+
+
+// --- Metridex: enforce English as default ---
+(function(){
+  try {
+    var key = 'lang';
+    var stored = localStorage.getItem(key);
+    // If nothing stored or unexpected value, default to 'en'
+    if (!stored || !/^en|ru$/i.test(stored)) {
+      localStorage.setItem(key, 'en');
+      stored = 'en';
+    }
+    // If page provides a global applyLanguage(lang), call it now
+    if (typeof applyLanguage === 'function') {
+      applyLanguage(stored.toLowerCase());
+    }
+    // Also set <html lang="...">
+    try { document.documentElement.setAttribute('lang', stored.toLowerCase()); } catch(e){}
+  } catch(e) { /* noop */ }
+})();
