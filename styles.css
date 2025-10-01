@@ -235,9 +235,16 @@ body.has-fixed-nav{padding-top:72px}
 /* ===== END SAFE8-FOX OVERRIDE ===== */
 
 
-/* === Brand lockup: shield + wordmark === */
-.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none}
-.brand-logo{height:32px;width:auto;vertical-align:middle}
-@media (min-width:640px){.brand-logo{height:36px}}
-.brand-text{color:#f3f4f6!important;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:1!important;mix-blend-mode:normal!important;filter:none!important}
-.brand:hover .brand-text{color:#d4b14a!important}
+/* === Metridex: wordmark color fix (gold) === */
+header .logo-text,
+.brand-text,
+.brand .logo-text {
+  color: #d4b14a !important;           /* premium gold */
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+  filter: none !important;
+}
+header .brand:hover .logo-text,
+header .brand:hover .brand-text {
+  color: #e1c46a !important;           /* hover: lighter gold */
+}
