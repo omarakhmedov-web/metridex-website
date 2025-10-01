@@ -217,3 +217,49 @@ document.querySelectorAll('.cta-bot').forEach(a => { a.href='https://t.me/Metrid
   else { document.addEventListener('DOMContentLoaded', bindScreens); }
   window.addEventListener('load', bindScreens);
 })();
+
+
+// === AURUM-DELTA: Screens (mdx-frame) bootstrap ===
+(function(){
+  function parseList(s){
+    if(!s) return [];
+    return s.split(',').map(function(x){ return x.trim(); }).filter(Boolean);
+  }
+  function initFrames(){
+    document.querySelectorAll('.mdx-frame').forEach(function(frame){
+      if(frame.dataset.mdxInit) return;
+      frame.dataset.mdxInit = '1';
+      var stage = frame.querySelector('.mdx-stage');
+      if(!stage){ stage = document.createElement('div'); stage.className='mdx-stage'; frame.appendChild(stage); }
+      var imgs = parseList(frame.getAttribute('data-images'));
+      // fallback to background-image if no list
+      var bg = (frame.style && frame.style.backgroundImage) ? frame.style.backgroundImage.replace(/^url\(["']?(.+?)["']?\)$/, '$1') : null;
+      if(imgs.length===0 && bg){ imgs = [bg]; }
+      var idx = 0;
+      function render(){
+        if(!imgs.length) return;
+        stage.innerHTML = '';
+        var img = document.createElement('img');
+        img.src = imgs[idx];
+        img.alt = (frame.getAttribute('data-alt')||'Screenshot') + ' ('+(idx+1)+'/'+imgs.length+')';
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        img.style.width = '100%';
+        img.style.height = 'auto';
+        stage.appendChild(img);
+      }
+      render();
+      // wire nav if present
+      var prev = frame.parentElement && frame.parentElement.querySelector('.mdx-prev');
+      var next = frame.parentElement && frame.parentElement.querySelector('.mdx-next');
+      if(prev && next){
+        prev.addEventListener('click', function(){ if(!imgs.length) return; idx=(idx-1+imgs.length)%imgs.length; render(); });
+        next.addEventListener('click', function(){ if(!imgs.length) return; idx=(idx+1)%imgs.length; render(); });
+      }
+    });
+  }
+  if(document.readyState === 'complete' || document.readyState === 'interactive'){ initFrames(); }
+  else { document.addEventListener('DOMContentLoaded', initFrames); }
+  window.addEventListener('load', initFrames);
+})();
+
