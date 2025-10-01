@@ -7,56 +7,12 @@
 <title>Metridex — QuickScan methodology (EN/RU)</title>
 <meta content="QuickScan methodology: EN/RU. How Metridex turns raw on-chain data into an explainable verdict with Why++." name="description"/>
 <link href="styles.css" rel="stylesheet"/>
-
-<style>
-    .lang-switch { display:flex; gap:8px; align-items:center; }
-    .lang-btn { color:#fff; padding:.4rem .7rem; border:1px solid var(--stroke); background:var(--bg-elev); border-radius:10px; cursor:pointer; }
-    .lang-btn[aria-pressed="true"] { outline:2px solid var(--accent); }
-    .lang-block { display:none; }
-    .lang-block.active { display:block; }
-    .article-author { opacity:.8; margin-top:.4rem; }
-  
-    /* ---- SAFE SPACING UNDER STICKY HEADER ---- */
-    .hero-subtle { padding-top: 96px; scroll-margin-top: 96px; }
-
-    /* ---- LANGUAGE TOGGLE VISIBILITY ---- */
-    .lang-switch { gap:10px; }
-    .lang-btn {
-      padding:.5rem .85rem;
-      border:1px solid rgba(255,255,255,.35);
-      background: rgba(255,255,255,.08);
-      border-radius:12px;
-      cursor:pointer;
-      font-weight:600;
-      line-height:1;
-      backdrop-filter: saturate(120%) blur(2px);
-    }
-    [data-theme="light"] .lang-btn,
-    body:not(.lux) .lang-btn {
-      border-color: rgba(0,0,0,.25);
-      background: rgba(0,0,0,.06);
-    }
-    .lang-btn:hover { background: rgba(255,255,255,.16); }
-    [data-theme="light"] .lang-btn:hover,
-    body:not(.lux) .lang-btn:hover { background: rgba(0,0,0,.1); }
-
-    .lang-btn[aria-pressed="true"] {
-      outline: 2px solid var(--accent, #d4af37);
-      box-shadow: 0 0 0 3px rgba(212,175,55,.15);
-    }
-
-
-    .lang-btn, .lang-btn * { color:#fff !important; }
-
-    .lang-block { display:none !important; }
-    .lang-block.active { display:block !important; }
-    .lang-btn, .lang-btn * { color:#fff !important; }
-</style>
-<link href="/logo/favicon-32.png?v=3" rel="icon" sizes="32x32" type="image/png"/><link href="/logo/favicon-16.png?v=3" rel="icon" sizes="16x16" type="image/png"/><link href="/logo/apple-touch-icon.png?v=3" rel="apple-touch-icon" sizes="180x180"/><link href="/logo/favicon.ico?v=3" rel="icon"/><link href="/logo/site.webmanifest?v=3" rel="manifest"/><style>
-/* AURUM-DELTA: header shield sizing for articles */
-.brand-logo{height:108px;width:auto;vertical-align:middle}
-@media (max-width:640px){.brand-logo{height:84px}}
-</style></head>
+<link href="/logo/favicon-32.png?v=3" rel="icon" sizes="32x32" type="image/png"/><link href="/logo/favicon-16.png?v=3" rel="icon" sizes="16x16" type="image/png"/><link href="/logo/apple-touch-icon.png?v=3" rel="apple-touch-icon" sizes="180x180"/><link href="/logo/favicon.ico?v=3" rel="icon"/><link href="/logo/site.webmanifest?v=3" rel="manifest"/><style>.article-meta{font-size:0.9rem;color:#9aa3af;margin:8px 0 18px}
+.article-nav{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.article-nav a{padding:10px 14px;border:1px solid #2a2a2a;border-radius:10px;text-decoration:none}
+.article-nav a:hover{background:#0b0b0b}</style><style>.article-body{margin-top:56px}</style><style>.article-kicker{font-size:.9rem;color:#9aa3af;margin-top:8px}
+.article-author{font-size:.95rem;color:#c7cdd6;margin-top:6px}
+.article-body{margin-top:56px}</style></head>
 <body class="lux">
 <header class="nav">
 <div class="container nav-inner nav-container-wide">
@@ -73,9 +29,7 @@
 <div class="container">
 <div class="flex-row space-between" style="display:flex; align-items:center; justify-content:space-between; gap:16px;">
 <div>
-<h1 style="margin-top:0.25rem">QuickScan methodology</h1>
-<p class="article-meta">Guide · Sep 29, 2025</p>
-<p class="article-author">— Omar Ahmad, Founder of Metridex · Sep 29, 2025</p>
+<h1 style="margin-top:0.25rem">QuickScan methodology</h1><div class="article-kicker">Guide · Sep 29, 2025</div><div class="article-author">— Omar Ahmad, Founder of Metridex</div><div class="article-body"></div>
 </div>
 <div aria-label="Language" class="lang-switch" role="group">
 <button aria-pressed="true" class="lang-btn" data-lang="en" id="btn-en">EN</button>
@@ -137,31 +91,5 @@
 </div>
 </section>
 <footer class="footer"><div class="container"><p>© <span id="year"></span> Metridex.</p></div></footer>
-<script>
-(function() {
-  const KEY = "mdx_lang";
-  const root = document.documentElement;
-  const btnEN = document.getElementById("btn-en");
-  const btnRU = document.getElementById("btn-ru");
-  const blocksEN = document.querySelector(".lang-en");
-  const blocksRU = document.querySelector(".lang-ru");
-
-  function apply(lang) { const en=document.querySelector('.lang-en'); const ru=document.querySelector('.lang-ru'); if(en&&ru){ en.style.display=(lang==='en')?'block':'none'; ru.style.display=(lang==='ru')?'block':'none'; } 
-    localStorage.setItem(KEY, lang);
-    root.setAttribute("data-lang", lang);
-    btnEN.setAttribute("aria-pressed", String(lang === "en"));
-    btnRU.setAttribute("aria-pressed", String(lang === "ru"));
-    blocksEN.classList.toggle("active", lang === "en");
-    blocksRU.classList.toggle("active", lang === "ru");
-  }
-
-  btnEN.addEventListener("click", () => apply("en"));
-  btnRU.addEventListener("click", () => apply("ru"));
-
-  const saved = localStorage.getItem(KEY) || "en";
-  apply(saved);
-})();
-</script>
-<script src="script.js"></script>
-</body>
+<div class="article-nav"><a href="/articles.html">← Back to Articles</a><a href="/article-whois-wayback_bilingual_v2.html">Next: WHOIS &amp; Wayback checks →</a></div></body>
 </html>
