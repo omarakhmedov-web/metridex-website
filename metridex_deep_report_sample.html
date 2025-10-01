@@ -1,10 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Metridex — Deep Report (Sample)</title>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Metridex — Deep Report (Sample)</title>
+<style>
     body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#0b0b0d;color:#e9e9ef}
     .wrap{max-width:900px;margin:0 auto;padding:40px 20px}
     .card{background:#111216;border:1px solid #1f2230;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35);padding:28px}
@@ -20,42 +21,42 @@
     .bad{color:#ff5c6a}
     a.button{display:inline-block;margin-top:18px;padding:10px 16px;border:1px solid #2a2d3c;border-radius:10px;color:#e9e9ef;text-decoration:none}
     .hr{height:1px;background:#1e2030;margin:18px 0}
-  </style>
-</head>
+  
+/* AURUM-DELTA: Deep Report header logo */
+.report-logo{height:28px;width:auto;display:block;margin:0 0 10px}
+@media (max-width:640px){.report-logo{height:24px}}
+@media print {.report-logo{height:24px;margin-bottom:8px}}</style>
+<link href="/logo/favicon-32.png?v=3" rel="icon" sizes="32x32" type="image/png"/><link href="/logo/favicon-16.png?v=3" rel="icon" sizes="16x16" type="image/png"/><link href="/logo/apple-touch-icon.png?v=3" rel="apple-touch-icon" sizes="180x180"/><link href="/logo/favicon.ico?v=3" rel="icon"/><link href="/logo/site.webmanifest?v=3" rel="manifest"/></head>
 <body>
-  <div class="wrap">
-    <div class="card">
-      <h1>Metridex — Deep Report (Sample)</h1>
-      <div class="muted">Demo snapshot for UX only. Not financial advice.</div>
-
-      <h2>Pair & Token</h2>
-      <div class="grid">
-        <div class="k"><b>Ticker</b> PEPE / WETH</div>
-        <div class="k"><b>Chain</b> Ethereum (ERC‑20)</div>
-        <div class="k"><b>Price</b> $0.00000123</div>
-        <div class="k"><b>Δ 24h</b> +2.5%</div>
-      </div>
-
-      <h2>On‑chain checks</h2>
-      <div class="grid">
-        <div class="k"><b>Contract verified</b> <span class="ok">Yes</span></div>
-        <div class="k"><b>Honeypot</b> <span class="ok">No</span></div>
-        <div class="k"><b>Owner privileges</b> <span class="warn">Limited</span></div>
-        <div class="k"><b>Top holders</b> 15% (no single >5%)</div>
-      </div>
-
-      <h2>Web signals</h2>
-      <div class="grid">
-        <div class="k"><b>Domain</b> pepe.example</div>
-        <div class="k"><b>SSL</b> <span class="ok">Valid</span> (expires 2026‑01‑03)</div>
-        <div class="k"><b>Wayback</b> 2021‑08‑14 first snapshot</div>
-        <div class="k"><b>Socials</b> Twitter/Telegram active</div>
-      </div>
-
-      <div class="hr"></div>
-      <div class="muted">This page is a static mock for demonstration. Your live Deep Reports in Telegram are richer and interactive.</div>
-      <a class="button" href="https://t.me/MetridexBot" target="_blank" rel="noopener">Open @MetridexBot</a>
-    </div>
-  </div>
+<div class="wrap">
+<div class="card">
+<img alt="Metridex" class="report-logo" src="/logo/metridex_logo_header.png"/><h1>Metridex — Deep Report (Sample)</h1>
+<div class="muted">Demo snapshot for UX only. Not financial advice.</div>
+<h2>Pair &amp; Token</h2>
+<div class="grid">
+<div class="k"><b>Ticker</b> PEPE / WETH</div>
+<div class="k"><b>Chain</b> Ethereum (ERC‑20)</div>
+<div class="k"><b>Price</b> $0.00000123</div>
+<div class="k"><b>Δ 24h</b> +2.5%</div>
+</div>
+<h2>On‑chain checks</h2>
+<div class="grid">
+<div class="k"><b>Contract verified</b> <span class="ok">Yes</span></div>
+<div class="k"><b>Honeypot</b> <span class="ok">No</span></div>
+<div class="k"><b>Owner privileges</b> <span class="warn">Limited</span></div>
+<div class="k"><b>Top holders</b> 15% (no single &gt;5%)</div>
+</div>
+<h2>Web signals</h2>
+<div class="grid">
+<div class="k"><b>Domain</b> pepe.example</div>
+<div class="k"><b>SSL</b> <span class="ok">Valid</span> (expires 2026‑01‑03)</div>
+<div class="k"><b>Wayback</b> 2021‑08‑14 first snapshot</div>
+<div class="k"><b>Socials</b> Twitter/Telegram active</div>
+</div>
+<div class="hr"></div>
+<div class="muted">This page is a static mock for demonstration. Your live Deep Reports in Telegram are richer and interactive.</div>
+<a class="button" href="https://t.me/MetridexBot" rel="noopener" target="_blank">Open @MetridexBot</a>
+</div>
+</div>
 </body>
 </html>
