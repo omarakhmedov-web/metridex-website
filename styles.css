@@ -312,3 +312,42 @@ figure.screen{padding:0 !important; margin:0 auto !important; max-width:1000px}
 .mdx-lb-close{ top:20px; right:20px; font-size:28px }
 .mdx-lb-prev:hover, .mdx-lb-next:hover, .mdx-lb-close:hover{ background:rgba(255,255,255,0.2) }
 
+
+/* === AURUM-DELTA: Screens size tweak === */
+.screens-grid{ grid-template-columns:repeat(auto-fit,minmax(460px,1fr)) !important; }
+figure.screen{ max-width:900px !important; }
+.mdx-frame{ border-radius:12px !important; }
+
+
+/* === AURUM-DELTA: smaller windows & z-index for lightbox buttons === */
+.screens-grid{ grid-template-columns:repeat(auto-fit,minmax(420px,1fr)) !important; }
+figure.screen{ max-width:840px !important; }
+.mdx-prev, .mdx-next{ z-index:3; } /* above image */
+.mdx-lb-close, .mdx-lb-prev, .mdx-lb-next{ z-index:10001; }
+.mdx-lb-img{ pointer-events:auto }
+
+
+/* === AURUM-DELTA: Header fixes (logo + nowrap) === */
+header.nav .brand{margin-left:-1cm !important}
+@media (max-width:640px){ header.nav .brand{margin-left:-0.6cm !important} }
+header.nav .menu a{white-space:nowrap !important}
+
+/* === AURUM-DELTA: Screens sizing (smaller, centered) === */
+.screens{display:block}
+.screens .screens-grid,
+.screens .grid,
+.screens .row{display:grid; grid-template-columns:repeat(auto-fit,minmax(420px,1fr)) !important; gap:24px !important; justify-items:center}
+figure.screen{margin:0 auto !important; max-width:840px !important; width:100% !important}
+.mdx-frame{max-width:840px !important; width:100% !important; border-radius:12px !important}
+
+/* Ensure stage & image visible and fluid */
+.mdx-frame .mdx-stage{display:block !important; line-height:0}
+.mdx-frame .mdx-stage img{display:block !important; width:100% !important; height:auto !important}
+
+/* Lightbox polish & reliable close */
+.mdx-lightbox{transition:opacity .15s ease; opacity:0}
+.mdx-lightbox.open{opacity:1}
+.mdx-lb-close, .mdx-lb-prev, .mdx-lb-next{z-index:10001; outline:none; border-radius:50%}
+.mdx-lb-close:focus, .mdx-lb-prev:focus, .mdx-lb-next:focus{outline:none}
+.mdx-lightbox *{outline:none !important}
+
