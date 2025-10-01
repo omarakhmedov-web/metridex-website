@@ -263,3 +263,117 @@ document.querySelectorAll('.cta-bot').forEach(a => { a.href='https://t.me/Metrid
   window.addEventListener('load', initFrames);
 })();
 
+
+// === AURUM-DELTA: mdx-frame swipe + lightbox ===
+(function(){
+  function onSwipe(el, cb){
+    var sx=0, sy=0, dx=0, dy=0, start=false;
+    el.addEventListener('touchstart', function(e){ 
+      var t=e.touches[0]; sx=t.clientX; sy=t.clientY; start=true; 
+    }, {passive:true});
+    el.addEventListener('touchmove', function(e){ 
+      if(!start) return; var t=e.touches[0]; dx=t.clientX-sx; dy=t.clientY-sy; 
+    }, {passive:true});
+    el.addEventListener('touchend', function(){ 
+      if(!start) return; start=false; 
+      if(Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) cb(dx>0? 'right':'left');
+      dx=dy=0;
+    }, {passive:true});
+  }
+
+  // Lightweight lightbox
+  var lb, lbImg, lbPrev, lbNext, lbClose;
+  function ensureLightbox(){
+    if(lb) return;
+    lb = document.createElement('div');
+    lb.className = 'mdx-lightbox';
+    lb.innerHTML = [
+      '<button class="mdx-lb-close" aria-label="Close">×</button>',
+      '<button class="mdx-lb-prev" aria-label="Prev">‹</button>',
+      '<img class="mdx-lb-img" alt="screenshot">',
+      '<button class="mdx-lb-next" aria-label="Next">›</button>'
+    ].join('');
+    document.body.appendChild(lb);
+    lbImg = lb.querySelector('.mdx-lb-img');
+    lbPrev = lb.querySelector('.mdx-lb-prev');
+    lbNext = lb.querySelector('.mdx-lb-next');
+    lbClose= lb.querySelector('.mdx-lb-close');
+    lb.addEventListener('click', function(e){ if(e.target===lb) hide(); });
+    lbClose.addEventListener('click', hide);
+    document.addEventListener('keydown', function(e){
+      if(!lb.classList.contains('open')) return;
+      if(e.key==='Escape') hide();
+      if(e.key==='ArrowLeft') trigger('prev');
+      if(e.key==='ArrowRight') trigger('next');
+    });
+  }
+  var currentSet = [], currentIdx = 0;
+  function show(set, idx){
+    ensureLightbox();
+    currentSet = set; currentIdx = idx;
+    lbImg.src = set[idx];
+    lb.classList.add('open');
+  }
+  function hide(){ lb && lb.classList.remove('open'); }
+  function trigger(dir){
+    if(!currentSet.length) return;
+    if(dir==='prev') currentIdx = (currentIdx-1+currentSet.length)%currentSet.length;
+    if(dir==='next') currentIdx = (currentIdx+1)%currentSet.length;
+    lbImg.src = currentSet[currentIdx];
+  }
+
+  // Attach to frames after AURUM-DELTA initFrames
+  function enhanceFrames(){
+    document.querySelectorAll('.mdx-frame').forEach(function(frame){
+      if(frame.dataset.mdxEnhanced) return;
+      var stage = frame.querySelector('.mdx-stage');
+      if(!stage) return;
+      frame.dataset.mdxEnhanced = '1';
+      var list = [];
+      var attr = frame.getAttribute('data-images');
+      if(attr){
+        list = attr.split(',').map(function(s){return s.trim();}).filter(Boolean);
+      } else {
+        var img = stage.querySelector('img');
+        if(img) list = [img.src];
+      }
+      // click -> lightbox
+      stage.addEventListener('click', function(){
+        var cur = stage.querySelector('img');
+        var idx = 0;
+        if(cur){
+          var curSrc = cur.getAttribute('src');
+          idx = Math.max(0, list.indexOf(curSrc));
+        }
+        show(list, idx);
+      });
+      // swipe
+      onSwipe(stage, function(dir){
+        var ev = new Event(dir==='left' ? 'mdx-next' : 'mdx-prev');
+        frame.dispatchEvent(ev);
+      });
+      // keyboard arrows over frame
+      frame.setAttribute('tabindex','0');
+      frame.addEventListener('keydown', function(e){
+        if(e.key==='ArrowLeft') { frame.dispatchEvent(new Event('mdx-prev')); }
+        if(e.key==='ArrowRight'){ frame.dispatchEvent(new Event('mdx-next')); }
+      });
+      // integrate with existing nav buttons or our events
+      var prev = frame.parentElement && frame.parentElement.querySelector('.mdx-prev');
+      var next = frame.parentElement && frame.parentElement.querySelector('.mdx-next');
+      function clickPrev(){ if(prev) prev.click(); else frame.dispatchEvent(new Event('mdx-prev')); }
+      function clickNext(){ if(next) next.click(); else frame.dispatchEvent(new Event('mdx-next')); }
+      frame.addEventListener('mdx-prev', clickPrev);
+      frame.addEventListener('mdx-next', clickNext);
+    });
+  }
+
+  // When our base initFrames has run, enhance
+  if(document.readyState==='complete' || document.readyState==='interactive'){
+    setTimeout(enhanceFrames, 50);
+  } else {
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(enhanceFrames, 50); });
+  }
+  window.addEventListener('load', function(){ setTimeout(enhanceFrames, 50); });
+})();
+
