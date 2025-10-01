@@ -249,9 +249,20 @@ header .brand:hover .brand-text {
   color: #e1c46a !important;           /* hover: lighter gold */
 }
 
-/* === AURUM-DELTA: navbar brand left shift (global) === */
-header.nav .brand{margin-left:-1cm}
-@media (max-width: 640px){
-  header.nav .brand{margin-left:-0.6cm}
+
+/* === AURUM-DELTA: Screens fixes (mapping .mdx-frame ↔ .viewport) === */
+.screens-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(520px,1fr)) !important; gap:24px !important}
+figure.screen{padding:0 !important; margin:0 auto !important; max-width:1000px}
+.mdx-frame{
+  border:none !important;
+  border-radius:14px !important;
+  overflow:hidden !important;
+  aspect-ratio:16/10 !important;
+  background-size:cover !important;
+  background-position:center top !important;
+  background-repeat:no-repeat !important;
+  box-shadow:0 10px 30px rgba(0,0,0,.35) !important;
 }
-/* Keep logo size rules from pages; this only shifts position. */
+.mdx-frame .mdx-stage{display:none} /* fallback: use background-image */
+.mdx-frame .toolbar, .mdx-frame .mdx-nav{display:none} /* hide extra chrome if any */
+
