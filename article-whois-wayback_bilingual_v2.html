@@ -19,7 +19,29 @@
 .lang-block.active{display:block}
 .lang-switch{margin:10px 0 0;display:flex;gap:8px;align-items:center}
 .lang-switch button{padding:6px 10px;border:1px solid #2a2a2a;border-radius:8px;background:transparent;cursor:pointer}
-.lang-switch button.active{background:#0b0b0b}</style></head>
+.lang-switch button.active{background:#0b0b0b}</style><style>
+/* AURUM-DELTA OVERRIDES — spacing + switcher visuals */
+.article-body{margin-top:8px !important}              /* was ~56px; closer by ~1.5cm */
+.article-nav{margin-top:9px !important}               /* was 28px; lifted by ~0.5cm */
+
+/* Language switcher: brighter, like homepage */
+.lang-switch{margin-top:10px; gap:10px}
+.lang-switch button{
+  padding:8px 14px;
+  border:1px solid #3b3b3b;
+  border-radius:10px;
+  background:rgba(255,255,255,0.04);
+  color:#e5e7eb;
+  font-weight:600;
+  letter-spacing:.2px;
+}
+.lang-switch button:hover{background:rgba(255,255,255,0.08)}
+.lang-switch button.active{
+  background:#1f2937;
+  border-color:#6b7280;
+  color:#ffffff;
+}
+</style></head>
 <body class="article-offset lux">
 <header class="nav">
 <div class="container nav-inner nav-container-wide">
