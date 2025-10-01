@@ -174,40 +174,46 @@ document.querySelectorAll('.cta-bot').forEach(a => { a.href='https://t.me/Metrid
 })();
 
 
-// === Metridex Screens carousel ===
+/* Metridex Lightbox bootstrap (idempotent) */
 (function(){
-  const lb = document.getElementById('mdxLightbox');
-  const lbImg = lb ? lb.querySelector('img') : null;
-  const lbClose = lb ? lb.querySelector('.mdx-close') : null;
-  function openLB(src){ if(!lb||!lbImg) return; lbImg.src = src; lb.classList.add('open'); lb.removeAttribute('hidden'); }
-  function closeLB(){ if(!lb) return; lb.classList.remove('open'); lb.setAttribute('hidden',''); }
-  lb && (lb.addEventListener('click', closeLB), lbClose && lbClose.addEventListener('click', closeLB));
-  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeLB(); });
-
-  document.querySelectorAll('.mdx-frame').forEach(frame=>{
-    const list = (frame.getAttribute('data-images')||'').split(',').map(s=>s.trim()).filter(Boolean);
-    const stage = frame.querySelector('.mdx-stage');
-    const img = new Image();
-    let i = 0;
-    function render(){ img.src = list[i]; counter.textContent = (i+1)+' / '+list.length; }
-    img.alt = frame.getAttribute('data-alt') || 'Metridex screenshot';
-    img.addEventListener('click', ()=> openLB(img.src));
-    stage.appendChild(img);
-
-    const prev = frame.querySelector('.mdx-prev');
-    const next = frame.querySelector('.mdx-next');
-    const counter = frame.querySelector('.mdx-counter');
-
-    function step(d){ i = (i + d + list.length) % list.length; render(); }
-    prev && prev.addEventListener('click', ()=> step(-1));
-    next && next.addEventListener('click', ()=> step(1));
-
-    // Touch swipe
-    let sx=null;
-    stage.addEventListener('touchstart', e=> sx=e.touches[0].clientX, {passive:true});
-    stage.addEventListener('touchend', e=>{ if(sx==null) return; const dx=e.changedTouches[0].clientX - sx; if(Math.abs(dx)>40) step(dx<0?1:-1); sx=null; }, {passive:true});
-
-    if(list.length){ render(); }
-  });
+  function ensureLightbox(){
+    var lb = document.getElementById('mdxLightbox');
+    if(!lb){
+      lb = document.createElement('div');
+      lb.id = 'mdxLightbox';
+      lb.className = 'mdx-lightbox';
+      lb.setAttribute('hidden','');
+      var img = document.createElement('img');
+      var btn = document.createElement('button');
+      btn.className = 'mdx-close'; btn.setAttribute('aria-label','Close'); btn.textContent = '✕';
+      lb.appendChild(img); lb.appendChild(btn);
+      document.body.appendChild(lb);
+    }
+    return lb;
+  }
+  function openLB(src){
+    var lb = ensureLightbox();
+    var img = lb.querySelector('img');
+    var btn = lb.querySelector('.mdx-close');
+    img.src = src;
+    lb.classList.add('open');
+    lb.removeAttribute('hidden');
+    function close(){ lb.classList.remove('open'); lb.setAttribute('hidden',''); }
+    lb.addEventListener('click', close, {once:true});
+    btn && btn.addEventListener('click', close, {once:true});
+    document.addEventListener('keydown', function esc(e){ if(e.key==='Escape'){ close(); document.removeEventListener('keydown', esc);} });
+  }
+  function bindScreens(){
+    document.querySelectorAll('.mdx-frame .mdx-stage img').forEach(function(img){
+      if(!img.dataset.lbBound){
+        img.dataset.lbBound = '1';
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', function(){ openLB(img.currentSrc || img.src); });
+      }
+    });
+  }
+  // Run on ready and after load (in case images are added later)
+  if(document.readyState === 'complete' || document.readyState === 'interactive'){ bindScreens(); }
+  else { document.addEventListener('DOMContentLoaded', bindScreens); }
+  window.addEventListener('load', bindScreens);
 })();
-// === /Carousel ===
