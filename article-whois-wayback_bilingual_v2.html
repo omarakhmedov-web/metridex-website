@@ -12,8 +12,15 @@
 .article-nav a{padding:10px 14px;border:1px solid #2a2a2a;border-radius:10px;text-decoration:none}
 .article-nav a:hover{background:#0b0b0b}</style><style>.article-body{margin-top:56px}</style><style>.article-kicker{font-size:.9rem;color:#9aa3af;margin-top:8px}
 .article-author{font-size:.95rem;color:#c7cdd6;margin-top:6px}
-.article-body{margin-top:56px}</style></head>
-<body class="lux">
+.article-body{margin-top:56px}</style><style>/* AURUM-DELTA: spacing under fixed header */
+.article-offset{padding-top:140px}
+/* Bilingual visibility */
+.lang-block{display:none}
+.lang-block.active{display:block}
+.lang-switch{margin:10px 0 0;display:flex;gap:8px;align-items:center}
+.lang-switch button{padding:6px 10px;border:1px solid #2a2a2a;border-radius:8px;background:transparent;cursor:pointer}
+.lang-switch button.active{background:#0b0b0b}</style></head>
+<body class="article-offset lux">
 <header class="nav">
 <div class="container nav-inner nav-container-wide">
 <div class="brand"><img alt="Metridex" class="brand-logo" src="/logo/metridex_logo_header.png"/></div>
@@ -87,5 +94,38 @@
 </div>
 </section>
 <footer class="footer"><div class="container"><p>© <span id="year"></span> Metridex.</p></div></footer>
-<div class="article-nav"><a href="/articles.html">← Back to Articles</a><a href="/article-quickscan-methodology_bilingual_v3.html">← Prev: QuickScan methodology</a><a href="/article-signals-whyplusplus_bilingual_v1.html">Next: Signals &amp; Why++ →</a></div></body>
+<div class="article-nav"><a href="/articles.html">← Back to Articles</a><a href="/article-quickscan-methodology_bilingual_v3.html">← Prev: QuickScan methodology</a><a href="/article-signals-whyplusplus_bilingual_v1.html">Next: Signals &amp; Why++ →</a></div><script>(function(){
+  function switchTo(lang){
+    document.documentElement.setAttribute('lang', lang);
+    var blocks = document.querySelectorAll('.lang-block');
+    blocks.forEach(function(el){
+      if (el.classList.contains('lang-' + lang)){
+        el.classList.add('active');
+        el.style.display = 'block';
+      } else {
+        el.classList.remove('active');
+        el.style.display = 'none';
+      }
+    });
+    document.querySelectorAll('.lang-switch [data-lang]').forEach(function(btn){
+      btn.classList.toggle('active', btn.getAttribute('data-lang')===lang);
+    });
+    try{ localStorage.setItem('lang', lang); }catch(e){}
+  }
+  var pref = 'en';
+  try{
+    var s = localStorage.getItem('lang');
+    if (s === 'ru' || s === 'en') pref = s;
+  }catch(e){}
+  // initial
+  switchTo(pref);
+  // hook buttons
+  document.addEventListener('click', function(e){
+    var t = e.target;
+    if (t && t.matches('.lang-switch [data-lang]')){
+      e.preventDefault();
+      switchTo(t.getAttribute('data-lang'));
+    }
+  });
+})();</script></body>
 </html>
