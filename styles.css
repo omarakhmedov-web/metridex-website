@@ -250,19 +250,36 @@ header .brand:hover .brand-text {
 }
 
 
-/* === AURUM-DELTA: Screens fixes (mapping .mdx-frame ↔ .viewport) === */
+/* === AURUM-DELTA: Screens fixes v2 === */
+/* Grid: make windows wide enough */
 .screens-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(520px,1fr)) !important; gap:24px !important}
+
+/* Figure container */
 figure.screen{padding:0 !important; margin:0 auto !important; max-width:1000px}
+
+/* Frame window */
 .mdx-frame{
-  border:none !important;
+  border:none !important;                 /* remove gold/green frames */
   border-radius:14px !important;
   overflow:hidden !important;
-  aspect-ratio:16/10 !important;
-  background-size:cover !important;
-  background-position:center top !important;
-  background-repeat:no-repeat !important;
+  background:#0b0b0b;
   box-shadow:0 10px 30px rgba(0,0,0,.35) !important;
+  width:100% !important;
 }
-.mdx-frame .mdx-stage{display:none} /* fallback: use background-image */
-.mdx-frame .toolbar, .mdx-frame .mdx-nav{display:none} /* hide extra chrome if any */
+
+/* STAGE MUST BE VISIBLE (fix) */
+.mdx-frame .mdx-stage{
+  display:block !important;
+  line-height:0;                          /* no gaps */
+}
+
+/* Image sizing */
+.mdx-frame .mdx-stage img{
+  display:block !important;
+  width:100% !important;
+  height:auto !important;
+}
+
+/* Optional toolbar/look can stay minimal */
+.mdx-frame .toolbar, .mdx-frame .mdx-nav{display:none}
 
