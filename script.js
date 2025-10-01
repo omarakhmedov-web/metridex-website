@@ -377,3 +377,274 @@ document.querySelectorAll('.cta-bot').forEach(a => { a.href='https://t.me/Metrid
   window.addEventListener('load', function(){ setTimeout(enhanceFrames, 50); });
 })();
 
+
+// === AURUM-DELTA: Supplemental navigation handlers for mdx-frame ===
+(function(){
+  function augmentFrame(frame){
+    if(frame.dataset.mdxAugmented) return;
+    var stage = frame.querySelector('.mdx-stage');
+    if(!stage) return;
+    // Gather current images from data-images or current <img>
+    var imgs = [];
+    var attr = frame.getAttribute('data-images');
+    if(attr){ imgs = attr.split(',').map(function(s){return s.trim();}).filter(Boolean); }
+    else {
+      var cur = stage.querySelector('img'); if(cur) imgs = [cur.getAttribute('src')];
+    }
+    if(!imgs.length) return;
+    // Derive index from current <img>
+    var cur = stage.querySelector('img');
+    var idx = 0;
+    if(cur){
+      var src = cur.getAttribute('src');
+      var i = imgs.indexOf(src);
+      if(i>=0) idx = i;
+    }
+    // Save state on element
+    frame._mdxImgs = imgs;
+    frame._mdxIdx = idx;
+    frame._mdxRender = function(){
+      var img = stage.querySelector('img');
+      if(!img){ img = document.createElement('img'); stage.innerHTML=''; stage.appendChild(img); }
+      img.src = frame._mdxImgs[frame._mdxIdx];
+      img.alt = 'Screenshot ('+(frame._mdxIdx+1)+'/'+frame._mdxImgs.length+')';
+      img.loading = 'lazy'; img.decoding='async'; img.style.width='100%'; img.style.height='auto';
+    };
+    // Attach event handlers
+    frame.addEventListener('mdx-prev', function(){
+      frame._mdxIdx = (frame._mdxIdx - 1 + frame._mdxImgs.length) % frame._mdxImgs.length;
+      frame._mdxRender();
+    });
+    frame.addEventListener('mdx-next', function(){
+      frame._mdxIdx = (frame._mdxIdx + 1) % frame._mdxImgs.length;
+      frame._mdxRender();
+    });
+    frame.dataset.mdxAugmented = '1';
+  }
+  function run(){
+    document.querySelectorAll('.mdx-frame').forEach(augmentFrame);
+  }
+  if(document.readyState==='complete' || document.readyState==='interactive'){ setTimeout(run, 50); }
+  else { document.addEventListener('DOMContentLoaded', function(){ setTimeout(run, 50); }); }
+  window.addEventListener('load', function(){ setTimeout(run, 50); });
+})();
+
+
+// === AURUM-DELTA: reinforce nav + lightbox close ===
+(function(){
+  function ensureButtons(frame, clickPrev, clickNext){
+    // If no explicit .mdx-prev/.mdx-next, add our own
+    var hasPrev = frame.querySelector('.mdx-prev');
+    var hasNext = frame.querySelector('.mdx-next');
+    if(!hasPrev){
+      var p = document.createElement('button'); p.className='mdx-prev'; p.type='button'; p.innerHTML='‹';
+      p.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); clickPrev(); });
+      frame.appendChild(p);
+    }
+    if(!hasNext){
+      var n = document.createElement('button'); n.className='mdx-next'; n.type='button'; n.innerHTML='›';
+      n.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); clickNext(); });
+      frame.appendChild(n);
+    }
+  }
+  function augmentAll(){
+    document.querySelectorAll('.mdx-frame').forEach(function(frame){
+      if(frame.dataset.mdxReinforced) return;
+      var stage = frame.querySelector('.mdx-stage');
+      if(!stage) return;
+
+      // grab imgs list
+      var imgs = [];
+      var attr = frame.getAttribute('data-images');
+      if(attr){ imgs = attr.split(',').map(function(s){return s.trim();}).filter(Boolean); }
+      else {
+        var cur1 = stage.querySelector('img'); if(cur1) imgs = [cur1.getAttribute('src')];
+      }
+      if(!imgs.length) return;
+
+      // current index from current <img>
+      var cur = stage.querySelector('img'); var idx = 0;
+      if(cur){
+        var src = cur.getAttribute('src');
+        var i = imgs.indexOf(src); if(i>=0) idx=i;
+      }
+
+      function render(){
+        var img = stage.querySelector('img');
+        if(!img){ img = document.createElement('img'); stage.innerHTML=''; stage.appendChild(img); }
+        img.src = imgs[idx]; img.alt='Screenshot ('+(idx+1)+'/'+imgs.length+')';
+        img.loading='lazy'; img.decoding='async'; img.style.width='100%'; img.style.height='auto';
+      }
+      function prev(){ idx=(idx-1+imgs.length)%imgs.length; render(); }
+      function next(){ idx=(idx+1)%imgs.length; render(); }
+
+      // store handlers and render
+      frame._mdxImgs = imgs; frame._mdxIdx = idx; frame._mdxRender = render;
+      render();
+
+      // buttons (always ensure)
+      ensureButtons(frame, prev, next);
+
+      // events
+      frame.addEventListener('mdx-prev', function(e){ e.stopPropagation(); prev(); });
+      frame.addEventListener('mdx-next', function(e){ e.stopPropagation(); next(); });
+
+      // swipe
+      (function(el){
+        var sx=0, sy=0, dx=0, dy=0, start=false;
+        el.addEventListener('touchstart', function(e){ var t=e.touches[0]; sx=t.clientX; sy=t.clientY; start=true; }, {passive:true});
+        el.addEventListener('touchmove', function(e){ if(!start) return; var t=e.touches[0]; dx=t.clientX-sx; dy=t.clientY-sy; }, {passive:true});
+        el.addEventListener('touchend', function(){ if(!start) return; start=false;
+          if(Math.abs(dx)>40 && Math.abs(dx)>Math.abs(dy)){ if(dx<0) next(); else prev(); }
+          dx=dy=0;
+        }, {passive:true});
+      })(stage);
+
+      // keyboard
+      frame.setAttribute('tabindex','0');
+      frame.addEventListener('keydown', function(e){
+        if(e.key==='ArrowLeft'){ e.preventDefault(); prev(); }
+        if(e.key==='ArrowRight'){ e.preventDefault(); next(); }
+      });
+
+      frame.dataset.mdxReinforced='1';
+    });
+  }
+  if(document.readyState==='complete' || document.readyState==='interactive'){ setTimeout(augmentAll, 50); }
+  else { document.addEventListener('DOMContentLoaded', function(){ setTimeout(augmentAll, 50); }); }
+  window.addEventListener('load', function(){ setTimeout(augmentAll, 50); });
+
+  // Fix lightbox: ensure close works and doesn't bubble
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest && e.target.closest('.mdx-lb-close');
+    if(btn){
+      e.preventDefault(); e.stopPropagation();
+      var lb = document.querySelector('.mdx-lightbox'); if(lb) lb.classList.remove('open');
+    }
+  }, true);
+})();
+
+
+// === AURUM-DELTA: robust nav + close ===
+(function(){
+  function setupFrame(frame){
+    if(frame.dataset.mdxFull) return;
+    var stage = frame.querySelector('.mdx-stage');
+    if(!stage){ stage = document.createElement('div'); stage.className='mdx-stage'; frame.appendChild(stage); }
+    // images list
+    var list = [];
+    var attr = frame.getAttribute('data-images');
+    if(attr){ list = attr.split(',').map(function(s){return s.trim();}).filter(Boolean); }
+    var cur = stage.querySelector('img');
+    if(!list.length && cur){ list=[cur.getAttribute('src')]; }
+    if(!list.length){
+      // Try background-image fallback
+      var bg = (frame.style && frame.style.backgroundImage) ? frame.style.backgroundImage.replace(/^url\(["']?(.+?)["']?\)$/, '$1') : null;
+      if(bg) list=[bg];
+    }
+    if(!list.length) return;
+
+    var idx = 0;
+    function render(){
+      var img = stage.querySelector('img');
+      if(!img){ img = document.createElement('img'); stage.innerHTML=''; stage.appendChild(img); }
+      img.src = list[idx];
+      img.alt = 'Screenshot ('+(idx+1)+'/'+list.length+')';
+      img.loading='lazy'; img.decoding='async';
+      img.style.width='100%'; img.style.height='auto';
+    }
+    function prev(){ idx=(idx-1+list.length)%list.length; render(); }
+    function next(){ idx=(idx+1)%list.length; render(); }
+    render();
+
+    // always show overlay buttons inside frame
+    function ensureBtn(cls, label, handler){
+      var b = frame.querySelector('.'+cls);
+      if(!b){
+        b = document.createElement('button');
+        b.type='button'; b.className=cls; b.textContent=label;
+        b.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); handler(); });
+        frame.appendChild(b);
+      }
+    }
+    ensureBtn('mdx-prev','‹', prev);
+    ensureBtn('mdx-next','›', next);
+
+    // swipe on stage
+    (function(el){
+      var sx=0, sy=0, dx=0, dy=0, start=false;
+      el.addEventListener('touchstart', function(e){ var t=e.touches[0]; sx=t.clientX; sy=t.clientY; start=true; }, {passive:true});
+      el.addEventListener('touchmove', function(e){ if(!start) return; var t=e.touches[0]; dx=t.clientX-sx; dy=t.clientY-sy; }, {passive:true});
+      el.addEventListener('touchend', function(){ if(!start) return; start=false;
+        if(Math.abs(dx)>40 && Math.abs(dx)>Math.abs(dy)){ if(dx<0) next(); else prev(); }
+        dx=dy=0;
+      }, {passive:true});
+    })(stage);
+
+    // keyboard
+    frame.setAttribute('tabindex','0');
+    frame.addEventListener('keydown', function(e){
+      if(e.key==='ArrowLeft'){ e.preventDefault(); prev(); }
+      if(e.key==='ArrowRight'){ e.preventDefault(); next(); }
+    });
+
+    // click to lightbox
+    stage.addEventListener('click', function(){
+      openLightbox(list, idx, function(i){ idx=i; render(); });
+    });
+
+    frame.dataset.mdxFull='1';
+  }
+
+  // Simple lightbox with reliable close
+  var LB=null;
+  function ensureLB(){
+    if(LB) return;
+    var wrap = document.createElement('div');
+    wrap.className='mdx-lightbox';
+    wrap.innerHTML = '<button class="mdx-lb-close" aria-label="Close">×</button><img class="mdx-lb-img"><button class="mdx-lb-prev">‹</button><button class="mdx-lb-next">›</button>';
+    document.body.appendChild(wrap);
+    LB = {
+      el: wrap,
+      img: wrap.querySelector('.mdx-lb-img'),
+      prev: wrap.querySelector('.mdx-lb-prev'),
+      next: wrap.querySelector('.mdx-lb-next'),
+      close: wrap.querySelector('.mdx-lb-close'),
+      set: [], idx: 0, onChange:null
+    };
+    function stop(e){ e.preventDefault(); e.stopPropagation(); }
+    LB.close.addEventListener('click', function(e){ stop(e); wrap.classList.remove('open'); });
+    LB.prev.addEventListener('click', function(e){ stop(e); move(-1); });
+    LB.next.addEventListener('click', function(e){ stop(e); move(1); });
+    wrap.addEventListener('click', function(e){ if(e.target===wrap){ wrap.classList.remove('open'); } });
+    document.addEventListener('keydown', function(e){
+      if(!wrap.classList.contains('open')) return;
+      if(e.key==='Escape'){ wrap.classList.remove('open'); }
+      if(e.key==='ArrowLeft'){ move(-1); }
+      if(e.key==='ArrowRight'){ move(1); }
+    });
+    function move(d){
+      LB.idx = (LB.idx + d + LB.set.length) % LB.set.length;
+      LB.img.src = LB.set[LB.idx];
+      if(LB.onChange) LB.onChange(LB.idx);
+    }
+    LB.move = move;
+  }
+
+  function openLightbox(set, idx, onChange){
+    ensureLB();
+    LB.set = set.slice();
+    LB.idx = Math.max(0, Math.min(idx, set.length-1));
+    LB.onChange = onChange || null;
+    LB.img.src = LB.set[LB.idx];
+    LB.el.classList.add('open');
+  }
+
+  function boot(){
+    document.querySelectorAll('.mdx-frame').forEach(setupFrame);
+  }
+  if(document.readyState==='complete' || document.readyState==='interactive'){ setTimeout(boot, 50); }
+  else { document.addEventListener('DOMContentLoaded', function(){ setTimeout(boot, 50); }); }
+  window.addEventListener('load', function(){ setTimeout(boot, 50); });
+})();
+
