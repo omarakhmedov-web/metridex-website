@@ -648,48 +648,41 @@ document.querySelectorAll('.cta-bot').forEach(a => { a.href='https://t.me/Metrid
   window.addEventListener('load', function(){ setTimeout(boot, 50); });
 })();
 
-
-/* === AURUM-DELTA v2 — reliable close & body lock === */
+/* === AURUM-DELTA MIN: reliable close for zoom === */
 (function(){
-  // Patch/augment existing ensureLB & openLightbox if present
-  function ensureLB(){
-    var exist = document.querySelector('.mdx-lightbox');
-    if(exist){
-      return { el: exist, img: exist.querySelector('img'), close: exist.querySelector('.mdx-close') };
-    }
-    var el = document.createElement('div'); el.className='mdx-lightbox'; el.setAttribute('hidden','');
-    var img = document.createElement('img');
-    var close = document.createElement('button'); close.className='mdx-close'; close.setAttribute('aria-label','Close'); close.textContent='✕';
-    el.appendChild(img); el.appendChild(close); document.body.appendChild(el);
-    return { el, img, close };
+  // Lock scroll when any .mdx-lightbox is open
+  const body = document.body;
+  function lock(){ body && body.classList.add('mdx-locked'); }
+  function unlock(){ body && body.classList.remove('mdx-locked'); }
+  // Observe lightbox open/close to toggle body lock
+  const lb = document.querySelector('.mdx-lightbox');
+  if(lb){
+    const obs = new MutationObserver(()=>{
+      if(lb.classList.contains('open')) lock(); else unlock();
+    });
+    obs.observe(lb, {attributes:true, attributeFilter:['class']});
   }
-
-  window.openLightbox = function(set, idx, onChange){
-    var lb = ensureLB();
-    lb.el.removeAttribute('hidden'); lb.el.classList.add('open');
-    document.body.classList.add('mdx-locked');
-    var cur = Math.max(0, Math.min(idx, set.length-1));
-    lb.img.src = set[cur];
-
-    function move(d){ cur=(cur+d+set.length)%set.length; lb.img.src=set[cur]; if(onChange) onChange(cur); }
-    function onKey(e){ if(!lb.el.classList.contains('open')) return; if(e.key==='Escape'){ doClose(e); } if(e.key==='ArrowLeft'){ move(-1); } if(e.key==='ArrowRight'){ move(1); } }
-    function onBg(e){ if(e.target===lb.el){ doClose(e); } }
-
-    function doClose(e){
-      if(e){ e.preventDefault(); e.stopPropagation(); }
-      lb.el.classList.remove('open'); lb.el.setAttribute('hidden','');
-      document.body.classList.remove('mdx-locked');
-      document.removeEventListener('keydown', onKey, true);
-      lb.el.removeEventListener('click', onBg, true);
-      lb.close.removeEventListener('click', onCloseCapture, true);
+  // Universal close handler (capture to beat bubbling)
+  function doClose(box){
+    if(!box) return;
+    box.classList.remove('open');
+    box.setAttribute('hidden','');
+    unlock();
+  }
+  document.addEventListener('click', function(e){
+    const closeBtn = e.target.closest && e.target.closest('.mdx-lightbox .mdx-close, .mdx-lightbox [data-close]');
+    if(closeBtn){
+      e.preventDefault(); e.stopPropagation();
+      doClose(closeBtn.closest('.mdx-lightbox'));
+    } else {
+      // click on backdrop closes
+      const box = e.target.classList && e.target.classList.contains('mdx-lightbox') ? e.target : null;
+      if(box){ e.preventDefault(); e.stopPropagation(); doClose(box); }
     }
-
-    function onCloseCapture(e){ e.preventDefault(); e.stopPropagation(); doClose(e); }
-
-    // attach listeners (CAPTURE to win over bubbling)
-    document.addEventListener('keydown', onKey, true);
-    lb.el.addEventListener('click', onBg, true);
-    lb.close.addEventListener('click', onCloseCapture, true);
-  };
+  }, true);
+  document.addEventListener('keydown', function(e){
+    const box = document.querySelector('.mdx-lightbox.open');
+    if(!box) return;
+    if(e.key === 'Escape'){ e.preventDefault(); e.stopPropagation(); doClose(box); }
+  }, true);
 })();
-
