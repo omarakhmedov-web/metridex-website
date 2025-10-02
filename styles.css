@@ -303,14 +303,14 @@ figure.screen{padding:0 !important; margin:0 auto !important; max-width:1000px}
 }
 .mdx-lightbox.open{ display:flex }
 .mdx-lb-img{ max-width:92vw; max-height:92vh; object-fit:contain; }
-.mdx-lb-prev, .mdx-lb-next, .mdx-lb-close{
+.mdx-lb-prev, .mdx-lb-next, .mdx-close{
   position:absolute; background:rgba(255,255,255,0.1); color:#fff; border:1px solid rgba(255,255,255,0.2);
   width:48px; height:48px; border-radius:50%; cursor:pointer;
   display:flex; align-items:center; justify-content:center; font-size:26px;
 }
 .mdx-lb-prev{ left:24px } .mdx-lb-next{ right:24px }
-.mdx-lb-close{ top:20px; right:20px; font-size:28px }
-.mdx-lb-prev:hover, .mdx-lb-next:hover, .mdx-lb-close:hover{ background:rgba(255,255,255,0.2) }
+.mdx-close{ top:20px; right:20px; font-size:28px }
+.mdx-lb-prev:hover, .mdx-lb-next:hover, .mdx-close:hover{ background:rgba(255,255,255,0.2) }
 
 
 /* === AURUM-DELTA: Screens size tweak === */
@@ -323,7 +323,7 @@ figure.screen{ max-width:900px !important; }
 .screens-grid{ grid-template-columns:repeat(auto-fit,minmax(420px,1fr)) !important; }
 figure.screen{ max-width:840px !important; }
 .mdx-prev, .mdx-next{ z-index:3; } /* above image */
-.mdx-lb-close, .mdx-lb-prev, .mdx-lb-next{ z-index:10001; }
+.mdx-close, .mdx-lb-prev, .mdx-lb-next{ z-index:10001; }
 .mdx-lb-img{ pointer-events:auto }
 
 
@@ -347,8 +347,8 @@ figure.screen{margin:0 auto !important; max-width:840px !important; width:100% !
 /* Lightbox polish & reliable close */
 .mdx-lightbox{transition:opacity .15s ease; opacity:0}
 .mdx-lightbox.open{opacity:1}
-.mdx-lb-close, .mdx-lb-prev, .mdx-lb-next{z-index:10001; outline:none; border-radius:50%}
-.mdx-lb-close:focus, .mdx-lb-prev:focus, .mdx-lb-next:focus{outline:none}
+.mdx-close, .mdx-lb-prev, .mdx-lb-next{z-index:10001; outline:none; border-radius:50%}
+.mdx-close:focus, .mdx-lb-prev:focus, .mdx-lb-next:focus{outline:none}
 .mdx-lightbox *{outline:none !important}
 
 /* === AURUM-DELTA MIN: smaller screen windows === */
@@ -419,7 +419,7 @@ figure.screen{max-width:780px !important;margin:0 auto !important}
   box-shadow: 0 20px 60px rgba(0,0,0,.6);
 }
 
-.mdx-lb-close, .mdx-lb-prev, .mdx-lb-next{
+.mdx-close, .mdx-lb-prev, .mdx-lb-next{
   position: absolute;
   border: 1px solid var(--stroke);
   background: rgba(0,0,0,.45);
@@ -429,7 +429,7 @@ figure.screen{max-width:780px !important;margin:0 auto !important}
   cursor: pointer;
   user-select: none;
 }
-.mdx-lb-close{ top: 16px; right: 16px; }
+.mdx-close{ top: 16px; right: 16px; }
 .mdx-lb-prev{ left: 16px; top: 50%; transform: translateY(-50%); }
 .mdx-lb-next{ right: 16px; top: 50%; transform: translateY(-50%); }
 
