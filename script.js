@@ -731,3 +731,42 @@ document.querySelectorAll('.cta-bot').forEach(a => { a.href='https://t.me/Metrid
     if(e.key === 'ArrowRight') step(1);
   });
 })();
+
+// === SG v1.1 (2025-10-02) — looping arrows & precise paging ===
+(function(){
+  const cards = Array.from(document.querySelectorAll('#screens .sg-card'));
+  const state = {};
+  cards.forEach(card => {
+    const key = card.getAttribute('data-group') || 'G';
+    const track = card.querySelector('.sg-track');
+    const items = Array.from(track.querySelectorAll('li'));
+    const count = items.length;
+    state[key] = { track, count, index: 0 };
+    const prev = card.querySelector('.sg-prev');
+    const next = card.querySelector('.sg-next');
+    function goTo(i){
+      const w = track.clientWidth;
+      state[key].index = i;
+      track.scrollTo({ left: i * w, behavior: 'smooth' });
+    }
+    prev.addEventListener('click', () => {
+      const i = (state[key].index - 1 + count) % count;
+      goTo(i);
+    });
+    next.addEventListener('click', () => {
+      const i = (state[key].index + 1) % count;
+      goTo(i);
+    });
+    // Keep index in sync when user drags
+    track.addEventListener('scroll', () => {
+      const w = track.clientWidth;
+      const i = Math.round(track.scrollLeft / Math.max(1, w));
+      state[key].index = Math.min(Math.max(i,0), count-1);
+    });
+    // Recalculate on resize
+    window.addEventListener('resize', () => {
+      // snap to current index to prevent half-slide after resize
+      goTo(state[key].index);
+    });
+  });
+})();
