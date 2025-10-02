@@ -1,6 +1,24 @@
 (function(){
   const root = document.documentElement;
   const langBtn = document.getElementById('langToggle');
+
+// === Lang toggle singleton guard (2025-10-02) ===
+(function(){
+  function ensureSingleLangToggle(){
+    const toggles = document.querySelectorAll('#langToggle');
+    if(toggles.length > 1){
+      for(let i=1;i<toggles.length;i++){
+        try{ toggles[i].remove(); }catch(e){ if(toggles[i].parentElement){ toggles[i].parentElement.removeChild(toggles[i]); } }
+      }
+    }
+  }
+  // Run now and whenever DOM changes
+  ensureSingleLangToggle();
+  try{
+    const mo = new MutationObserver(ensureSingleLangToggle);
+    mo.observe(document.body, {childList:true, subtree:true});
+  }catch(e){ /* noop */ }
+})();
   const themeBtn = document.getElementById('themeToggle');
   const burger = document.getElementById('burger');
   const navLinks = document.querySelector('.nav-links');
