@@ -788,3 +788,36 @@ document.querySelectorAll('.cta-bot').forEach(a => { a.href='https://t.me/Metrid
     });
   });
 })();
+
+
+// === Lang toggle singleton guard v2 (2025-10-02) ===
+(function(){
+  function isLangButton(el){
+    if(!el) return false;
+    const txt = (el.textContent || '').trim().toUpperCase();
+    const tit = (el.getAttribute && (el.getAttribute('title')||'')).toUpperCase();
+    const id  = (el.id||'').toLowerCase();
+    const cls = (el.className||'').toLowerCase();
+    // Heuristics: EN/RU label, title "EN / RU", common classnames, or id contains 'lang'
+    if (txt === 'EN' || txt === 'RU') return true;
+    if (tit.includes('EN / RU')) return true;
+    if (id.includes('lang')) return true;
+    if (cls.includes('lang')) return true;
+    return false;
+  }
+  function ensureSingleLangToggle(){
+    // Scope: header nav-actions first; fallback to whole document
+    const header = document.querySelector('header .nav-actions') || document.body;
+    const toggles = Array.from(header.querySelectorAll('button, a')).filter(isLangButton);
+    if (toggles.length > 1){
+      // keep the first that has id=langToggle if present; else keep the first
+      let keeper = toggles.find(t => t.id === 'langToggle') || toggles[0];
+      toggles.forEach(t => { if (t !== keeper) { try{ t.remove(); }catch(e){ if(t.parentElement){ t.parentElement.removeChild(t); } } });
+    }
+  }
+  ensureSingleLangToggle();
+  try{
+    const mo = new MutationObserver(ensureSingleLangToggle);
+    mo.observe(document.body, {childList:true, subtree:true});
+  }catch(e){ /* noop */ }
+})();
