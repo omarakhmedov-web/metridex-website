@@ -303,14 +303,14 @@ figure.screen{padding:0 !important; margin:0 auto !important; max-width:1000px}
 }
 .mdx-lightbox.open{ display:flex }
 .mdx-lb-img{ max-width:92vw; max-height:92vh; object-fit:contain; }
-.mdx-lb-prev, .mdx-lb-next, .mdx-close{
+.mdx-lb-prev, .mdx-lb-next, .mdx-lb-close{
   position:absolute; background:rgba(255,255,255,0.1); color:#fff; border:1px solid rgba(255,255,255,0.2);
   width:48px; height:48px; border-radius:50%; cursor:pointer;
   display:flex; align-items:center; justify-content:center; font-size:26px;
 }
 .mdx-lb-prev{ left:24px } .mdx-lb-next{ right:24px }
-.mdx-close{ top:20px; right:20px; font-size:28px }
-.mdx-lb-prev:hover, .mdx-lb-next:hover, .mdx-close:hover{ background:rgba(255,255,255,0.2) }
+.mdx-lb-close{ top:20px; right:20px; font-size:28px }
+.mdx-lb-prev:hover, .mdx-lb-next:hover, .mdx-lb-close:hover{ background:rgba(255,255,255,0.2) }
 
 
 /* === AURUM-DELTA: Screens size tweak === */
@@ -323,7 +323,7 @@ figure.screen{ max-width:900px !important; }
 .screens-grid{ grid-template-columns:repeat(auto-fit,minmax(420px,1fr)) !important; }
 figure.screen{ max-width:840px !important; }
 .mdx-prev, .mdx-next{ z-index:3; } /* above image */
-.mdx-close, .mdx-lb-prev, .mdx-lb-next{ z-index:10001; }
+.mdx-lb-close, .mdx-lb-prev, .mdx-lb-next{ z-index:10001; }
 .mdx-lb-img{ pointer-events:auto }
 
 
@@ -347,8 +347,8 @@ figure.screen{margin:0 auto !important; max-width:840px !important; width:100% !
 /* Lightbox polish & reliable close */
 .mdx-lightbox{transition:opacity .15s ease; opacity:0}
 .mdx-lightbox.open{opacity:1}
-.mdx-close, .mdx-lb-prev, .mdx-lb-next{z-index:10001; outline:none; border-radius:50%}
-.mdx-close:focus, .mdx-lb-prev:focus, .mdx-lb-next:focus{outline:none}
+.mdx-lb-close, .mdx-lb-prev, .mdx-lb-next{z-index:10001; outline:none; border-radius:50%}
+.mdx-lb-close:focus, .mdx-lb-prev:focus, .mdx-lb-next:focus{outline:none}
 .mdx-lightbox *{outline:none !important}
 
 /* === AURUM-DELTA MIN: smaller screen windows === */
@@ -360,108 +360,20 @@ figure.screen{max-width:780px !important;margin:0 auto !important}
 .mdx-frame .mdx-stage img{display:block !important;width:100% !important;height:auto !important}
 
 
-/* === AURUM-DELTA • Screens & Lightbox FIX • 2025-10-02 === */
-:root{
-  --mdx-lb-bg: rgba(0,0,0,.88);
+/* === Screens GRID FIX (2025-10-02) === */
+#screens .screens-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
 }
-/* In-page screen cards: keep them compact on desktop */
-.screen{ max-width: 560px; margin: 0 auto; }
-.screen .mdx-frame{
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid var(--stroke);
-  background: rgba(255,255,255,.02);
-  aspect-ratio: 16 / 10;
-}
-.screen .mdx-frame .mdx-stage img{
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.screen .mdx-nav{
-  position: absolute;
-  inset: auto 10px 10px 10px;
-  display: flex;
-  justify-content: space-between;
-  pointer-events: none;
-}
-.screen .mdx-btn{
-  pointer-events: all;
-  border: 1px solid var(--stroke);
-  background: rgba(0,0,0,.35);
-  color: var(--ink);
-  border-radius: 10px;
-  padding: 6px 10px;
-  cursor: pointer;
-  backdrop-filter: blur(6px);
+@media (min-width: 1024px){
+  #screens .screens-grid{ grid-template-columns: 1fr 1fr; align-items: start; }
 }
 
-/* Lightbox — proper sizing + working close button */
-.mdx-lightbox{
-  position: fixed;
-  inset: 0;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  background: var(--mdx-lb-bg);
-  z-index: 9999;
-}
-.mdx-lightbox.open{ display: flex; }
 
-.mdx-lb-img{
-  max-width: min(96vw, 1400px);
-  max-height: 90vh;
-  width: auto;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 20px 60px rgba(0,0,0,.6);
-}
-
+/* === Lightbox Controls Z (2025-10-02) === */
 .mdx-close, .mdx-lb-prev, .mdx-lb-next{
-  position: absolute;
-  border: 1px solid var(--stroke);
-  background: rgba(0,0,0,.45);
-  color: #fff;
-  border-radius: 10px;
-  padding: 8px 12px;
-  cursor: pointer;
-  user-select: none;
+  z-index: 10001;
+  pointer-events: auto;
 }
-.mdx-close{ top: 16px; right: 16px; }
-.mdx-lb-prev{ left: 16px; top: 50%; transform: translateY(-50%); }
-.mdx-lb-next{ right: 16px; top: 50%; transform: translateY(-50%); }
-
-/* Prevent page scroll while lightbox is open */
-body.mdx-no-scroll{ overflow: hidden; }
-
-/* Mobile tweaks */
-@media (max-width: 720px){
-  .screen{ max-width: 100%; }
-  .screen .mdx-frame{ aspect-ratio: 16 / 9; }
-  .mdx-lb-img{ max-width: 96vw; max-height: 86vh; }
-}
-
-
-/* === Screens RESET (AURUM-DELTA 2025-10-02) === */
-#screens .container{ max-width: 1100px; margin: 0 auto; }
-.section-title{ font-size: clamp(24px, 2vw + 12px, 32px); margin: 0 0 16px; }
-.screen{ margin: 24px auto 40px; }
-.mdx-frame{ position: relative; overflow: hidden; border-radius: 14px; border: 1px solid var(--stroke); background: rgba(255,255,255,.02); }
-.mdx-stage{ overflow: hidden; }
-.mdx-track{ display: grid; grid-auto-flow: column; grid-auto-columns: 100%; gap: 0; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; margin: 0; padding: 0; list-style: none; }
-.mdx-track > li{ scroll-snap-align: center; }
-.mdx-track img{ display: block; width: 100%; height: auto; }
-.mdx-btn{ position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,.45); border: 1px solid var(--stroke); color: #fff; border-radius: 10px; padding: 8px 12px; cursor: pointer; z-index: 2; }
-.mdx-prev{ left: 10px; } .mdx-next{ right: 10px; }
-.mdx-lightbox{ position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,.88); z-index: 9999; }
-.mdx-lightbox.open{ display: flex; }
-.mdx-lb-img{ max-width: min(96vw, 1400px); max-height: 90vh; box-shadow: 0 20px 60px rgba(0,0,0,.6); border-radius: 12px; }
-.mdx-close, .mdx-lb-prev, .mdx-lb-next{ position: absolute; background: rgba(0,0,0,.45); color: #fff; border: 1px solid var(--stroke); border-radius: 10px; padding: 8px 12px; cursor: pointer; }
-.mdx-close{ top: 16px; right: 16px; }
-.mdx-lb-prev{ left: 16px; top: 50%; transform: translateY(-50%); }
-.mdx-lb-next{ right: 16px; top: 50%; transform: translateY(-50%); }
-body.mdx-no-scroll{ overflow: hidden; }
-@media (min-width: 860px){ .mdx-frame{ aspect-ratio: 16 / 10; } }
-@media (max-width: 859.98px){ .mdx-frame{ aspect-ratio: 16 / 9; } }
+.mdx-lb-img{ z-index: 10000; }
