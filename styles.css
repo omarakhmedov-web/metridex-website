@@ -400,3 +400,7 @@ figure.screen{margin:0 auto !important; max-width:840px !important; width:100% !
 .sg-lb-prev{ left:16px; top:50%; transform:translateY(-50%); }
 .sg-lb-next{ right:16px; top:50%; transform:translateY(-50%); }
 body.sg-no-scroll{ overflow:hidden; }
+
+/* === SG v1.1 (2025-10-02) — hide scrollbars on tracks === */
+.sg-track{ scrollbar-width: none; -ms-overflow-style: none; }
+.sg-track::-webkit-scrollbar{ display: none; }
