@@ -197,7 +197,8 @@ document.querySelectorAll('.cta-bot').forEach(a => { a.href='https://t.me/Metrid
     var btn = lb.querySelector('.mdx-close');
     img.src = src;
     lb.classList.add('open');
-    lb.removeAttribute('hidden');
+    document.body.classList.add('mdx-no-scroll');
+lb.removeAttribute('hidden');
     function close(){ lb.classList.remove('open'); lb.setAttribute('hidden',''); }
     lb.addEventListener('click', close, {once:true});
     btn && btn.addEventListener('click', close, {once:true});
@@ -313,8 +314,9 @@ document.querySelectorAll('.cta-bot').forEach(a => { a.href='https://t.me/Metrid
     currentSet = set; currentIdx = idx;
     lbImg.src = set[idx];
     lb.classList.add('open');
-  }
-  function hide(){ lb && lb.classList.remove('open'); }
+  document.body.classList.add('mdx-no-scroll');
+}
+  function hide(){ lb && lb.classList.remove('open'); document.body.classList.remove('mdx-no-scroll'); }
   function trigger(dir){
     if(!currentSet.length) return;
     if(dir==='prev') currentIdx = (currentIdx-1+currentSet.length)%currentSet.length;
