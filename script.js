@@ -197,9 +197,8 @@ document.querySelectorAll('.cta-bot').forEach(a => { a.href='https://t.me/Metrid
     var btn = lb.querySelector('.mdx-close');
     img.src = src;
     lb.classList.add('open');
-    document.body.classList.add('mdx-no-scroll');
-lb.removeAttribute('hidden');
-    function close(){ lb.classList.remove('open'); lb.setAttribute('hidden',''); document.body.classList.remove('mdx-no-scroll'); }
+    lb.removeAttribute('hidden');
+    function close(){ lb.classList.remove('open'); lb.setAttribute('hidden',''); }
     lb.addEventListener('click', close, {once:true});
     btn && btn.addEventListener('click', close, {once:true});
     document.addEventListener('keydown', function esc(e){ if(e.key==='Escape'){ close(); document.removeEventListener('keydown', esc);} });
@@ -314,9 +313,8 @@ lb.removeAttribute('hidden');
     currentSet = set; currentIdx = idx;
     lbImg.src = set[idx];
     lb.classList.add('open');
-  document.body.classList.add('mdx-no-scroll');
-}
-  function hide(){ lb && lb.classList.remove('open'); document.body.classList.remove('mdx-no-scroll'); }
+  }
+  function hide(){ lb && lb.classList.remove('open'); }
   function trigger(dir){
     if(!currentSet.length) return;
     if(dir==='prev') currentIdx = (currentIdx-1+currentSet.length)%currentSet.length;
@@ -690,61 +688,21 @@ lb.removeAttribute('hidden');
 })();
 
 
-// === Screens RESET (AURUM-DELTA 2025-10-02) ===
+// === Lightbox harden (2025-10-02) ===
 (function(){
-  const body = document.body;
   const lb = document.querySelector('.mdx-lightbox');
   if(!lb) return;
+  // Always attach to body to avoid stacking-context issues
+  if(lb.parentElement !== document.body){
+    document.body.appendChild(lb);
+  }
+  const body = document.body;
   const lbImg = lb.querySelector('.mdx-lb-img');
   const btnClose = lb.querySelector('.mdx-close');
   const btnPrev = lb.querySelector('.mdx-lb-prev');
   const btnNext = lb.querySelector('.mdx-lb-next');
 
-  let currentGroup = null;
-  let currentIndex = -1;
-  let groups = {};
-
-  document.querySelectorAll('#screens .screen').forEach(sc => {
-    const group = sc.getAttribute('data-group') || 'g';
-    const imgs = Array.from(sc.querySelectorAll('.mdx-track img')).map(img => img.getAttribute('src'));
-    groups[group] = imgs;
-    sc.querySelectorAll('.mdx-track img').forEach((img, idx) => {
-      img.addEventListener('click', () => openLB(group, idx));
-    });
-    const track = sc.querySelector('.mdx-track');
-    sc.querySelector('.mdx-prev').addEventListener('click', () => track.scrollBy({left:-track.clientWidth, behavior:'smooth'}));
-    sc.querySelector('.mdx-next').addEventListener('click', () => track.scrollBy({left: track.clientWidth, behavior:'smooth'}));
-  });
-
-  function openLB(group, index){
-    currentGroup = group;
-    currentIndex = index;
-    const src = groups[group][index];
-    lbImg.setAttribute('src', src);
-    lb.removeAttribute('hidden');
-    lb.classList.add('open');
-    body.classList.add('mdx-no-scroll');
-  }
-  function closeLB(){
-    lb.classList.remove('open');
-    lb.setAttribute('hidden','');
-    body.classList.remove('mdx-no-scroll');
-  }
-  function step(delta){
-    if(currentGroup==null) return;
-    const arr = groups[currentGroup];
-    currentIndex = (currentIndex + delta + arr.length) % arr.length;
-    lbImg.setAttribute('src', arr[currentIndex]);
-  }
-
-  btnClose.addEventListener('click', closeLB);
-  btnPrev.addEventListener('click', () => step(-1));
-  btnNext.addEventListener('click', () => step(1));
-  lb.addEventListener('click', (e) => { if(e.target === lb) closeLB(); });
-  document.addEventListener('keydown', (e) => {
-    if(!lb.classList.contains('open')) return;
-    if(e.key === 'Escape') closeLB();
-    if(e.key === 'ArrowLeft') step(-1);
-    if(e.key === 'ArrowRight') step(1);
-  });
+  // If previous handlers exist, remove by cloning (simple reset)
+  const lbClone = lb.cloneNode(true);
+  lb.replaceWith(lbClone);
 })();
