@@ -199,7 +199,7 @@ document.querySelectorAll('.cta-bot').forEach(a => { a.href='https://t.me/Metrid
     lb.classList.add('open');
     document.body.classList.add('mdx-no-scroll');
 lb.removeAttribute('hidden');
-    function close(){ lb.classList.remove('open'); lb.setAttribute('hidden',''); }
+    function close(){ lb.classList.remove('open'); lb.setAttribute('hidden',''); document.body.classList.remove('mdx-no-scroll'); }
     lb.addEventListener('click', close, {once:true});
     btn && btn.addEventListener('click', close, {once:true});
     document.addEventListener('keydown', function esc(e){ if(e.key==='Escape'){ close(); document.removeEventListener('keydown', esc);} });
