@@ -648,61 +648,86 @@ document.querySelectorAll('.cta-bot').forEach(a => { a.href='https://t.me/Metrid
   window.addEventListener('load', function(){ setTimeout(boot, 50); });
 })();
 
-/* === AURUM-DELTA MIN: reliable close for zoom === */
-(function(){
-  // Lock scroll when any .mdx-lightbox is open
-  const body = document.body;
-  function lock(){ body && body.classList.add('mdx-locked'); }
-  function unlock(){ body && body.classList.remove('mdx-locked'); }
-  // Observe lightbox open/close to toggle body lock
-  const lb = document.querySelector('.mdx-lightbox');
-  if(lb){
-    const obs = new MutationObserver(()=>{
-      if(lb.classList.contains('open')) lock(); else unlock();
-    });
-    obs.observe(lb, {attributes:true, attributeFilter:['class']});
-  }
-  // Universal close handler (capture to beat bubbling)
-  function doClose(box){
-    if(!box) return;
-    box.classList.remove('open');
-    box.setAttribute('hidden','');
-    unlock();
-  }
-  document.addEventListener('click', function(e){
-    const closeBtn = e.target.closest && e.target.closest('.mdx-lightbox .mdx-close, .mdx-lightbox [data-close]');
-    if(closeBtn){
-      e.preventDefault(); e.stopPropagation();
-      doClose(closeBtn.closest('.mdx-lightbox'));
-    } else {
-      // click on backdrop closes
-      const box = e.target.classList && e.target.classList.contains('mdx-lightbox') ? e.target : null;
-      if(box){ e.preventDefault(); e.stopPropagation(); doClose(box); }
-    }
-  }, true);
-  document.addEventListener('keydown', function(e){
-    const box = document.querySelector('.mdx-lightbox.open');
-    if(!box) return;
-    if(e.key === 'Escape'){ e.preventDefault(); e.stopPropagation(); doClose(box); }
-  }, true);
-})();
 
 
-// === Lightbox harden (2025-10-02) ===
+
+// === SG v1 (2025-10-02) — screens block rebuilt cleanly ===
 (function(){
-  const lb = document.querySelector('.mdx-lightbox');
-  if(!lb) return;
-  // Always attach to body to avoid stacking-context issues
-  if(lb.parentElement !== document.body){
+  // Build (or reuse) a single lightbox in <body>
+  let lb = document.querySelector('.sg-lightbox');
+  if(!lb){
+    lb = document.createElement('div');
+    lb.className = 'sg-lightbox';
+    lb.setAttribute('hidden','');
+    lb.innerHTML = [
+      '<button class="sg-close" aria-label="Close">✕</button>',
+      '<button class="sg-lb-prev" aria-label="Prev">❮</button>',
+      '<img class="sg-lb-img" alt="Preview">',
+      '<button class="sg-lb-next" aria-label="Next">❯</button>'
+    ].join('');
     document.body.appendChild(lb);
+  }else{
+    // Ensure correct inner markup
+    lb.innerHTML = [
+      '<button class="sg-close" aria-label="Close">✕</button>',
+      '<button class="sg-lb-prev" aria-label="Prev">❮</button>',
+      '<img class="sg-lb-img" alt="Preview">',
+      '<button class="sg-lb-next" aria-label="Next">❯</button>'
+    ].join('');
   }
   const body = document.body;
-  const lbImg = lb.querySelector('.mdx-lb-img');
-  const btnClose = lb.querySelector('.mdx-close');
-  const btnPrev = lb.querySelector('.mdx-lb-prev');
-  const btnNext = lb.querySelector('.mdx-lb-next');
+  const imgEl = lb.querySelector('.sg-lb-img');
+  const btnClose = lb.querySelector('.sg-close');
+  const btnPrev = lb.querySelector('.sg-lb-prev');
+  const btnNext = lb.querySelector('.sg-lb-next');
 
-  // If previous handlers exist, remove by cloning (simple reset)
-  const lbClone = lb.cloneNode(true);
-  lb.replaceWith(lbClone);
+  let groups = {};
+  let current = { key:null, i:-1 };
+
+  // Init carousels
+  document.querySelectorAll('#screens .sg-card').forEach(card => {
+    const key = card.getAttribute('data-group') || 'G';
+    const imgs = Array.from(card.querySelectorAll('.sg-track img')).map(x => x.getAttribute('src'));
+    groups[key] = imgs;
+
+    // Click to open
+    card.querySelectorAll('.sg-track img').forEach((im, i) => {
+      im.addEventListener('click', () => openLB(key, i));
+    });
+
+    // Arrows: scroll container by card width
+    const track = card.querySelector('.sg-track');
+    card.querySelector('.sg-prev').addEventListener('click', () => track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' }));
+    card.querySelector('.sg-next').addEventListener('click', () => track.scrollBy({ left:  track.clientWidth, behavior: 'smooth' }));
+  });
+
+  function openLB(key, i){
+    current.key = key; current.i = i;
+    imgEl.setAttribute('src', groups[key][i]);
+    lb.classList.add('open');
+    lb.removeAttribute('hidden');
+    body.classList.add('sg-no-scroll');
+  }
+  function closeLB(){
+    lb.classList.remove('open');
+    lb.setAttribute('hidden','');
+    body.classList.remove('sg-no-scroll');
+  }
+  function step(d){
+    const arr = groups[current.key] || [];
+    if(!arr.length) return;
+    current.i = (current.i + d + arr.length) % arr.length;
+    imgEl.setAttribute('src', arr[current.i]);
+  }
+
+  btnClose.addEventListener('click', closeLB);
+  btnPrev.addEventListener('click', () => step(-1));
+  btnNext.addEventListener('click', () => step(1));
+  lb.addEventListener('click', (e) => { if(e.target === lb) closeLB(); });
+  document.addEventListener('keydown', (e) => {
+    if(!lb.classList.contains('open')) return;
+    if(e.key === 'Escape') closeLB();
+    if(e.key === 'ArrowLeft') step(-1);
+    if(e.key === 'ArrowRight') step(1);
+  });
 })();
