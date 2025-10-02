@@ -442,3 +442,26 @@ body.mdx-no-scroll{ overflow: hidden; }
   .screen .mdx-frame{ aspect-ratio: 16 / 9; }
   .mdx-lb-img{ max-width: 96vw; max-height: 86vh; }
 }
+
+
+/* === Screens RESET (AURUM-DELTA 2025-10-02) === */
+#screens .container{ max-width: 1100px; margin: 0 auto; }
+.section-title{ font-size: clamp(24px, 2vw + 12px, 32px); margin: 0 0 16px; }
+.screen{ margin: 24px auto 40px; }
+.mdx-frame{ position: relative; overflow: hidden; border-radius: 14px; border: 1px solid var(--stroke); background: rgba(255,255,255,.02); }
+.mdx-stage{ overflow: hidden; }
+.mdx-track{ display: grid; grid-auto-flow: column; grid-auto-columns: 100%; gap: 0; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; margin: 0; padding: 0; list-style: none; }
+.mdx-track > li{ scroll-snap-align: center; }
+.mdx-track img{ display: block; width: 100%; height: auto; }
+.mdx-btn{ position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,.45); border: 1px solid var(--stroke); color: #fff; border-radius: 10px; padding: 8px 12px; cursor: pointer; z-index: 2; }
+.mdx-prev{ left: 10px; } .mdx-next{ right: 10px; }
+.mdx-lightbox{ position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,.88); z-index: 9999; }
+.mdx-lightbox.open{ display: flex; }
+.mdx-lb-img{ max-width: min(96vw, 1400px); max-height: 90vh; box-shadow: 0 20px 60px rgba(0,0,0,.6); border-radius: 12px; }
+.mdx-close, .mdx-lb-prev, .mdx-lb-next{ position: absolute; background: rgba(0,0,0,.45); color: #fff; border: 1px solid var(--stroke); border-radius: 10px; padding: 8px 12px; cursor: pointer; }
+.mdx-close{ top: 16px; right: 16px; }
+.mdx-lb-prev{ left: 16px; top: 50%; transform: translateY(-50%); }
+.mdx-lb-next{ right: 16px; top: 50%; transform: translateY(-50%); }
+body.mdx-no-scroll{ overflow: hidden; }
+@media (min-width: 860px){ .mdx-frame{ aspect-ratio: 16 / 10; } }
+@media (max-width: 859.98px){ .mdx-frame{ aspect-ratio: 16 / 9; } }
