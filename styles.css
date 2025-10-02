@@ -351,18 +351,10 @@ figure.screen{margin:0 auto !important; max-width:840px !important; width:100% !
 .mdx-lb-close:focus, .mdx-lb-prev:focus, .mdx-lb-next:focus{outline:none}
 .mdx-lightbox *{outline:none !important}
 
-
-/* === AURUM-DELTA v2 — smaller screens & stable lightbox === */
-.screens-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(380px,1fr)) !important; gap:16px !important; }
-figure.screen{ margin:0 auto; max-width:800px !important; width:100% !important; }
-.mdx-frame{ max-width:800px !important; width:100% !important; border-radius:12px !important; }
-
-/* Lightbox stabilization */
-.mdx-lightbox{ will-change: opacity; }
-body.mdx-locked{ overflow:hidden !important; }
-
-/* Close button should not change size on focus/active */
-.mdx-lightbox .mdx-close{ outline:none; border:1px solid rgba(255,255,255,.20); }
-.mdx-lightbox .mdx-close:focus,
-.mdx-lightbox .mdx-close:active{ outline:none; border:1px solid rgba(255,255,255,.20); }
-
+/* === AURUM-DELTA MIN: smaller screen windows === */
+.screens-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr)) !important;gap:16px !important}
+figure.screen{max-width:780px !important;margin:0 auto !important}
+.mdx-frame{max-width:780px !important;width:100% !important;border-radius:12px}
+/* keep images fluid */
+.mdx-frame .mdx-stage{display:block !important;line-height:0}
+.mdx-frame .mdx-stage img{display:block !important;width:100% !important;height:auto !important}
