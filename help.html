@@ -37,8 +37,6 @@
 .feedback .status{font-size:13px;opacity:.95}
 .feedback .status.ok{color:#b7f397}
 .feedback .status.err{color:#ffb4a8}
-.debugbar{margin-top:16px;padding:10px;border:1px dashed rgba(255,255,255,.25);border-radius:10px;font-size:13px}
-.debugbar pre{white-space:pre-wrap;word-break:break-word;max-height:200px;overflow:auto}
 @media (max-width:600px){ .feedback{padding:14px} }
 </style>
 
@@ -68,7 +66,7 @@
 </div>
 
 <section id="feedback" class="feedback">
-  <h2>Questions & feedback</h2>
+  <h2>Questions & feedback</</h2>
   <p class="note">Leave your email and message. We'll reply within 24–48h.</p>
   <form id="feedbackForm" novalidate>
     <label>Email
@@ -79,62 +77,41 @@
     </label>
     <div class="actions">
       <button type="submit" class="btn" id="fbSend">Send</button>
-      <button type="button" class="btn" id="fbPing">Test ping</button>
       <span id="fbStatus" class="status" role="status" aria-live="polite"></span>
     </div>
   </form>
-  <div class="debugbar">
-    <strong>Debug:</strong>
-    <pre id="fbDebug"></pre>
-  </div>
+  <p class="note">By submitting, you agree that we may contact you about this request. No wallets or private keys — ever.</p>
 </section>
 
 <script>
 (function(){
-  var $ = function(id){ return document.getElementById(id); };
-  var form = $('feedbackForm'), statusEl = $('fbStatus'), dbg = $('fbDebug');
-  var ep = window.FEEDBACK_ENDPOINT;
-
+  var form = document.getElementById('feedbackForm');
+  var statusEl = document.getElementById('fbStatus');
   function say(msg, ok){
     statusEl.textContent = msg;
     statusEl.className = 'status ' + (ok ? 'ok' : 'err');
   }
-  function log(o){
-    try { dbg.textContent = (dbg.textContent + '\n' + (typeof o==='string'?o:JSON.stringify(o))); }
-    catch(e){}
-  }
-
-  $('fbPing').addEventListener('click', async function(){
-    if(!ep){ say('Endpoint not set.', false); return; }
-    try{
-      var res = await fetch(ep.replace(/\/api\/feedback$/, '/api/feedback/ping'), {method:'GET'});
-      var txt = await res.text();
-      say('Ping: ' + res.status, res.ok);
-      log(txt);
-    }catch(e){
-      say('Ping failed', false); log(String(e));
-    }
-  });
-
   form.addEventListener('submit', async function(e){
     e.preventDefault();
+    var ep = window.FEEDBACK_ENDPOINT;
     if(!ep){ say('Endpoint not set.', false); return; }
-    var email = ($('fbEmail').value || '').trim();
-    var msg   = ($('fbMessage').value || '').trim();
+    var email = (document.getElementById('fbEmail').value || '').trim();
+    var msg   = (document.getElementById('fbMessage').value || '').trim();
     if(!email || !msg){ say('Please fill in both fields.', false); return; }
-
-    var payload = { email: email, message: msg, page: location.href, ua: navigator.userAgent, ts: new Date().toISOString() };
     say('Sending…', true);
-    log({sending_to: ep, payload: payload});
-
     try{
-      var res = await fetch(ep, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
-      var txt = await res.text(); log({status: res.status, body: txt});
-      if(res.ok){ form.reset(); say('Thanks! Your message has been sent.', true); }
-      else { say('Error ' + res.status + '. See debug below.', false); }
-    }catch(err){
-      say('Network error. See debug below.', false);
-      log(String(err));
+      var res = await fetch(ep, {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ email: email, message: msg, page: location.href, ua: navigator.userAgent, ts: new Date().toISOString() })
+      });
+      if(res.ok){
+        form.reset(); say('Thanks! Your message has been sent.', true);
+      }else{
+        say('Error ' + res.status + '. Try later or email contact@metridex.com', false);
+      }
+    }catch(_){
+      say('Network error. Try again later.', false);
     }
   });
 })();
