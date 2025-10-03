@@ -19,7 +19,33 @@
   a:hover{border-color:#e5c97a}
 </style>
 <link href="/logo/favicon-32.png?v=3" rel="icon" sizes="32x32" type="image/png"/><link href="/logo/favicon-16.png?v=3" rel="icon" sizes="16x16" type="image/png"/><link href="/logo/apple-touch-icon.png?v=3" rel="apple-touch-icon" sizes="180x180"/><link href="/logo/favicon.ico?v=3" rel="icon"/><link href="/logo/site.webmanifest?v=3" rel="manifest"/><style>.brand-logo{height:108px;width:auto;vertical-align:middle}
-@media (max-width:640px){.brand-logo{height:84px}}</style></head><body>
+@media (max-width:640px){.brand-logo{height:84px}}</style><style>
+/* Feedback widget (standalone, no site-wide dependencies) */
+.feedback{margin-top:28px;padding:16px;border:1px solid rgba(255,255,255,.15);border-radius:12px;background:rgba(255,255,255,.03)}
+.feedback h2{margin:.4em 0 .6em;color:#e5c97a}
+.feedback p.note{font-size:13px;opacity:.9;margin:.2em 0 1em}
+.feedback form{display:grid;gap:12px}
+.feedback label{display:grid;gap:6px;font-weight:600}
+.feedback input,.feedback textarea{
+  width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.18);
+  background:#0b0b0b;color:#e8e8e8;outline:none
+}
+.feedback input:focus,.feedback textarea:focus{box-shadow:0 0 0 2px rgba(229,201,122,.25)}
+.feedback .actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.feedback .btn{
+  border:1px solid rgba(255,255,255,.2);
+  background:linear-gradient(180deg,#141414,#0f1115);
+  color:#f4f0e6;padding:10px 14px;border-radius:10px;font-weight:800;cursor:pointer
+}
+.feedback .btn:hover{transform:translateY(-1px)}
+.feedback .status{font-size:13px;opacity:.95}
+.feedback .status.ok{color:#b7f397}
+.feedback .status.err{color:#ffb4a8}
+@media (max-width:600px){
+  .feedback{padding:14px}
+}
+</style>
+</head><body>
 <div class="wrap">
 <h1>Help / FAQ</h1>
 <p class="note"><a aria-label="Back to Home" href="/">← Back to Home</a></p>
@@ -43,4 +69,80 @@
 <p>Watchlist is <em>lite</em> in MVP: coverage for <strong>ETH/BSC/Polygon</strong>, reasonable caps per user, and guardrails to prevent spam. Pro tiers increase limits.</p>
 <p class="note">Need more? Contact us to unlock higher limits and faster cadence.</p>
 </div>
+<section id="feedback" class="feedback">
+  <h2>Questions & feedback</h2>
+  <p class="note">Leave your email and message. We'll reply within 24–48h.</p>
+  <form id="feedbackForm" novalidate>
+    <label>Email
+      <input type="email" name="email" id="fbEmail" placeholder="you@example.com" required>
+    </label>
+    <label>Message
+      <textarea name="message" id="fbMessage" rows="5" placeholder="Your question or feedback" required></textarea>
+    </label>
+    <div class="actions">
+      <button type="submit" class="btn">Send</button>
+      <span id="fbStatus" class="status" role="status" aria-live="polite"></span>
+    </div>
+  </form>
+  <p class="note">By submitting, you agree that we may contact you about this request. No wallets or private keys — ever.</p>
+</section>
+<script>
+(function(){
+  var form = document.getElementById('feedbackForm');
+  var statusEl = document.getElementById('fbStatus');
+  if(!form) return;
+
+  function say(msg, ok){
+    statusEl.textContent = msg;
+    statusEl.className = 'status ' + (ok ? 'ok' : 'err');
+  }
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    var email = (document.getElementById('fbEmail').value || '').trim();
+    var msg   = (document.getElementById('fbMessage').value || '').trim();
+    if(!email || !msg){ say('Please fill in both fields.', false); return; }
+
+    var payload = {
+      email: email,
+      message: msg,
+      page: location.href,
+      ua: navigator.userAgent,
+      ts: new Date().toISOString()
+    };
+
+    var endpoints = [];
+    if(window.FEEDBACK_ENDPOINT) endpoints.push(window.FEEDBACK_ENDPOINT);
+    endpoints.push('/api/feedback');
+
+    var posted = false;
+    for (var i=0;i<endpoints.length;i++){
+      var ep = endpoints[i];
+      if(!ep) continue;
+      try{
+        var res = await fetch(ep, {
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify(payload)
+        });
+        if (res.ok){
+          posted = true;
+          break;
+        }
+      }catch(_){ /* ignore and try next */ }
+    }
+
+    if(!posted){
+      // Fallback to mailto
+      var mail = 'contact@metridex.com';
+      var subject = encodeURIComponent('Metridex feedback');
+      var body = encodeURIComponent('Email: ' + email + '\n\n' + msg);
+      window.location.href = 'mailto:' + mail + '?subject=' + subject + '&body=' + body;
+    }
+
+    form.reset();
+    say('Thanks! Your message has been sent.', true);
+  });
+})();
+</script>
 </body></html>
