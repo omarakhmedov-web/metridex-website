@@ -404,3 +404,12 @@ body.sg-no-scroll{ overflow:hidden; }
 /* === SG v1.1 (2025-10-02) — hide scrollbars on tracks === */
 .sg-track{ scrollbar-width: none; -ms-overflow-style: none; }
 .sg-track::-webkit-scrollbar{ display: none; }
+
+
+/* === MDX: Trusted by — disable vertical bobbing on logo cards, keep horizontal scroll === */
+.logos.marquee .logo{
+  /* kill orbit animation (which applied translateY/translateZ) */
+  animation: none !important;
+  /* keep a subtle 3D tilt but lock Y/Z so it doesn't float up/down */
+  transform: rotateX(12deg) rotateY(10deg) translateY(0) translateZ(0) scale(1) !important;
+}
