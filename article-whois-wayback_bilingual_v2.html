@@ -1,71 +1,77 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WHOIS &amp; Wayback checks — Metridex</title>
+  <meta name="description" content="Practical guide on verifying domains with WHOIS and the Wayback Machine to assess project credibility.">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/script.js" defer></script>
+</head>
+<body>
+  <main class="article-content container" style="max-width:920px;margin:40px auto;padding:0 16px;">
+    <header style="margin-bottom:20px;">
+      <h1>WHOIS &amp; Wayback checks</h1>
+      <p class="muted" style="opacity:.8;">Updated October 03, 2025</p>
+    </header>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>Metridex — WHOIS &amp; Wayback checks</title><meta content="Why WHOIS/RDAP, SSL, and Wayback matter for token due diligence —   article." name="description"/><link href="styles.css" rel="stylesheet"/><link href="/logo/favicon-32.png?v=3" rel="icon" sizes="32x32" type="image/png"/><link href="/logo/favicon-16.png?v=3" rel="icon" sizes="16x16" type="image/png"/><link href="/logo/apple-touch-icon.png?v=3" rel="apple-touch-icon" sizes="180x180"/><link href="/logo/favicon.ico?v=3" rel="icon"/><link href="/logo/site.webmanifest?v=3" rel="manifest"/><style>.article-meta{font-size:0.9rem;color:#9aa3af;margin:8px 0 18px}
-.article-nav{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.article-nav a{padding:10px 14px;border:1px solid #2a2a2a;border-radius:10px;text-decoration:none}
-.article-nav a:hover{background:#0b0b0b}</style><style>.article-body{margin-top:56px}</style><style>.article-kicker{font-size:.9rem;color:#9aa3af;margin-top:8px}
-.article-author{font-size:.95rem;color:#c7cdd6;margin-top:6px}
-.article-body{margin-top:56px}</style><style>/* AURUM-DELTA: spacing under fixed header */
-.article-offset{padding-top:140px}
-/*  visibility */
-.lang-block{display:none}
-.lang-block.active{display:block}
-.lang-switch{margin:10px 0 0;display:flex;gap:8px;align-items:center}
-.lang-switch button{padding:6px 10px;border:1px solid #2a2a2a;border-radius:8px;background:transparent;cursor:pointer}
-.lang-switch button.active{background:#0b0b0b}</style><style>
-/* AURUM-DELTA OVERRIDES — spacing + switcher visuals */
-.article-body{margin-top:8px !important}              /* was ~56px; closer by ~1.5cm */
-.article-nav{margin-top:9px !important}               /* was 28px; lifted by ~0.5cm */
+    <section>
+      <h2>Purpose</h2>
+      <p>Use WHOIS and the Wayback Machine to quickly understand who is behind a domain, when it was created, and how the public website has evolved. This helps detect disposable websites, domain flipping, or attempts to hide past activity.</p>
+    </section>
 
-/* Language switcher: brighter, like homepage */
-.lang-switch{margin-top:10px; gap:10px}
-.lang-switch button{
-  padding:8px 14px;
-  border:1px solid #3b3b3b;
-  border-radius:10px;
-  background:rgba(255,255,255,0.04);
-  color:#e5e7eb;
-  font-weight:600;
-  letter-spacing:.2px;
-}
-.lang-switch button:hover{background:rgba(255,255,255,0.08)}
-.lang-switch button.active{
-  background:#1f2937;
-  border-color:#6b7280;
-  color:#ffffff;
-}
-</style><!-- MDX_EN_ONLY_NoBase -->
-</head><body class="article-offset lux"><header class="nav"><div class="container nav-inner nav-container-wide"><div class="brand"><img alt="Metridex" class="brand-logo" src="/logo/metridex_logo_header.png"/></div><nav class="nav-links"><a href="/articles.html">All articles</a><a href="videos.html">Videos</a><a href="help.html">Help</a></nav><div class="nav-actions"><button class="icon-btn" id="themeToggle" title="Toggle theme">🌙</button></div></div></header><section class="hero-subtle"><div class="container"><div class="flex-row space-between" style="display:flex; align-items:center; justify-content:space-between; gap:16px;"><div><h1 style="margin-top:0.25rem">WHOIS &amp; Wayback checks</h1><div class="article-kicker">Guide · Sep 29, 2025</div><div class="article-author">— Omar Ahmad, Founder of Metridex</div><div class="article-body"></div></div></div></div></section><section class="section"><div class="container article"><!-- EN --><div class="article-content"><p><strong>TL;DR</strong>: domains and their history often expose “fast-fork” behavior or short-lived sites. We check WHOIS/RDAP, SSL chains, and Wayback snapshots to catch red flags early.</p><h2>1) WHOIS/RDAP: age and stewardship</h2><p>Young domains aren’t a crime — but they correlate with higher risk when paired with other signals. We read registrar, creation date, and changes. Sudden registrar hops are a smell.</p><h2>2) SSL: minimal hygiene baseline</h2><p>A valid TLS chain with sane expiry doesn’t mean “safe” — but broken or self-signed certs are a clear baseline fail. We surface issuer and expiry to spot neglect.</p><h2>3) Wayback: time is a moat</h2><p>Snapshots indicate persistence. No snapshots on an “established” brand? Suspicious. A handful of recent snapshots for a new token site? Acceptable, but note it.</p><div class="tip"><strong>Tip:</strong> combine website hygiene with on-chain context: if LP is thin and domain is brand new with no snapshots, slow down.</div><h2>4) Common red flags</h2><ul><li>Brand-new domain + aggressive marketing + thin LP.</li><li>Registrar changes clustered around token launch.</li><li>Mismatch between site domain and links embedded in social posts.</li><li>SSL expiring in days or issued by dubious CAs.</li></ul><h2>5) In QuickScan</h2><p>We fetch WHOIS/RDAP, SSL issuer/expiry, and Wayback presence for the provided site. Signals are folded into the verdict via <em>Why++</em>.</p><hr/><p><strong>Try it</strong>: <a href="https://t.me/MetridexBot" rel="noopener" target="_blank">@MetridexBot</a> • <a href="https://metridex.com" rel="noopener" target="_blank">metridex.com</a></p></div><!-- RU --><h2>4) Частые красные флаги</h2><ul><li>Совсем новый домен + агрессивный маркетинг + тонкий LP.</li><li>Смена регистратора вокруг даты запуска токена.</li><li>Несоответствие домена сайта ссылкам в соцсетях.</li><li>SSL скоро истекает или выдан сомнительным УЦ.</li></ul><h2>5) В QuickScan</h2><p>Мы подтягиваем WHOIS/RDAP, издателя/срок SSL и наличие снимков Wayback для сайта из карточки. Сигналы учитываются в вердикте через <em>Why++</em>.</p><hr/><p><strong>Попробовать</strong>: <a href="https://t.me/MetridexBot" rel="noopener" target="_blank">@MetridexBot</a> • <a href="https://metridex.com" rel="noopener" target="_blank">metridex.com</a></p></div></section><footer class="footer"><div class="container"><p>© <span id="year"></span> Metridex.</p></div></footer><div class="article-nav"><a href="/article-quickscan-methodology_bilingual_v3.html">← Back to Articles</a><a href="/article-quickscan-methodology_bilingual_v3.html">← Prev: QuickScan methodology</a><a href="/article-signals-whyplusplus_bilingual_v1.html">Next: Signals &amp; Why++ →</a></div><script>(function(){
-  function switchTo(lang){
-    document.documentElement.setAttribute('lang', lang);
-    var blocks = document.querySelectorAll('.lang-block');
-    blocks.forEach(function(el){
-      if (el.classList.contains('lang-' + lang)){
-        el.classList.add('active');
-        el.style.display = 'block';
-      } else {
-        el.classList.remove('active');
-        el.style.display = 'none';
-      }
-    });
-    document.querySelectorAll('.lang-switch [data-lang]').forEach(function(btn){
-      btn.classList.toggle('active', btn.getAttribute('data-lang')===lang);
-    });
-    try{ localStorage.setItem('lang', lang); }catch(e){}
-  }
-  var pref = 'en';
-  try{
-    var s = localStorage.getItem('lang');
-    if (s === 'ru' || s === 'en') pref = s;
-  }catch(e){}
-  // initial
-  switchTo(pref);
-  // hook buttons
-  document.addEventListener('click', function(e){
-    var t = e.target;
-    if (t && t.matches('.lang-switch [data-lang]')){
-      e.preventDefault();
-      switchTo(t.getAttribute('data-lang'));
-    }
-  });
-})();</script></body></html>
+    <section>
+      <h2>When to use</h2>
+      <ul>
+        <li>Before integrating a new partner, exchange, or service.</li>
+        <li>When a project suddenly rebrands or “launches” on a fresh domain.</li>
+        <li>If marketing claims don’t match the site’s age or history.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Step‑by‑step</h2>
+      <ol>
+        <li><strong>WHOIS lookup.</strong> Check <em>creation date</em>, <em>registrar</em>, <em>nameservers</em>, and <em>registrant visibility</em>. Consistent infra over time is a good sign.</li>
+        <li><strong>Wayback timeline.</strong> Open several snapshots (first, middle, latest). Compare the brand, product claims, and legal pages.</li>
+        <li><strong>Cross‑signals.</strong> Compare domain age with Twitter/X account age, GitHub activity, mobile app release dates, and press mentions.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Red flags</h2>
+      <ul>
+        <li>Domain registered very recently but project claims multi‑year history.</li>
+        <li>Frequent switches of registrars and nameservers without clear reason.</li>
+        <li>Wayback shows unrelated content (domain recycling) or aggressive post‑facto edits.</li>
+        <li>Missing or constantly changing legal pages (ToS/Privacy/Company).</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Healthy signals</h2>
+      <ul>
+        <li>Older domain with consistent hosting and incremental site evolution.</li>
+        <li>Stable legal pages and contact details that match filings and press.</li>
+        <li>Past claims align with current product and team statements.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Checklist</h2>
+      <ul>
+        <li>Creation &amp; update dates make sense relative to the roadmap.</li>
+        <li>Registrars/nameservers stable (or changes are explained by growth).</li>
+        <li>Historic snapshots contain the same brand and value proposition.</li>
+        <li>Legal pages present and consistent.</li>
+      </ul>
+    </section>
+
+    <footer class="article-nav" style="display:flex;gap:12px;justify-content:space-between;align-items:center;margin:36px 0 24px;">
+      <a class="btn prev" href="/article-quickscan-methodology_bilingual_v3.html">← Previous: QuickScan methodology</a>
+      <a class="btn all" href="/articles.html">All articles</a>
+      <a class="btn next" href="/article-signals-whyplusplus_bilingual_v1.html">Next: Signals &amp; Why++ →</a>
+    </footer>
+  </main>
+</body>
+</html>
