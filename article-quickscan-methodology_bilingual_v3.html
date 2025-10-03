@@ -1,20 +1,11 @@
-<!DOCTYPE html>
-
-<html data-lang="en" lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Metridex — QuickScan methodology (EN/RU)</title>
-<meta content="QuickScan methodology: EN/RU. How Metridex turns raw on-chain data into an explainable verdict with Why++." name="description"/>
-<link href="styles.css" rel="stylesheet"/>
-<link href="/logo/favicon-32.png?v=3" rel="icon" sizes="32x32" type="image/png"/><link href="/logo/favicon-16.png?v=3" rel="icon" sizes="16x16" type="image/png"/><link href="/logo/apple-touch-icon.png?v=3" rel="apple-touch-icon" sizes="180x180"/><link href="/logo/favicon.ico?v=3" rel="icon"/><link href="/logo/site.webmanifest?v=3" rel="manifest"/><style>.article-meta{font-size:0.9rem;color:#9aa3af;margin:8px 0 18px}
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>Metridex — QuickScan methodology</title><meta content="QuickScan methodology: . How Metridex turns raw on-chain data into an explainable verdict with Why++." name="description"/><link href="styles.css" rel="stylesheet"/><link href="/logo/favicon-32.png?v=3" rel="icon" sizes="32x32" type="image/png"/><link href="/logo/favicon-16.png?v=3" rel="icon" sizes="16x16" type="image/png"/><link href="/logo/apple-touch-icon.png?v=3" rel="apple-touch-icon" sizes="180x180"/><link href="/logo/favicon.ico?v=3" rel="icon"/><link href="/logo/site.webmanifest?v=3" rel="manifest"/><style>.article-meta{font-size:0.9rem;color:#9aa3af;margin:8px 0 18px}
 .article-nav{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
 .article-nav a{padding:10px 14px;border:1px solid #2a2a2a;border-radius:10px;text-decoration:none}
 .article-nav a:hover{background:#0b0b0b}</style><style>.article-body{margin-top:56px}</style><style>.article-kicker{font-size:.9rem;color:#9aa3af;margin-top:8px}
 .article-author{font-size:.95rem;color:#c7cdd6;margin-top:6px}
 .article-body{margin-top:56px}</style><style>/* AURUM-DELTA: spacing under fixed header */
 .article-offset{padding-top:140px}
-/* Bilingual visibility */
+/*  visibility */
 .lang-block{display:none}
 .lang-block.active{display:block}
 .lang-switch{margin:10px 0 0;display:flex;gap:8px;align-items:center}
@@ -41,86 +32,7 @@
   border-color:#6b7280;
   color:#ffffff;
 }
-</style></head>
-<body class="article-offset lux">
-<header class="nav">
-<div class="container nav-inner nav-container-wide">
-<div class="brand"><img alt="Metridex" class="brand-logo" src="/logo/metridex_logo_header.png"/></div>
-<nav class="nav-links">
-<a href="articles.html">All articles</a>
-<a href="videos.html">Videos</a>
-<a href="help.html">Help</a>
-</nav>
-<div class="nav-actions"><button class="icon-btn" id="themeToggle" title="Toggle theme">🌙</button></div>
-</div>
-</header>
-<section class="hero-subtle" style="padding-top:96px; scroll-margin-top:96px;">
-<div class="container">
-<div class="flex-row space-between" style="display:flex; align-items:center; justify-content:space-between; gap:16px;">
-<div>
-<h1 style="margin-top:0.25rem">QuickScan methodology</h1><div class="article-kicker">Guide · Sep 29, 2025</div><div class="article-author">— Omar Ahmad, Founder of Metridex</div><div class="article-body"></div>
-</div>
-<div aria-label="Language" class="lang-switch" role="group">
-<button aria-pressed="true" class="lang-btn" data-lang="en" id="btn-en">EN</button>
-<button aria-pressed="false" class="lang-btn" data-lang="ru" id="btn-ru">RU</button>
-</div>
-</div>
-</div>
-</section>
-<section class="section">
-<div class="container article">
-<!-- EN -->
-<div class="lang-block lang-en active">
-<p><strong>TL;DR</strong>: QuickScan shows pair context and core on-chain signals in seconds, then adds website hygiene checks. The result is an explainable verdict with Why++ factors.</p>
-<h2>1) Pair context first</h2>
-<p>We start with pair-level signals—liquidity, FDV/MC, 24h volume, and short-term deltas—because they frame the token’s trading reality (source: DexScreener).</p>
-<h2>2) On-chain quick checks</h2>
-<ul>
-<li><strong>Contract existence &amp; proxy/admin flags</strong>: is there bytecode, is it upgradable, are privileged roles present?</li>
-<li><strong>Concentration</strong>: top holders, LP share, and whether LP is custodied or mixed with contracts.</li>
-<li><strong>Chain coverage</strong>: ETH / BSC / Polygon in RC1.</li>
-</ul>
-<h2>3) Project hygiene</h2>
-<ul>
-<li><strong>WHOIS/RDAP</strong>: registrar age and consistency.</li>
-<li><strong>SSL</strong>: valid certs and expiry.</li>
-<li><strong>Wayback</strong>: snapshot presence as a proxy for longevity.</li>
-</ul>
-<h2>4) Explainability via Why++</h2>
-<p>Every verdict cites concrete factors (e.g., “High liquidity”, “No Wayback snapshots”, “Contract missing”). This keeps the signal auditable and reduces false confidence.</p>
-<h2>5) Limitations &amp; next steps</h2>
-<p>QuickScan is a <em>first pass</em>. Deep due diligence still matters. Upcoming: shareable links (TTL), PDF export, watchlists/alerts, and richer LP-lock intel.</p>
-<hr/>
-<p><strong>Try it</strong>: <a href="https://t.me/MetridexBot" rel="noopener" target="_blank">@MetridexBot</a> • <a href="https://metridex.com" rel="noopener" target="_blank">metridex.com</a></p>
-</div>
-<!-- RU -->
-<div class="lang-block lang-ru">
-<p><strong>Кратко</strong>: QuickScan за секунды показывает контекст пары и ключевые ончейн‑сигналы, затем добавляет проверку «гигиены» сайта. Итог — объяснимый вердикт с Why++ факторами.</p>
-<h2>1) Сначала контекст пары</h2>
-<p>Начинаем с сигналов пары — ликвидность, FDV/MC, объём за 24h и краткосрочные Δ — они задают «рамку реальности» токена (источник: DexScreener).</p>
-<h2>2) Быстрые ончейн‑проверки</h2>
-<ul>
-<li><strong>Наличие байткода и прокси/админ‑флаги</strong>: есть ли код, апгрейдируемость, привилегированные роли?</li>
-<li><strong>Концентрация</strong>: топ‑холдеры, доля LP и хранится ли LP у кастодиана/контракта.</li>
-<li><strong>Покрытие сетей</strong>: ETH / BSC / Polygon в RC1.</li>
-</ul>
-<h2>3) «Гигиена» проекта</h2>
-<ul>
-<li><strong>WHOIS/RDAP</strong>: возраст и консистентность регистратора.</li>
-<li><strong>SSL</strong>: валидность и срок действия сертификата.</li>
-<li><strong>Wayback</strong>: наличие снимков как прокси долголетия.</li>
-</ul>
-<h2>4) Пояснимость через Why++</h2>
-<p>Каждый вердикт сопровождается конкретными причинами (например: «Высокая ликвидность», «Нет снимков Wayback», «Контракт отсутствует»). Это делает сигнал проверяемым и снижает ложную уверенность.</p>
-<h2>5) Ограничения и что дальше</h2>
-<p>QuickScan — это <em>первый проход</em>. Глубокий анализ всё равно важен. В планах: шер‑ссылки (TTL), PDF‑экспорт, Watchlists/Alerts (lite) и расширенная аналитика LP‑lock.</p>
-<hr/>
-<p><strong>Попробовать</strong>: <a href="https://t.me/MetridexBot" rel="noopener" target="_blank">@MetridexBot</a> • <a href="https://metridex.com" rel="noopener" target="_blank">metridex.com</a></p>
-</div>
-</div>
-</section>
-<footer class="footer"><div class="container"><p>© <span id="year"></span> Metridex.</p></div></footer>
-<div class="article-nav"><a href="/articles.html">← Back to Articles</a><a href="/article-whois-wayback_bilingual_v2.html">Next: WHOIS &amp; Wayback checks →</a></div><script>(function(){
+</style></head><body class="article-offset lux"><header class="nav"><div class="container nav-inner nav-container-wide"><div class="brand"><img alt="Metridex" class="brand-logo" src="/logo/metridex_logo_header.png"/></div><nav class="nav-links"><a href="articles.html">All articles</a><a href="videos.html">Videos</a><a href="help.html">Help</a></nav><div class="nav-actions"><button class="icon-btn" id="themeToggle" title="Toggle theme">🌙</button></div></div></header><section class="hero-subtle" style="padding-top:96px; scroll-margin-top:96px;"><div class="container"><div class="flex-row space-between" style="display:flex; align-items:center; justify-content:space-between; gap:16px;"><div><h1 style="margin-top:0.25rem">QuickScan methodology</h1><div class="article-kicker">Guide · Sep 29, 2025</div><div class="article-author">— Omar Ahmad, Founder of Metridex</div><div class="article-body"></div></div></div></div></section><section class="section"><div class="container article"><!-- EN --><div class="article-content"><p><strong>TL;DR</strong>: QuickScan shows pair context and core on-chain signals in seconds, then adds website hygiene checks. The result is an explainable verdict with Why++ factors.</p><h2>1) Pair context first</h2><p>We start with pair-level signals—liquidity, FDV/MC, 24h volume, and short-term deltas—because they frame the token’s trading reality (source: DexScreener).</p><h2>2) On-chain quick checks</h2><ul><li><strong>Contract existence &amp; proxy/admin flags</strong>: is there bytecode, is it upgradable, are privileged roles present?</li><li><strong>Concentration</strong>: top holders, LP share, and whether LP is custodied or mixed with contracts.</li><li><strong>Chain coverage</strong>: ETH / BSC / Polygon in RC1.</li></ul><h2>3) Project hygiene</h2><ul><li><strong>WHOIS/RDAP</strong>: registrar age and consistency.</li><li><strong>SSL</strong>: valid certs and expiry.</li><li><strong>Wayback</strong>: snapshot presence as a proxy for longevity.</li></ul><h2>4) Explainability via Why++</h2><p>Every verdict cites concrete factors (e.g., “High liquidity”, “No Wayback snapshots”, “Contract missing”). This keeps the signal auditable and reduces false confidence.</p><h2>5) Limitations &amp; next steps</h2><p>QuickScan is a <em>first pass</em>. Deep due diligence still matters. Upcoming: shareable links (TTL), PDF export, watchlists/alerts, and richer LP-lock intel.</p><hr/><p><strong>Try it</strong>: <a href="https://t.me/MetridexBot" rel="noopener" target="_blank">@MetridexBot</a> • <a href="https://metridex.com" rel="noopener" target="_blank">metridex.com</a></p></div><!-- RU --></div></section><footer class="footer"><div class="container"><p>© <span id="year"></span> Metridex.</p></div></footer><div class="article-nav"><a href="/articles.html">← Back to Articles</a><a href="/article-whois-wayback__v2.html">Next: WHOIS &amp; Wayback checks →</a></div><script>(function(){
   function switchTo(lang){
     document.documentElement.setAttribute('lang', lang);
     var blocks = document.querySelectorAll('.lang-block');
@@ -153,5 +65,4 @@
       switchTo(t.getAttribute('data-lang'));
     }
   });
-})();</script></body>
-</html>
+})();</script></body></html>
