@@ -40,8 +40,7 @@
     });
     if(langBtn) langBtn.textContent = lang.toUpperCase();
   }
-  let savedLang = 'en';
-  try{ savedLang = localStorage.getItem('metridex.lang') || 'en'; }catch(e){}
+  let savedLang = 'en'; // i18n disabled
   applyLang(savedLang);
   langBtn && langBtn.addEventListener('click', ()=>{
     const next = (root.getAttribute('data-lang')==='en') ? 'ru' : 'en';
