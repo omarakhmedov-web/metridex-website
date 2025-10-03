@@ -20,31 +20,28 @@
 </style>
 <link href="/logo/favicon-32.png?v=3" rel="icon" sizes="32x32" type="image/png"/><link href="/logo/favicon-16.png?v=3" rel="icon" sizes="16x16" type="image/png"/><link href="/logo/apple-touch-icon.png?v=3" rel="apple-touch-icon" sizes="180x180"/><link href="/logo/favicon.ico?v=3" rel="icon"/><link href="/logo/site.webmanifest?v=3" rel="manifest"/><style>.brand-logo{height:108px;width:auto;vertical-align:middle}
 @media (max-width:640px){.brand-logo{height:84px}}</style>
+<script>
+  window.FEEDBACK_ENDPOINT = "https://cryptobot-ai-1.onrender.com/api/feedback";
+</script>
 <style>
 .feedback{margin-top:28px;padding:16px;border:1px solid rgba(255,255,255,.15);border-radius:12px;background:rgba(255,255,255,.03)}
 .feedback h2{margin:.4em 0 .6em;color:#e5c97a}
 .feedback p.note{font-size:13px;opacity:.9;margin:.2em 0 1em}
 .feedback form{display:grid;gap:12px}
 .feedback label{display:grid;gap:6px;font-weight:600}
-.feedback input,.feedback textarea{
-  width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.18);
-  background:#0b0b0b;color:#e8e8e8;outline:none
-}
+.feedback input,.feedback textarea{width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.18);background:#0b0b0b;color:#e8e8e8;outline:none}
 .feedback input:focus,.feedback textarea:focus{box-shadow:0 0 0 2px rgba(229,201,122,.25)}
 .feedback .actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.feedback .btn{
-  border:1px solid rgba(255,255,255,.2);
-  background:linear-gradient(180deg,#141414,#0f1115);
-  color:#f4f0e6;padding:10px 14px;border-radius:10px;font-weight:800;cursor:pointer
-}
+.feedback .btn{border:1px solid rgba(255,255,255,.2);background:linear-gradient(180deg,#141414,#0f1115);color:#f4f0e6;padding:10px 14px;border-radius:10px;font-weight:800;cursor:pointer}
 .feedback .btn:hover{transform:translateY(-1px)}
 .feedback .status{font-size:13px;opacity:.95}
 .feedback .status.ok{color:#b7f397}
 .feedback .status.err{color:#ffb4a8}
+.debugbar{margin-top:16px;padding:10px;border:1px dashed rgba(255,255,255,.25);border-radius:10px;font-size:13px}
+.debugbar pre{white-space:pre-wrap;word-break:break-word;max-height:200px;overflow:auto}
 @media (max-width:600px){ .feedback{padding:14px} }
 </style>
 
-<script>window.FEEDBACK_ENDPOINT="https://cryptobot-ai-1.onrender.com/api/feedback";window.FEEDBACK_DISABLE_MAILTO=1;</script>
 </head><body>
 <div class="wrap">
 <h1>Help / FAQ</h1>
@@ -81,53 +78,63 @@
       <textarea name="message" id="fbMessage" rows="5" placeholder="Your question or feedback" required></textarea>
     </label>
     <div class="actions">
-      <button type="submit" class="btn">Send</button>
+      <button type="submit" class="btn" id="fbSend">Send</button>
+      <button type="button" class="btn" id="fbPing">Test ping</button>
       <span id="fbStatus" class="status" role="status" aria-live="polite"></span>
     </div>
   </form>
-  <p class="note">By submitting, you agree that we may contact you about this request. No wallets or private keys — ever.</p>
+  <div class="debugbar">
+    <strong>Debug:</strong>
+    <pre id="fbDebug"></pre>
+  </div>
 </section>
-
 
 <script>
 (function(){
-  var form = document.getElementById('feedbackForm');
-  var statusEl = document.getElementById('fbStatus');
-  if(!form) return;
+  var $ = function(id){ return document.getElementById(id); };
+  var form = $('feedbackForm'), statusEl = $('fbStatus'), dbg = $('fbDebug');
+  var ep = window.FEEDBACK_ENDPOINT;
 
   function say(msg, ok){
     statusEl.textContent = msg;
     statusEl.className = 'status ' + (ok ? 'ok' : 'err');
   }
+  function log(o){
+    try { dbg.textContent = (dbg.textContent + '\n' + (typeof o==='string'?o:JSON.stringify(o))); }
+    catch(e){}
+  }
+
+  $('fbPing').addEventListener('click', async function(){
+    if(!ep){ say('Endpoint not set.', false); return; }
+    try{
+      var res = await fetch(ep.replace(/\/api\/feedback$/, '/api/feedback/ping'), {method:'GET'});
+      var txt = await res.text();
+      say('Ping: ' + res.status, res.ok);
+      log(txt);
+    }catch(e){
+      say('Ping failed', false); log(String(e));
+    }
+  });
 
   form.addEventListener('submit', async function(e){
     e.preventDefault();
-    var email = (document.getElementById('fbEmail').value || '').trim();
-    var msg   = (document.getElementById('fbMessage').value || '').trim();
+    if(!ep){ say('Endpoint not set.', false); return; }
+    var email = ($('fbEmail').value || '').trim();
+    var msg   = ($('fbMessage').value || '').trim();
     if(!email || !msg){ say('Please fill in both fields.', false); return; }
 
-    var payload = {
-      email: email,
-      message: msg,
-      page: location.href,
-      ua: navigator.userAgent,
-      ts: new Date().toISOString()
-    };
-
-    var ep = window.FEEDBACK_ENDPOINT;
-    if(!ep){ say('Feedback endpoint is not configured.', false); return; }
+    var payload = { email: email, message: msg, page: location.href, ua: navigator.userAgent, ts: new Date().toISOString() };
+    say('Sending…', true);
+    log({sending_to: ep, payload: payload});
 
     try{
       var res = await fetch(ep, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
-      if(res.ok){
-        form.reset();
-        say('Thanks! Your message has been sent.', true);
-      }else{
-        var txt = 'Error ' + res.status + '. Try again later or email contact@metridex.com';
-        say(txt, false);
-      }
+      var txt = await res.text(); log({status: res.status, body: txt});
+      if(res.ok){ form.reset(); say('Thanks! Your message has been sent.', true); }
+      else { say('Error ' + res.status + '. See debug below.', false); }
     }catch(err){
-      say('Network error. Try again later.', false);
+      say('Network error. See debug below.', false);
+      log(String(err));
     }
   });
 })();
