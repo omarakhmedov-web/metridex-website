@@ -19,8 +19,8 @@
   a:hover{border-color:#e5c97a}
 </style>
 <link href="/logo/favicon-32.png?v=3" rel="icon" sizes="32x32" type="image/png"/><link href="/logo/favicon-16.png?v=3" rel="icon" sizes="16x16" type="image/png"/><link href="/logo/apple-touch-icon.png?v=3" rel="apple-touch-icon" sizes="180x180"/><link href="/logo/favicon.ico?v=3" rel="icon"/><link href="/logo/site.webmanifest?v=3" rel="manifest"/><style>.brand-logo{height:108px;width:auto;vertical-align:middle}
-@media (max-width:640px){.brand-logo{height:84px}}</style><style>
-/* Feedback widget (standalone, no site-wide dependencies) */
+@media (max-width:640px){.brand-logo{height:84px}}</style>
+<style>
 .feedback{margin-top:28px;padding:16px;border:1px solid rgba(255,255,255,.15);border-radius:12px;background:rgba(255,255,255,.03)}
 .feedback h2{margin:.4em 0 .6em;color:#e5c97a}
 .feedback p.note{font-size:13px;opacity:.9;margin:.2em 0 1em}
@@ -41,10 +41,10 @@
 .feedback .status{font-size:13px;opacity:.95}
 .feedback .status.ok{color:#b7f397}
 .feedback .status.err{color:#ffb4a8}
-@media (max-width:600px){
-  .feedback{padding:14px}
-}
+@media (max-width:600px){ .feedback{padding:14px} }
 </style>
+
+<script>window.FEEDBACK_ENDPOINT="https://cryptobot-ai-1.onrender.com/api/feedback";window.FEEDBACK_DISABLE_MAILTO=1;</script>
 </head><body>
 <div class="wrap">
 <h1>Help / FAQ</h1>
@@ -69,6 +69,7 @@
 <p>Watchlist is <em>lite</em> in MVP: coverage for <strong>ETH/BSC/Polygon</strong>, reasonable caps per user, and guardrails to prevent spam. Pro tiers increase limits.</p>
 <p class="note">Need more? Contact us to unlock higher limits and faster cadence.</p>
 </div>
+
 <section id="feedback" class="feedback">
   <h2>Questions & feedback</h2>
   <p class="note">Leave your email and message. We'll reply within 24–48h.</p>
@@ -86,6 +87,8 @@
   </form>
   <p class="note">By submitting, you agree that we may contact you about this request. No wallets or private keys — ever.</p>
 </section>
+
+
 <script>
 (function(){
   var form = document.getElementById('feedbackForm');
@@ -111,38 +114,23 @@
       ts: new Date().toISOString()
     };
 
-    var endpoints = [];
-    if(window.FEEDBACK_ENDPOINT) endpoints.push(window.FEEDBACK_ENDPOINT);
-    endpoints.push('/api/feedback');
+    var ep = window.FEEDBACK_ENDPOINT;
+    if(!ep){ say('Feedback endpoint is not configured.', false); return; }
 
-    var posted = false;
-    for (var i=0;i<endpoints.length;i++){
-      var ep = endpoints[i];
-      if(!ep) continue;
-      try{
-        var res = await fetch(ep, {
-          method:'POST',
-          headers:{'Content-Type':'application/json'},
-          body: JSON.stringify(payload)
-        });
-        if (res.ok){
-          posted = true;
-          break;
-        }
-      }catch(_){ /* ignore and try next */ }
+    try{
+      var res = await fetch(ep, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+      if(res.ok){
+        form.reset();
+        say('Thanks! Your message has been sent.', true);
+      }else{
+        var txt = 'Error ' + res.status + '. Try again later or email contact@metridex.com';
+        say(txt, false);
+      }
+    }catch(err){
+      say('Network error. Try again later.', false);
     }
-
-    if(!posted){
-      // Fallback to mailto
-      var mail = 'contact@metridex.com';
-      var subject = encodeURIComponent('Metridex feedback');
-      var body = encodeURIComponent('Email: ' + email + '\n\n' + msg);
-      window.location.href = 'mailto:' + mail + '?subject=' + subject + '&body=' + body;
-    }
-
-    form.reset();
-    say('Thanks! Your message has been sent.', true);
   });
 })();
 </script>
+
 </body></html>
