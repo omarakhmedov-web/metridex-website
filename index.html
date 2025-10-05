@@ -82,33 +82,7 @@
 </script>
 
 
-<script>
-(function(){
-  try{
-    // Share on X near Watch demo
-    const demoBtn = document.getElementById('watchDemo');
-    if(demoBtn){
-      const share = document.createElement('a');
-      const text = encodeURIComponent('Metridex QuickScan — 60s token risk snapshot');
-      const url  = encodeURIComponent('https://metridex.com');
-      const hashtags = encodeURIComponent('MetridexQuickScan,DeFiSafety');
-      share.href = `https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtags=${hashtags}`;
-      share.target = "_blank";
-      share.rel = "noopener";
-      share.className = "btn-ghost btn-sm";
-      share.textContent = "Share on X";
-      share.onclick = function(){ try{ plausible && plausible('X_Share_Click'); }catch(e){} };
-      demoBtn.insertAdjacentElement('afterend', share);
-    }
 
-    catch(e){} };
-      // Try to append to a right-aligned container if exists
-      const right = footer.querySelector('.footer-right, .container, .wrap, .inner') || footer;
-      right.appendChild(follow);
-    }
-  }catch(err){ /* no-op */ }
-})();
-</script>
 
 
 <script>
