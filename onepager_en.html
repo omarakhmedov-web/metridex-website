@@ -1,80 +1,103 @@
 <!DOCTYPE html>
-
-<html><head><meta charset="utf-8"/><title>Metridex — One‑Pager (EN)</title>
+<html><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Metridex - one-pager (EN)</title>
 <style>
-  @page { size: A4; margin: 18mm; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Arial, sans-serif; color: #e8e8e8; background: #000; }
-  .page { background: #111; border-radius: 12px; padding: 28px; box-shadow: 0 0 0.6mm rgba(255,255,255,0.06) inset; }
-  h1 { font-size: 28px; margin: 0 0 8px 0; color: #f4f0e6; letter-spacing: 0.2px;}
-  h2 { font-size: 16px; margin: 12px 0 8px; color: #e5c97a; }
-  p { font-size: 12.5px; line-height: 1.5; margin: 6px 0; }
-  ul { margin: 6px 0 6px 18px; }
-  .brand { display:flex; align-items:center; justify-content:space-between; margin-bottom: 12px; }
-  .logo { font-weight:700; font-size: 18px; color:#e5c97a; }
-  .meta { font-size:11px; color:#b9b9b9; }
-  .cta { margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap;}
-  .btn { border: 1px solid #e5c97a; color:#e5c97a; padding:8px 12px; border-radius:10px; text-decoration:none; font-weight:600; }
-  .hr { height:1px; background: linear-gradient(90deg,#2a2a2a, #444, #2a2a2a); margin:10px 0 16px; }
-  .grid { display:grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .card { background:#0b0b0b; border:1px solid #222; border-radius:10px; padding:10px; }
-  .foot { margin-top:16px; font-size:10.5px; color:#9a9a9a; }
-  .gold { color:#e5c97a; }
-
-
-/* AURUM-DELTA: One-Pager header shield */
-.logo-img{height:26px;width:auto;display:inline-block;vertical-align:middle}
-@media print {.logo-img{height:24px}}
+  @page { size: A4; margin: 16mm; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Arial, sans-serif; color: #e8e8e8; background: #000; margin:0; }
+  .page { max-width: 1000px; margin: 0 auto; background: #101216; border-radius: 16px; padding: 28px; box-shadow: 0 0 0 .6mm rgba(255,255,255,.05) inset; }
+  .brand { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom: 10px; }
+  .logo-img { height:30px; width:auto; display:block; }
+  .meta { font-size:11px; color:#adb6c4; }
+  h1 { font-size: 30px; line-height:1.06; margin: 8px 0 10px; color: #f4f0e6; letter-spacing: -0.4px; }
+  h2 { font-size: 16px; margin: 0 0 8px; color: #f1cd7b; }
+  p { font-size: 13px; line-height: 1.55; margin: 0; }
+  .lede { margin-top: 8px; color:#dbe3ed; }
+  .hr { height:1px; background: linear-gradient(90deg,transparent,#434b58,transparent); margin: 14px 0 16px; }
+  .grid { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .card { background:#0b0d11; border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:12px 13px; }
+  .card ul { margin:0; padding-left:18px; font-size:12.6px; line-height:1.5; }
+  .card li + li { margin-top:4px; }
+  .row { display:grid; grid-template-columns: 1.2fr .8fr; gap:12px; }
+  .mini { font-size:11px; color:#a8b1bf; }
+  .gold { color:#f3d68f; font-weight:800; }
+  .pill { display:inline-block; padding:5px 9px; border-radius:999px; border:1px solid rgba(241,205,123,.35); background:rgba(241,205,123,.07); color:#f1cd7b; font-size:12px; font-weight:700; }
+  .cta { margin-top: 14px; display:flex; gap:10px; flex-wrap:wrap; }
+  .btn { border: 1px solid rgba(241,205,123,.35); color:#f2d791; padding:9px 12px; border-radius:11px; text-decoration:none; font-weight:700; font-size:12.5px; }
+  .foot { margin-top:16px; font-size:11px; color:#9da7b4; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
 </style>
-<meta content="Metridex — One‑Pager (EN)" property="og:title"/><meta content="On-chain risk metrics for DeFi &amp; Telegram. QuickScan in seconds. Deep checks." property="og:description"/><meta content="website" property="og:type"/><meta content="https://metridex.com/onepager_en.html" property="og:url"/><meta content="/assets/og-cover.png" property="og:image"/><meta content="Metridex" property="og:site_name"/><link href="/onepager_en.html" rel="canonical"/><link href="/onepager_en.html" hreflang="en" rel="alternate"/><link href="/onepager_ru.html" hreflang="ru" rel="alternate"/><link href="/logo/favicon-32.png?v=3" rel="icon" sizes="32x32" type="image/png"/><link href="/logo/favicon-16.png?v=3" rel="icon" sizes="16x16" type="image/png"/><link href="/logo/apple-touch-icon.png?v=3" rel="apple-touch-icon" sizes="180x180"/><link href="/logo/favicon.ico?v=3" rel="icon"/><link href="/logo/site.webmanifest?v=3" rel="manifest"/></head>
+<link rel="icon" href="logo/favicon-32.png?v=3" sizes="32x32" type="image/png"/></head>
 <body><div class="page">
-<div class="brand">
-<div class="logo"><img alt="Metridex" class="logo-img" src="/logo/metridex_logo_header.png"/></div>
-<div class="meta">One‑Pager • 2025-09-29</div>
-</div>
-<h1>Telegram-native token risk intelligence stack</h1>
-<p><span class="gold">Available for acquisition.</span> Metridex already combines QuickScan, deeper risk views, domain intel (WHOIS / SSL / Wayback), watchlist behavior, and commercial packaging in one Telegram-first stack.</p>
-<div class="hr"></div>
-<div class="grid">
-<div class="card">
-<h2>Key Features</h2>
-<ul>
-<li>Δ Buttons 5m / 1h / 6h / 24h</li>
-<li>Liquidity &amp; top‑holders concentration</li>
-<li>Admin &amp; proxy contract flags</li>
-<li>Domain: WHOIS, SSL, Wayback snapshots</li>
-<li>Shareable HTML report, copy‑CA, open in Scan/DEX</li>
-<li>Watchlist &amp; Alerts (lite): opt-in alerts on price deltas, liquidity movements, holder/LP-lock changes, and high-impact flags.</li></ul>
-</div>
-<div class="card">
-<h2>Why It Matters</h2>
-<ul>
-<li>Faster screening for traders &amp; Telegram admins</li>
-<li>Reduce scam exposure with automated checks</li>
-<li>White‑label for channels &amp; launchpads</li>
-</ul>
-</div>
-<div class="card">
-<h2>Plans (indicative)</h2>
-<ul>
-<li>Day‑Pass — $9</li>
-<li>Pro — $29/mo</li>
-<li>Teams — $99/mo</li>
-<li>Deep Report — from $3</li>
-</ul>
-</div>
-<div class="card">
-<h2>Tech &amp; Integrations</h2>
-<ul>
-<li>Multi‑chain paths incl. Ethereum / BSC / Polygon / Arbitrum / Base / Solana</li>
-<li>DexScreener, explorers, WHOIS/SSL APIs</li>
-<li>Render + Cloudflare Worker proxy</li>
-</ul>
-</div>
-</div>
-<div class="cta">
-<a class="btn" href="mailto:contact@metridex.com?subject=Metridex%20acquisition%20inquiry">Request acquisition brief</a>
-<a class="btn" href="https://metridex.com">Website</a>
-<a class="btn" href="https://metridex.com/metridex_deep_report_sample.html">Sample report</a>
-</div>
-<div class="foot">© Metridex — Omar Ahmad, Founder • https://metridex.com</div>
+  <div class="brand">
+    <div>
+      <img alt="Metridex" class="logo-img" src="logo/metridex_logo_header.png"/>
+      <div class="pill" style="margin-top:12px">Available for acquisition</div>
+    </div>
+    <div class="meta">One-pager • 2026-04-01</div>
+  </div>
+  <h1>Metridex is a Telegram-native token risk intelligence asset - not just a landing page.</h1>
+  <p class="lede"><span class="gold">Sale angle:</span> the package already contains product logic, pricing logic, website intel checks, report surfaces and a buyer-ready website. This is much stronger than selling a raw unfinished scanner.</p>
+  <div class="hr"></div>
+  <div class="row">
+    <div class="card">
+      <h2>What the buyer gets</h2>
+      <ul>
+        <li>Telegram bot engine repo + website repo + domain surface.</li>
+        <li>QuickScan, More details, Why?, Why++, LP lock (lite) and share-scan flows.</li>
+        <li>WHOIS, RDAP, SSL and Wayback website-intel layer.</li>
+        <li>Sample deep report, screenshots, one-pagers and acquisition pages.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Why it is commercially useful</h2>
+      <ul>
+        <li>Already packaged around Telegram-native UX.</li>
+        <li>Explainable verdicts are easier to sell than black-box scoring.</li>
+        <li>Can be repositioned for channels, communities, launchpads or analysts.</li>
+        <li>Site now matches the codebase instead of underselling it.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="grid" style="margin-top:12px">
+    <div class="card">
+      <h2>Core capabilities</h2>
+      <ul>
+        <li>Delta buttons: 5m / 1h / 6h / 24h.</li>
+        <li>Liquidity, holder concentration and contract-risk context.</li>
+        <li>Open in DEX / Open in Scan / copy CA actions.</li>
+        <li>Watchlist and alerts lite logic in code.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Technology snapshot</h2>
+      <ul>
+        <li>Python / Flask webhook application on Render.</li>
+        <li>Cloudflare ds-proxy deployment pattern.</li>
+        <li>EVM + Solana paths represented in the stack.</li>
+        <li>Cache-first detail logic and stateless callbacks.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Pricing logic already present</h2>
+      <ul>
+        <li>Free: 5 daily quick scans.</li>
+        <li>Deep add-on: $3 per token.</li>
+        <li>Day Pass: $9.</li>
+        <li>Pro: $29 / Teams: $99.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Important note</h2>
+      <ul>
+        <li>No public live-bot promise is used in sale materials.</li>
+        <li>The public bot is currently paused during sale discussions.</li>
+        <li>Acquisition pages focus on transferable value, not fake demo urgency.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="cta">
+    <a class="btn" href="mailto:contact@metridex.com?subject=Metridex%20acquisition%20inquiry">Request acquisition brief</a>
+    <a class="btn" href="metridex_deep_report_sample.html">Sample report</a>
+    <a class="btn" href="index.html">Website</a>
+  </div>
+  <div class="foot"><span>© Metridex</span><span>contact@metridex.com</span><span>metridex.com</span></div>
 </div></body></html>
